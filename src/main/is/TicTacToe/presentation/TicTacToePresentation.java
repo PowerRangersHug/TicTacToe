@@ -1,6 +1,6 @@
 package is.TicTacToe;
 
-import is.TicTacToe.TicTacToeService;
+import is.TicTacToe.service.TicTacToeService;
 
 public class TicTacToePresentation {
     private TicTacToeService gameService;
