@@ -10,4 +10,7 @@ public class Board {
     public void setSymbol(int x, int y, String symbol) {  }
 
     public void init() {  }
+
+    public boolean hasThreeInRow() { return false; }
+    public boolean isFull() { return false; }
 }
