@@ -1,5 +1,8 @@
 package is.TicTacToe;
 
+import is.TicTacToe.data.Board;
+import is.TicTacToe.data.Player;
+
 public class Game {
     private Board board;
     private Player p1, p2;
