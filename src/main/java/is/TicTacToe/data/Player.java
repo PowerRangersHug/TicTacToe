@@ -10,6 +10,12 @@ public class Player {
         symbol = "";
     }
 
+    public Player(String n, String s)
+    {
+        name = n;
+        symbol = s;
+    }
+
     /**
      * Get this players name
      * @return Player name
@@ -28,6 +34,21 @@ public class Player {
         return symbol;
     }
 
-    public void SetName(String n) {  }
-    public void SetSymbol(String s) {  }
+    /**
+     * Set the value of name to the value passed in parameter n.
+     * @param n Player name
+     */
+    public void SetName(String n)
+    {
+        name = n;
+    }
+
+    /**
+     * Set the value of symbol to the value passed in parameter s.
+     * @param s Player symbol
+     */
+    public void SetSymbol(String s)
+    {
+        symbol = s;
+    }
 }
