@@ -65,7 +65,20 @@ public class Board {
  	* @param
  	* @return true/false whether the board has three in row or not.
  	*/
-    public boolean hasThreeInRow() { return false; }
+    public boolean hasThreeInRow()
+    {
+    	for (int i = 0; i < SIZE; i++)
+    	{
+    		if ((grid[i][0] != "") && (grid[i][0] == grid[i][1]) && (grid[i][1] == grid[i][2]))
+    		{
+    			return true;
+    		}
+    	}
+    	if ((grid[0][0] != "") && (grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]))
+    		return true;
+    	else	
+    		return false; 
+    }
 
     /**
 	* Checks if the board is full of symbols, i.e. the game

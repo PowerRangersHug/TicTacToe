@@ -43,4 +43,14 @@ public class BoardTest {
 		thrown.expectMessage("Index out of bounds!");
     	testBoard.getSymbol(3,3);
 	}
+
+	@Test
+    public void testBoardThreeInRow()
+    {
+    	Board testBoard = new Board();
+    	testBoard.setSymbol(0,0,"X");
+    	testBoard.setSymbol(1,1,"X");
+    	testBoard.setSymbol(2,2,"X");
+		assertEquals(true, testBoard.hasThreeInRow());
+	}
 }
