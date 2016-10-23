@@ -4,12 +4,21 @@ public class Player {
     private String name;
     private String symbol;
 
+    /**
+     * Initialize new instance of Player class
+     */
     public Player()
     {
         name = "";
         symbol = "";
     }
 
+    /**
+     * Initialize new instance of Player class using the values passed in
+     * parameters n and s.
+     * @param n Player name
+     * @param s Player symbol
+     */
     public Player(String n, String s)
     {
         name = n;
