@@ -67,17 +67,14 @@ public class Board {
  	*/
     public boolean hasThreeInRow()
     {
+    	if (diagonalsThreeInRow())
+    		return true;
     	for (int i = 0; i < SIZE; i++)
     	{
-    		if ((grid[i][0] != "") && (grid[i][0] == grid[i][1]) && (grid[i][1] == grid[i][2]))
-    		{
+    		if (hasThreeInCurrentRow(i))
     			return true;
-    		}
-    	}
-    	if ((grid[0][0] != "") && (grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]))
-    		return true;
-    	else	
-    		return false; 
+    	}	
+    	return false; 
     }
 
     /**
@@ -87,4 +84,14 @@ public class Board {
  	* @return true/false whether the board is full or not.
  	*/
     public boolean isFull() { return false; }
+
+    private boolean diagonalsThreeInRow()
+    {
+    	return (grid[0][0] != "") && (grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]);
+    }
+
+    private boolean hasThreeInCurrentRow(int i)
+    {
+    	return (grid[i][0] != "") && (grid[i][0] == grid[i][1]) && (grid[i][1] == grid[i][2]);
+    }
 }
