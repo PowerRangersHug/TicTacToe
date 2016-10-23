@@ -14,7 +14,7 @@ public class Player {
      * Get this players name
      * @return Player name
      */
-    public String getName()
+    public String GetName()
     {
         return name;
     }
@@ -23,11 +23,11 @@ public class Player {
      * Get this players symbol
      * @return Player symbol
      */
-    public String getSymbol()
+    public String GetSymbol()
     {
         return symbol;
     }
 
-    public void setName(String n) {  }
-    public void setSymbol(String s) {  }
+    public void SetName(String n) {  }
+    public void SetSymbol(String s) {  }
 }

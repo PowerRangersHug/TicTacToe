@@ -10,13 +10,29 @@ public class PlayerTest {
     public void EmptyNewPlayerName()
     {
         Player p = new Player();
-        assertEquals("", p.getName());
+        assertEquals("", p.GetName());
     }
 
     @Test
     public void EmptyNewPlayerSymbol()
     {
         Player p = new Player();
-        assertEquals("", p.getSymbol());
+        assertEquals("", p.GetSymbol());
+    }
+
+    @Test
+    public void SetPlayerNameTest()
+    {
+        Player p = new Player();
+        p.SetName("John");
+        assertEquals("John", p.GetName());
+    }
+
+    @Test
+    public void SetPlayerSymbolTest()
+    {
+        Player p = new Player();
+        p.SetSymbol("X");
+        assertEquals("X", p.GetSymbol());
     }
 }
