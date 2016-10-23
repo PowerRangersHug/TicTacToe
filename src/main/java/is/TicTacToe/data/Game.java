@@ -9,14 +9,14 @@ public class Game {
 
     public Game() 
     {
-    	board = new Board();
-    	p1 = new Player();
-    	p2 = new Player();
+        board = new Board();
+        p1 = new Player("Player1", "X");
+        p2 = new Player("Player2", "O");
     }
 
-    public Board getBoard() { return board; }
-    public Player getPlayer(String name) { return new Player(); }
+    public Board GetBoard() { return board; }
+    public Player GetPlayer(String name) { return new Player(); }
 
-    public boolean isDone() { return false; }
-    public Player getWinner() { return new Player(); }
+    public boolean IsDone() { return false; }
+    public Player GetWinner() { return new Player(); }
 }

@@ -9,10 +9,20 @@ import is.TicTacToe.data.Board;
 
 public class GameTest {
 
-	@Test
-	public void TestBoardNotNull() 
-	{
-		Game newGame = new Game();
-		assertNotNull(newGame.getBoard());
-	}	
+   
+
+    @Test
+    public void TestBoardNotNull() 
+    {
+        Game testGame = new Game();
+        assertNotNull(testGame.GetBoard());
+    }
+
+    @Test
+    public void TestPlayerOneNotNull()
+    {
+        Game testGame = new Game();
+        assertNotNull(testGame.GetPlayer("Player1"));
+    }
+
 }
