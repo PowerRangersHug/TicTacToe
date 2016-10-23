@@ -67,7 +67,7 @@ public class Board {
     public boolean hasThreeInRow()
     {
         if (diagonalsThreeInRow())
-        	return true;
+            return true;
         for (int i = 0; i < SIZE; i++)
         {
             if (hasThreeInCurrentRow(i))

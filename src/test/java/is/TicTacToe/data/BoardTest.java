@@ -15,7 +15,7 @@ public class BoardTest {
     {
         Board testBoard = new Board();
         testBoard.setSymbol(1,1,"X");
-       assertEquals("X", testBoard.getSymbol(1,1));
+        assertEquals("X", testBoard.getSymbol(1,1));
     }
 
     @Test
@@ -23,7 +23,7 @@ public class BoardTest {
     {
         Board testBoard = new Board();
         testBoard.setSymbol(1,1,"BLA");
-       assertEquals("", testBoard.getSymbol(1,1));
+        assertEquals("", testBoard.getSymbol(1,1));
     }
 
     @Test
