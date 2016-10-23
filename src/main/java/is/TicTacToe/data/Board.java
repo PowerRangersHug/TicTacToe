@@ -83,7 +83,18 @@ public class Board {
  	* @param
  	* @return true/false whether the board is full or not.
  	*/
-    public boolean isFull() { return false; }
+    public boolean isFull() 
+    {
+    	for (int i = 0; i < 3; i++)
+    	{
+    		for (int j = 0; j < 3; j++)
+    		{
+    			if (grid[i][j] == "")
+    				return false;
+    		}
+    	}
+    	return true;
+    }
 
     private boolean diagonalsThreeInRow()
     {

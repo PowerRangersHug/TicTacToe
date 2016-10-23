@@ -53,4 +53,19 @@ public class BoardTest {
     	testBoard.setSymbol(2,2,"X");
 		assertEquals(true, testBoard.hasThreeInRow());
 	}
+
+
+	@Test
+    public void testBoardIsFull()
+    {
+    	Board testBoard = new Board();
+    	for (int i = 0; i < 3; i++)
+    	{
+    		for (int j = 0; j < 3; j++)
+    		{
+    			testBoard.setSymbol(i,j,"O");
+    		}
+    	}
+		assertEquals(true, testBoard.isFull());
+	}
 }
