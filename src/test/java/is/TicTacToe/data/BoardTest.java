@@ -13,4 +13,12 @@ public class BoardTest {
     	testBoard.setSymbol(1,1,"X");
 		assertEquals("X", testBoard.getSymbol(1,1));
 	}
+
+	@Test
+    public void testBoardSetAndGetWrongSymbol()
+    {
+    	Board testBoard = new Board();
+    	testBoard.setSymbol(1,1,"BLA");
+		assertEquals("", testBoard.getSymbol(1,1));
+	}
 }

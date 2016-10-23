@@ -6,7 +6,7 @@ public class Board {
 
     public Board() 
     {
-    	grid = new String[SIZE][SIZE];
+    	init();
     }
 
     public String getSymbol(int x, int y) 
@@ -16,13 +16,21 @@ public class Board {
 
     public void setSymbol(int x, int y, String symbol)
     {
-    	grid[x][y] = symbol;
+    	if (symbol == "X" || symbol == "O")
+    		grid[x][y] = symbol;
     }
 
     public void init() 
     {
     	// Points to a new 3x3 grid
     	grid = new String[SIZE][SIZE];
+    	for (int i = 0; i < SIZE; i++)
+    	{
+    		for (int j = 0; j < SIZE; j++)
+    		{
+    			grid[i][j] = "";
+    		}
+    	}
     }
 
     public boolean hasThreeInRow() { return false; }
