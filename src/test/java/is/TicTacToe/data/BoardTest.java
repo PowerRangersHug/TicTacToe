@@ -34,4 +34,13 @@ public class BoardTest {
 		thrown.expectMessage("Index out of bounds!");
     	testBoard.setSymbol(3,3,"X");
 	}
+
+	@Test
+    public void testBoardGetWrongField()
+    {
+    	Board testBoard = new Board();
+    	thrown.expect(IndexOutOfBoundsException.class);
+		thrown.expectMessage("Index out of bounds!");
+    	testBoard.getSymbol(3,3);
+	}
 }
