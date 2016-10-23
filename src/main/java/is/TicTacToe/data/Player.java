@@ -1,4 +1,4 @@
-package is.TicTacToe;
+package is.TicTacToe.data;
 
 public class Player {
     private String name;
@@ -8,5 +8,5 @@ public class Player {
     public String getSymbol() { return ""; }
 
     public void setName(String n) {  }
-    public void setSymbol(Strin s) {  }
+    public void setSymbol(String s) {  }
 }

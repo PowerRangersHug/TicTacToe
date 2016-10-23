@@ -1,8 +1,8 @@
-package is.TicTacToe;
+package is.TicTacToe.data;
 
 public class Board {
     private final int SIZE = 3;
-    private String grid[SIZE][SIZE];
+    private String[][] grid = new String[SIZE][SIZE];
 
     public Board() { }
 
