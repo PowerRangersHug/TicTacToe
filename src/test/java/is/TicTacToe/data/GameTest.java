@@ -25,4 +25,11 @@ public class GameTest {
         assertNotNull(testGame.GetPlayer("Player1"));
     }
 
+    @Test
+    public void TestPlayerTwoNotNull()
+    {
+        Game testGame = new Game();
+        assertNotNull(testGame.GetPlayer("Player2"));
+    }
+
 }
