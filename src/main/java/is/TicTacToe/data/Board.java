@@ -16,6 +16,9 @@ public class Board {
 
     public void setSymbol(int x, int y, String symbol)
     {
+    	if ((x < 0 || x > 2) && (y < 0 || y > 2))
+    		throw new IndexOutOfBoundsException("Index out of bounds!");
+
     	if (symbol == "X" || symbol == "O")
     		grid[x][y] = symbol;
     }
