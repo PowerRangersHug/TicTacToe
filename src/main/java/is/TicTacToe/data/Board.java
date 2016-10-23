@@ -4,11 +4,21 @@ public class Board {
     private final int SIZE = 3;
     private String[][] grid;
 
+    /**
+	* The constructor for the board
+ 	* @param 
+ 	* @return 
+ 	*/
     public Board() 
     {
     	init();
     }
 
+    /**
+	* Get the current symbol at the (x,y) grid position.
+ 	* @param int x, int y
+ 	* @return a symbol
+ 	*/
     public String getSymbol(int x, int y) 
     {
     	if ((x < 0 || x > 2) && (y < 0 || y > 2))
@@ -17,6 +27,11 @@ public class Board {
     	return grid[x][y];
     }
 
+    /**
+	* Set the current symbol at the (x,y) grid position.
+ 	* @param int x, int y
+ 	* @return
+ 	*/
     public void setSymbol(int x, int y, String symbol)
     {
     	if ((x < 0 || x > 2) && (y < 0 || y > 2))
@@ -26,6 +41,11 @@ public class Board {
     		grid[x][y] = symbol;
     }
 
+    /**
+	* Initialize the board, starting fresh (new game).
+ 	* @param
+ 	* @return
+ 	*/
     public void init() 
     {
     	// Points to a new 3x3 grid
@@ -39,6 +59,19 @@ public class Board {
     	}
     }
 
+    /**
+	* Checks if the board is in a winning state, i.e.
+	* a symbol occurs three times in a row on the board.
+ 	* @param
+ 	* @return true/false whether the board has three in row or not.
+ 	*/
     public boolean hasThreeInRow() { return false; }
+
+    /**
+	* Checks if the board is full of symbols, i.e. the game
+	* is over.
+ 	* @param
+ 	* @return true/false whether the board is full or not.
+ 	*/
     public boolean isFull() { return false; }
 }
