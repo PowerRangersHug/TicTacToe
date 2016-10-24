@@ -1,4 +1,4 @@
-package is.TicTacToe;
+package is.TicTacToe.presentation;
 
 import is.TicTacToe.service.TicTacToeService;
 
