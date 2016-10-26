@@ -1,5 +1,5 @@
 package is.TicTacToe.presentation;
-
+import java.util.Scanner;
 import is.TicTacToe.service.TicTacToeService;
 
 public class TicTacToePresentation 
@@ -8,22 +8,24 @@ public class TicTacToePresentation
 
     public TicTacToePresentation() 
     {
-    	gameService = new gameService();
+    	gameService = new TicTacToeService();
     }
 
-    public void WelcomeMessage()
+    public static void WelcomeMessage()
     {
-    	System.out.println("Welcome to TicTacToe!\n");
+    	System.out.println("Welcome to TicTacToe!");
     }
 
-    /*public void GetGameMode()
+    public void GetGameMode()
     {
-    	System.out.println()
-    }*/
+    	System.out.println("Please choose the game mode:")
+        System.out.println("1 - 1 Player");
+        System.out.println("2 - 2 Player");
+    }
 
-    public static int main(String args[])
+    public static void main(String args[])
     {
     	WelcomeMessage();
-        return 0;
+        GetGameMode();
     }
 }
