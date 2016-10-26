@@ -12,6 +12,11 @@ public class TicTacToePresentation
         gameService = new TicTacToeService();
     }
 
+        public TicTacToePresentation(TicTacToeService service) 
+    {
+        gameService = service;
+    }
+
     public static void WelcomeMessage()
     {
         System.out.println("Welcome to TicTacToe!");
@@ -51,13 +56,36 @@ public class TicTacToePresentation
         }
     }
 
+    // Human vs Human mode
+    public static void PlayGameMode1() 
+    {
+        //gameService.startGame(1);
+    }
+
+    // Human vs Computer mode
+    public static void PlayGameMode2() 
+    {
+        System.out.println("Not yet implemented.");
+    }
+
     public static void main(String args[])
     {
-        WelcomeMessage();
-        int gameMode = GetGameMode();
+        TicTacToePresentation ticTacToe = new TicTacToePresentation(new TicTacToeService());
+        ticTacToe.WelcomeMessage();
+        int gameMode = ticTacToe.GetGameMode();
         if (gameMode == 0)
         {
                 System.out.println("Goodbye");
         }
+        else if (gameMode == 1) // 1 player vs computer
+        {
+            // kalla á fall
+        }
+        else // 2 players on same computer
+        {
+            // kalla á annað fall
+        }
     }
+
 }
+
