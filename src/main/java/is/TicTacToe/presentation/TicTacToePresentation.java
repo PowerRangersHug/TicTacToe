@@ -16,9 +16,9 @@ public class TicTacToePresentation
     	System.out.println("Welcome to TicTacToe!");
     }
 
-    public void GetGameMode()
+    public static void GetGameMode()
     {
-    	System.out.println("Please choose the game mode:")
+    	System.out.println("Please choose the game mode");
         System.out.println("1 - 1 Player");
         System.out.println("2 - 2 Player");
     }
