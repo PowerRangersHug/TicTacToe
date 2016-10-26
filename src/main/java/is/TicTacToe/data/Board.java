@@ -9,7 +9,7 @@ public class Board {
     */
     public Board() 
     {
-        init();
+        Init();
     }
 
     /**
@@ -18,7 +18,7 @@ public class Board {
     * @param y the y coordinate on the board
     * @return the symbol
     */
-    public String getSymbol(int x, int y) 
+    public String GetSymbol(int x, int y) 
     {
         if ((x < 0 || x > 2) || (y < 0 || y > 2))
             throw new IndexOutOfBoundsException("Index out of bounds!");
@@ -30,7 +30,7 @@ public class Board {
     * @param x the x coordinate on the board
     * @param y the y coordinate on the board
     */
-    public void setSymbol(int x, int y, String symbol)
+    public void SetSymbol(int x, int y, String symbol)
     {
         if ((x < 0 || x > 2) || (y < 0 || y > 2))
             throw new IndexOutOfBoundsException("Index out of bounds!");
@@ -42,7 +42,7 @@ public class Board {
     /**
     * Initialize the board, starting fresh (new game).
     */
-    public void init() 
+    public void Init() 
     {
         // Points to a new 3x3 grid
         grid = new String[SIZE][SIZE];
@@ -60,15 +60,15 @@ public class Board {
     * a symbol occurs three times in a row on the board.
     * @return true/false whether the board has three in row or not.
     */
-    public boolean hasThreeInRow()
+    public boolean HasThreeInRow()
     {
-        if (diagonalsThreeInRow())
+        if (DiagonalsThreeInRow())
             return true;
         for (int i = 0; i < SIZE; i++)
         {
-            if (hasThreeInCurrentRow(i))
+            if (HasThreeInCurrentRow(i))
                 return true;
-            else if (hasThreeInCurrentColumn(i))
+            else if (HasThreeInCurrentColumn(i))
                 return true;
         }
         return false; 
@@ -79,7 +79,7 @@ public class Board {
     * is over.
     * @return true/false whether the board is full or not.
     */
-    public boolean isFull() 
+    public boolean IsFull() 
     {
         for (int i = 0; i < 3; i++)
         {
@@ -97,7 +97,7 @@ public class Board {
     * there are three same symbols in row diagonally.
     * @return true/false if diagonally three in row.
     */
-    private boolean diagonalsThreeInRow()
+    private boolean DiagonalsThreeInRow()
     {
         return (grid[0][0] != "") && (grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]);
     }
@@ -108,7 +108,7 @@ public class Board {
     * @param i row number
     * @return true/false if three same symbols in row i.
     */
-    private boolean hasThreeInCurrentRow(int i)
+    private boolean HasThreeInCurrentRow(int i)
     {
         return (grid[i][0] != "") && (grid[i][0] == grid[i][1]) && (grid[i][1] == grid[i][2]);
     }

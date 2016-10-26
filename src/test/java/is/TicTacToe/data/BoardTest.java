@@ -11,61 +11,61 @@ public class BoardTest {
 
 
     @Test
-    public void testBoardSetAndGet()
+    public void TestBoardSetAndGet()
     {
         Board testBoard = new Board();
-        testBoard.setSymbol(1,1,"X");
-        assertEquals("X", testBoard.getSymbol(1,1));
+        testBoard.SetSymbol(1,1,"X");
+        assertEquals("X", testBoard.GetSymbol(1,1));
     }
 
     @Test
-    public void testBoardSetAndGetWrongSymbol()
+    public void TestBoardSetAndGetWrongSymbol()
     {
         Board testBoard = new Board();
-        testBoard.setSymbol(1,1,"BLA");
-        assertEquals("", testBoard.getSymbol(1,1));
+        testBoard.SetSymbol(1,1,"BLA");
+        assertEquals("", testBoard.GetSymbol(1,1));
     }
 
     @Test
-    public void testBoardSetWrongField()
-    {
-        Board testBoard = new Board();
-        thrown.expect(IndexOutOfBoundsException.class);
-        thrown.expectMessage("Index out of bounds!");
-        testBoard.setSymbol(3,3,"X");
-    }
-
-    @Test
-    public void testBoardGetWrongField()
+    public void TestBoardSetWrongField()
     {
         Board testBoard = new Board();
         thrown.expect(IndexOutOfBoundsException.class);
         thrown.expectMessage("Index out of bounds!");
-        testBoard.getSymbol(3,3);
+        testBoard.SetSymbol(3,3,"X");
     }
 
     @Test
-    public void testBoardThreeInRow()
+    public void TestBoardGetWrongField()
     {
         Board testBoard = new Board();
-        testBoard.setSymbol(0,0,"X");
-        testBoard.setSymbol(1,1,"X");
-        testBoard.setSymbol(2,2,"X");
-        assertEquals(true, testBoard.hasThreeInRow());
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage("Index out of bounds!");
+        testBoard.GetSymbol(3,3);
+    }
+
+    @Test
+    public void TestBoardThreeInRow()
+    {
+        Board testBoard = new Board();
+        testBoard.SetSymbol(0,0,"X");
+        testBoard.SetSymbol(1,1,"X");
+        testBoard.SetSymbol(2,2,"X");
+        assertEquals(true, testBoard.HasThreeInRow());
     }
 
 
     @Test
-    public void testBoardIsFull()
+    public void TestBoardIsFull()
     {
         Board testBoard = new Board();
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
             {
-                testBoard.setSymbol(i,j,"O");
+                testBoard.SetSymbol(i,j,"O");
             }
         }
-        assertEquals(true, testBoard.isFull());
+        assertEquals(true, testBoard.IsFull());
     }
 }
