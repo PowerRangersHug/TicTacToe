@@ -112,6 +112,13 @@ public class Board {
         return (grid[0][i] != "") && (grid[0][i] == grid[1][i]) && (grid[1][i] == grid[2][i]);
     }
 
+     /**
+    * Checks if the board is in a winning state, i.e.
+    * a symbol occurs three times in a row on the board and 
+    * return the winning symbol.
+    * @param
+    * @return A symbol that occures three times in a row or emtpy string if the board is not in a winning state.
+    */
     public String getThreeInRowSymbol()
     {
         String symbol = diagonalSymbol();
