@@ -62,7 +62,6 @@ public class Game {
         }
 
         String symbol = player.GetSymbol();
-        System.out.println(symbol);
         try 
         {
             board.setSymbol(x, y, symbol);
