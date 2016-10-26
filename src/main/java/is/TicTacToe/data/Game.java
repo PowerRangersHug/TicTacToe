@@ -47,6 +47,11 @@ public class Game {
         }
     }
 
+    /**
+    * Make 
+    * @param name, Player name
+    * @return Player
+    */
     public void MakeMove(int x, int y, String playerName)
     {
         Player player = GetPlayer(playerName);
@@ -70,8 +75,11 @@ public class Game {
 
     public boolean IsDone() 
     { 
-        return false;
+        return board.hasThreeInRow();
     }
 
-    public Player GetWinner() { return new Player(); }
+    public Player GetWinner() 
+    { 
+        return new Player(); 
+    }
 }

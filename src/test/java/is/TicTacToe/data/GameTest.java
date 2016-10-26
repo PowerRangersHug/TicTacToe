@@ -56,15 +56,32 @@ public class GameTest {
         testGame.MakeMove(2, 2, "Player8");
     }
 
-    /*@Test
+    @Test
     public void TestMakeMove()
     {
         Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
         testGame.MakeMove(1, 1, "Player1");
         Board testBoard = testGame.GetBoard();  
-        //assertEquals("X", testBoard.getSymbol(1, 1));
-        assertEquals()
+        assertEquals("X", testBoard.getSymbol(1, 1));
+    }
 
-    }*/
+    @Test
+    public void TestAWinner()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(0, 0, "Player1");
+        testGame.MakeMove(0, 1, "Player1");
+        testGame.MakeMove(0, 2, "Player1");
+        assertEquals(true, testGame.IsDone());
+    }
+
+    @Test
+    public void TestNotDone()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(0, 1, "Player1");
+        testGame.MakeMove(1, 2, "Player1");
+        assertEquals(false, testGame.IsDone());
+    }
 
 }
