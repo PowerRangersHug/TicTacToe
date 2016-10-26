@@ -68,4 +68,51 @@ public class BoardTest {
         }
         assertEquals(true, testBoard.isFull());
     }
+
+    @Test
+    public void testThreeInRowSymbolDiagonal()
+    {
+        Board testBoard = new Board();
+        testBoard.setSymbol(0,0,"X");
+        testBoard.setSymbol(1,1,"X");
+        testBoard.setSymbol(2,2,"X");
+        assertEquals("X", testBoard.getThreeInRowSymbol());
+    }
+
+    @Test
+    public void testThreeInRowSymbolVertical()
+    {
+        Board testBoard = new Board();
+        testBoard.setSymbol(0,0,"X");
+        testBoard.setSymbol(0,1,"X");
+        testBoard.setSymbol(0,2,"X");
+        assertEquals("X", testBoard.getThreeInRowSymbol());
+    }
+
+    @Test
+    public void testThreeInRowSymbolHorizontal()
+    {
+        Board testBoard = new Board();
+        testBoard.setSymbol(0,1,"O");
+        testBoard.setSymbol(1,1,"O");
+        testBoard.setSymbol(2,1,"O");
+        assertEquals("O", testBoard.getThreeInRowSymbol());
+    }
+
+    @Test
+    public void testThreeInRowSymbolWithNoThreeInRow()
+    {
+        Board testBoard = new Board();
+        testBoard.setSymbol(0,1,"O");
+        testBoard.setSymbol(1,1,"X");
+        testBoard.setSymbol(2,1,"O");
+        assertEquals("", testBoard.getThreeInRowSymbol());
+    }
+
+     @Test
+    public void testThreeInRowSymbolWithEmptyBoard()
+    {
+        Board testBoard = new Board();
+        assertEquals("", testBoard.getThreeInRowSymbol());
+    }
 }

@@ -111,4 +111,54 @@ public class Board {
     {
         return (grid[0][i] != "") && (grid[0][i] == grid[1][i]) && (grid[1][i] == grid[2][i]);
     }
+
+    public String getThreeInRowSymbol()
+    {
+        String symbol = diagonalSymbol();
+        if(symbol != "")
+        {
+            return symbol;
+        }
+        for (int i = 0; i < SIZE; i++)
+        {
+            symbol = currentRowSymbol(i);
+            if(symbol != "")
+            {
+                return symbol;
+            }
+            symbol = currentColumnSymbol(i);
+            if(symbol != "")
+            {
+                return symbol;
+            }
+        }
+        return ""; 
+    }
+
+    private String diagonalSymbol()
+    {
+        if(diagonalsThreeInRow())
+        {
+            return grid[0][0];
+        }
+        return "";
+    }
+
+    private String currentRowSymbol(int i)
+    {
+        if(hasThreeInCurrentRow(i))
+        {
+            return grid[i][0];
+        }
+        return "";
+    }
+
+    private String currentColumnSymbol(int i)
+    {
+        if(hasThreeInCurrentColumn(i))
+        {
+            return grid[0][i];
+        }
+        return "";
+    }
 }
