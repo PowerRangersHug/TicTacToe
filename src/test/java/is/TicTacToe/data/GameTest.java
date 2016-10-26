@@ -36,4 +36,12 @@ public class GameTest {
         Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
         assertEquals("Player1", testGame.GetPlayer("Player1").GetName());
     }
+
+    @Test
+    public void TestPlayerOneSymbol()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        assertEquals("X", testGame.GetPlayer("Player1").GetSymbol());
+    }
+
 }
