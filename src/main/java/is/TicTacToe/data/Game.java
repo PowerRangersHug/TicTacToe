@@ -9,7 +9,7 @@ public class Game {
     private Player p1, p2;
 
     /**
-    * Initialize new instance of Game class with params
+    * Initialize new instance of Game class with params.
     * @param b Board
     * @param p1, Player 1
     * @param p2, Player 2
@@ -27,7 +27,7 @@ public class Game {
     }
     
     /**
-    * Get player with name 'name'
+    * Get player with name 'name'.
     * @param name, Player name
     * @return Player
     */
@@ -48,9 +48,10 @@ public class Game {
     }
 
     /**
-    * Make 
-    * @param name, Player name
-    * @return Player
+    * Make a move from Player with playerName on cell x,y.
+    * @param x the x coordinate on the board 
+    * @param y the y coordinate on the board
+    * @param playerName name of the player that is making the move
     */
     public void MakeMove(int x, int y, String playerName)
     {
@@ -70,13 +71,17 @@ public class Game {
         {
             System.out.println(ex.getMessage());
         }
-
     }
 
+    /**
+    * Checks if we have a winner (has three in a row).
+    * @return boolean true if we have a winner, else false
+    */
     public boolean IsDone() 
     { 
         return board.hasThreeInRow();
     }
+
 
     public Player GetWinner() 
     { 
