@@ -4,6 +4,7 @@ import is.TicTacToe.data.Board;
 import is.TicTacToe.data.Player;
 
 public class Game {
+
     private Board board;
     private Player p1, p2;
 
@@ -20,7 +21,10 @@ public class Game {
         this.p2 = p2;
     }
 
-    public Board GetBoard() { return board; }
+    public Board GetBoard() 
+    { 
+        return board; 
+    }
     
     /**
     * Get player with name 'name'
@@ -43,6 +47,31 @@ public class Game {
         }
     }
 
-    public boolean IsDone() { return false; }
+    public void MakeMove(int x, int y, String playerName)
+    {
+        Player player = GetPlayer(playerName);
+        if (player == null)
+        {
+            throw new IllegalArgumentException("Invalid Player Name!");
+        }
+
+        String symbol = player.GetSymbol();
+        System.out.println(symbol);
+        try 
+        {
+            board.setSymbol(x, y, symbol);
+        }
+        catch (IndexOutOfBoundsException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public boolean IsDone() 
+    { 
+        return false;
+    }
+
     public Player GetWinner() { return new Player(); }
 }

@@ -3,11 +3,14 @@ package is.TicTacToe.data;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.Rule;
 
 import is.TicTacToe.data.Game;
 import is.TicTacToe.data.Board;
 
 public class GameTest {
+    @Rule public final ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void TestBoardNotNull() 
@@ -43,5 +46,25 @@ public class GameTest {
         Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
         assertEquals("X", testGame.GetPlayer("Player1").GetSymbol());
     }
+
+    @Test
+    public void TestMakeMoveNullPlayer()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Invalid Player Name!");
+        testGame.MakeMove(2, 2, "Player8");
+    }
+
+    /*@Test
+    public void TestMakeMove()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(1, 1, "Player1");
+        Board testBoard = testGame.GetBoard();  
+        //assertEquals("X", testBoard.getSymbol(1, 1));
+        assertEquals()
+
+    }*/
 
 }
