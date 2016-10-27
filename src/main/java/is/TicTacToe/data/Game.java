@@ -64,7 +64,7 @@ public class Game {
         String symbol = player.GetSymbol();
         try 
         {
-            board.setSymbol(x, y, symbol);
+            board.SetSymbol(x, y, symbol);
         }
         catch (IndexOutOfBoundsException ex)
         {
@@ -78,12 +78,34 @@ public class Game {
     */
     public boolean IsDone() 
     { 
-        return board.hasThreeInRow();
+        return board.HasThreeInRow() || board.IsFull();
     }
 
-
+    /**
+    * Gets the symbol that occurs three times in a row.
+    * @return the player with the corresponding symbol if the symbol is
+    * not an empty string, null otherwise  
+    */
     public Player GetWinner() 
     { 
-        return new Player(); 
+        String symbol = board.GetThreeInRowSymbol();
+        if (symbol == "")
+        {
+            return null;
+        }
+        return GetPlayerBySymbol(symbol);
+    }
+
+    private Player GetPlayerBySymbol(String symbol)
+    {
+        if (p1.GetSymbol() == symbol)
+        {
+            return p1;
+        }
+        else if (p2.GetSymbol() == symbol)
+        {
+            return p2;
+        }
+        return null;
     }
 }
