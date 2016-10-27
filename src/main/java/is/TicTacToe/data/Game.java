@@ -81,9 +81,35 @@ public class Game {
         return board.hasThreeInRow();
     }
 
-
+    /**
+    * Gets the symbol that occurs three times in a row.
+    * @return the player with the corresponding symbol if the symbol is
+    * not an empty string, null otherwise  
+    */
     public Player GetWinner() 
     { 
-        return new Player(); 
+        String symbol = board.getThreeInRowSymbol();
+        if(symbol == "")
+        {
+            return null;
+        }
+        Player player = GetPlayerBySymbol(symbol);
+        return player;
+    }
+
+    private Player GetPlayerBySymbol(String symbol)
+    {
+        if(p1.GetSymbol() == symbol)
+        {
+            return p1;
+        }
+        else if(p1.GetSymbol() == symbol)
+        {
+            return p2;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

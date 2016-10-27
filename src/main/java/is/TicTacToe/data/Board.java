@@ -99,7 +99,20 @@ public class Board {
 
     private boolean diagonalsThreeInRow()
     {
-        return (grid[0][0] != "") && (grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]);
+        if(grid[1][1] == "")
+        {
+            return false;
+        }
+        else if((grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]))
+        {
+            return true;
+        }
+        else if((grid[0][2] == grid[1][1]) && (grid[1][1] == grid[2][0]))
+        {
+            return true;
+        }
+        return false;
+        
     }
 
     private boolean hasThreeInCurrentRow(int i)
@@ -110,5 +123,62 @@ public class Board {
     private boolean hasThreeInCurrentColumn(int i)
     {
         return (grid[0][i] != "") && (grid[0][i] == grid[1][i]) && (grid[1][i] == grid[2][i]);
+    }
+
+     /**
+    * Checks if the board is in a winning state, i.e.
+    * a symbol occurs three times in a row on the board and 
+    * return the winning symbol.
+    * @param
+    * @return A symbol that occures three times in a row or emtpy string if the board is not in a winning state.
+    */
+    public String getThreeInRowSymbol()
+    {
+        String symbol = diagonalSymbol();
+        if(symbol != "")
+        {
+            return symbol;
+        }
+        for (int i = 0; i < SIZE; i++)
+        {
+            symbol = currentRowSymbol(i);
+            if(symbol != "")
+            {
+                return symbol;
+            }
+            symbol = currentColumnSymbol(i);
+            if(symbol != "")
+            {
+                return symbol;
+            }
+        }
+        return ""; 
+    }
+
+    private String diagonalSymbol()
+    {
+        if(diagonalsThreeInRow())
+        {
+            return grid[1][1];
+        }
+        return "";
+    }
+
+    private String currentRowSymbol(int i)
+    {
+        if(hasThreeInCurrentRow(i))
+        {
+            return grid[i][0];
+        }
+        return "";
+    }
+
+    private String currentColumnSymbol(int i)
+    {
+        if(hasThreeInCurrentColumn(i))
+        {
+            return grid[0][i];
+        }
+        return "";
     }
 }

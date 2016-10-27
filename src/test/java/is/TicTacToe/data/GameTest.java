@@ -84,4 +84,24 @@ public class GameTest {
         assertEquals(false, testGame.IsDone());
     }
 
+    @Test
+    public void TestGetWinner()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(0, 0, "Player1");
+        testGame.MakeMove(0, 1, "Player1");
+        testGame.MakeMove(0, 2, "Player1");
+        assertEquals("Player1", testGame.GetWinner().GetName());
+    }
+
+    @Test
+    public void TestGetWinnerNoWinner()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(0, 0, "Player1");
+        testGame.MakeMove(0, 1, "Player1");
+        testGame.MakeMove(0, 2, "Player2");
+        assertEquals(null, testGame.GetWinner());
+    }
+
 }
