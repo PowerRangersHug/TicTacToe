@@ -5,23 +5,30 @@ import is.TicTacToe.service.TicTacToeService;
 
 public class TicTacToePresentation 
 {
-    private TicTacToeService gameService;
+    private TicTacToeService service;
 
     public TicTacToePresentation() 
     {
-        gameService = new TicTacToeService();
+        service = new TicTacToeService();
     }
 
-        public TicTacToePresentation(TicTacToeService service) 
+    public TicTacToePresentation(TicTacToeService service) 
     {
-        gameService = service;
+        this.service = service;
     }
 
+    /* 
+    * Prints a welcome message to the console.
+    */
     public static void WelcomeMessage()
     {
         System.out.println("Welcome to TicTacToe!");
     }
 
+    /**
+    * Get the game mode from standard input.
+    * @return the game mode (0:quit, 1:human vs human, 2: human vs computer)
+    */
     public static int GetGameMode()
     {
         Scanner sc = new Scanner(System.in);
@@ -36,8 +43,7 @@ public class TicTacToePresentation
             {
                 inputLine = sc.next();
             }
-
-            if (inputLine.equals("Q"))
+            if (inputLine.equals("Q") || inputLine.equals("q"))
             {
                 return 0;
             }
@@ -59,7 +65,21 @@ public class TicTacToePresentation
     // Human vs Human mode
     public static void PlayGameMode1() 
     {
-        //gameService.startGame(1);
+        Scanner sc = new Scanner(System.in);
+        String player1Name, player2Name;
+
+        System.out.println("Name of player 1:");
+        if(sc.hasNextLine())
+        {
+            player1Name = sc.next();
+        }
+        System.out.println("Name of player 2:");
+        if(sc.hasNextLine())
+        {
+            player2Name = sc.next();
+        }
+        // TODO: implement the StartGame function in service
+        // service.StartGame(1, player1Name, player2Name);
     }
 
     // Human vs Computer mode
@@ -75,17 +95,17 @@ public class TicTacToePresentation
         int gameMode = ticTacToe.GetGameMode();
         if (gameMode == 0)
         {
-                System.out.println("Goodbye");
+            System.out.println("Goodbye");
         }
         else if (gameMode == 1) // 1 player vs computer
         {
-            // kalla á fall
+            PlayGameMode1();
         }
         else // 2 players on same computer
         {
-            // kalla á annað fall
+            PlayGameMode2();
+            System.out.println("Goodbye");
         }
     }
-
 }
 
