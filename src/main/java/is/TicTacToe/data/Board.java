@@ -99,7 +99,20 @@ public class Board {
 
     private boolean diagonalsThreeInRow()
     {
-        return (grid[0][0] != "") && (grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]);
+        if(grid[1][1] == "")
+        {
+            return false;
+        }
+        else if((grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]))
+        {
+            return true;
+        }
+        else if((grid[0][2] == grid[1][1]) && (grid[1][1] == grid[2][0]))
+        {
+            return true;
+        }
+        return false;
+        
     }
 
     private boolean hasThreeInCurrentRow(int i)
@@ -146,7 +159,7 @@ public class Board {
     {
         if(diagonalsThreeInRow())
         {
-            return grid[0][0];
+            return grid[1][1];
         }
         return "";
     }

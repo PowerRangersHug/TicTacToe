@@ -80,6 +80,16 @@ public class BoardTest {
     }
 
     @Test
+    public void testThreeInRowSymbolDiagonalReversed()
+    {
+        Board testBoard = new Board();
+        testBoard.setSymbol(0,2,"X");
+        testBoard.setSymbol(1,1,"X");
+        testBoard.setSymbol(2,0,"X");
+        assertEquals("X", testBoard.getThreeInRowSymbol());
+    }
+
+    @Test
     public void testThreeInRowSymbolVertical()
     {
         Board testBoard = new Board();
