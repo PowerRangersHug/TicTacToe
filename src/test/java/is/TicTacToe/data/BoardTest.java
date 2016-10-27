@@ -54,7 +54,6 @@ public class BoardTest {
         assertEquals(true, testBoard.HasThreeInRow());
     }
 
-
     @Test
     public void TestBoardIsFull()
     {
@@ -70,59 +69,59 @@ public class BoardTest {
     }
 
     @Test
-    public void testThreeInRowSymbolDiagonal()
+    public void TestThreeInRowSymbolDiagonal()
     {
         Board testBoard = new Board();
-        testBoard.setSymbol(0,0,"X");
-        testBoard.setSymbol(1,1,"X");
-        testBoard.setSymbol(2,2,"X");
-        assertEquals("X", testBoard.getThreeInRowSymbol());
+        testBoard.SetSymbol(0,0,"X");
+        testBoard.SetSymbol(1,1,"X");
+        testBoard.SetSymbol(2,2,"X");
+        assertEquals("X", testBoard.GetThreeInRowSymbol());
     }
 
     @Test
-    public void testThreeInRowSymbolDiagonalReversed()
+    public void TestThreeInRowSymbolDiagonalReversed()
     {
         Board testBoard = new Board();
-        testBoard.setSymbol(0,2,"X");
-        testBoard.setSymbol(1,1,"X");
-        testBoard.setSymbol(2,0,"X");
-        assertEquals("X", testBoard.getThreeInRowSymbol());
+        testBoard.SetSymbol(0,2,"X");
+        testBoard.SetSymbol(1,1,"X");
+        testBoard.SetSymbol(2,0,"X");
+        assertEquals("X", testBoard.GetThreeInRowSymbol());
     }
 
     @Test
-    public void testThreeInRowSymbolVertical()
+    public void TestThreeInRowSymbolVertical()
     {
         Board testBoard = new Board();
-        testBoard.setSymbol(0,0,"X");
-        testBoard.setSymbol(0,1,"X");
-        testBoard.setSymbol(0,2,"X");
-        assertEquals("X", testBoard.getThreeInRowSymbol());
+        testBoard.SetSymbol(0,0,"X");
+        testBoard.SetSymbol(0,1,"X");
+        testBoard.SetSymbol(0,2,"X");
+        assertEquals("X", testBoard.GetThreeInRowSymbol());
     }
 
     @Test
-    public void testThreeInRowSymbolHorizontal()
+    public void TestThreeInRowSymbolHorizontal()
     {
         Board testBoard = new Board();
-        testBoard.setSymbol(0,1,"O");
-        testBoard.setSymbol(1,1,"O");
-        testBoard.setSymbol(2,1,"O");
-        assertEquals("O", testBoard.getThreeInRowSymbol());
+        testBoard.SetSymbol(0,1,"O");
+        testBoard.SetSymbol(1,1,"O");
+        testBoard.SetSymbol(2,1,"O");
+        assertEquals("O", testBoard.GetThreeInRowSymbol());
     }
 
     @Test
-    public void testThreeInRowSymbolWithNoThreeInRow()
+    public void TestThreeInRowSymbolWithNoThreeInRow()
     {
         Board testBoard = new Board();
-        testBoard.setSymbol(0,1,"O");
-        testBoard.setSymbol(1,1,"X");
-        testBoard.setSymbol(2,1,"O");
-        assertEquals("", testBoard.getThreeInRowSymbol());
+        testBoard.SetSymbol(0,1,"O");
+        testBoard.SetSymbol(1,1,"X");
+        testBoard.SetSymbol(2,1,"O");
+        assertEquals("", testBoard.GetThreeInRowSymbol());
     }
 
      @Test
-    public void testThreeInRowSymbolWithEmptyBoard()
+    public void TestThreeInRowSymbolWithEmptyBoard()
     {
         Board testBoard = new Board();
-        assertEquals("", testBoard.getThreeInRowSymbol());
+        assertEquals("", testBoard.GetThreeInRowSymbol());
     }
 }

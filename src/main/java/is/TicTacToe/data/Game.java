@@ -78,7 +78,7 @@ public class Game {
     */
     public boolean IsDone() 
     { 
-        return board.HasThreeInRow();
+        return board.HasThreeInRow() || board.IsFull();
     }
 
     /**
@@ -88,28 +88,24 @@ public class Game {
     */
     public Player GetWinner() 
     { 
-        String symbol = board.getThreeInRowSymbol();
-        if(symbol == "")
+        String symbol = board.GetThreeInRowSymbol();
+        if (symbol == "")
         {
             return null;
         }
-        Player player = GetPlayerBySymbol(symbol);
-        return player;
+        return GetPlayerBySymbol(symbol);
     }
 
     private Player GetPlayerBySymbol(String symbol)
     {
-        if(p1.GetSymbol() == symbol)
+        if (p1.GetSymbol() == symbol)
         {
             return p1;
         }
-        else if(p1.GetSymbol() == symbol)
+        else if (p2.GetSymbol() == symbol)
         {
             return p2;
         }
-        else
-        {
-            return null;
-        }
+        return null;
     }
 }

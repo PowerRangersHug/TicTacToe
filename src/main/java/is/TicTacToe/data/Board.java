@@ -99,20 +99,15 @@ public class Board {
     */
     private boolean DiagonalsThreeInRow()
     {
-        if(grid[1][1] == "")
+        if (grid[1][1] == "")
         {
             return false;
         }
-        else if((grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]))
+        else if ((grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2]))
         {
             return true;
         }
-        else if((grid[0][2] == grid[1][1]) && (grid[1][1] == grid[2][0]))
-        {
-            return true;
-        }
-        return false;
-        
+        return ((grid[0][2] == grid[1][1]) && (grid[1][1] == grid[2][0]));
     }
 
     /**
@@ -144,21 +139,21 @@ public class Board {
     * @param
     * @return A symbol that occures three times in a row or emtpy string if the board is not in a winning state.
     */
-    public String getThreeInRowSymbol()
+    public String GetThreeInRowSymbol()
     {
-        String symbol = diagonalSymbol();
+        String symbol = DiagonalSymbol();
         if(symbol != "")
         {
             return symbol;
         }
         for (int i = 0; i < SIZE; i++)
         {
-            symbol = currentRowSymbol(i);
+            symbol = CurrentRowSymbol(i);
             if(symbol != "")
             {
                 return symbol;
             }
-            symbol = currentColumnSymbol(i);
+            symbol = CurrentColumnSymbol(i);
             if(symbol != "")
             {
                 return symbol;
@@ -167,27 +162,44 @@ public class Board {
         return ""; 
     }
 
-    private String diagonalSymbol()
+    /**
+    * Helper function to find the winning symbol iff
+    * the winning symbol is situated in the middle of the board.
+    * @return the winning symbol, if not diagonal win, then returns empty string.
+    */
+    private String DiagonalSymbol()
     {
-        if(diagonalsThreeInRow())
+        if(DiagonalsThreeInRow())
         {
             return grid[1][1];
         }
         return "";
     }
 
-    private String currentRowSymbol(int i)
+    /**
+    * Helper function to find the winning symbol iff
+    * the winning symbol is situated in current row.
+    * @param i the row
+    * @return the winning symbol, if not win in this row, then returns empty string.
+    */
+    private String CurrentRowSymbol(int i)
     {
-        if(hasThreeInCurrentRow(i))
+        if(HasThreeInCurrentRow(i))
         {
             return grid[i][0];
         }
         return "";
     }
 
-    private String currentColumnSymbol(int i)
+    /**
+    * Helper function to find the winning symbol iff
+    * the winning symbol is situated in current column.
+    * @param i the column
+    * @return the winning symbol, if not win in this column, then returns empty string.
+    */
+    private String CurrentColumnSymbol(int i)
     {
-        if(hasThreeInCurrentColumn(i))
+        if(HasThreeInCurrentColumn(i))
         {
             return grid[0][i];
         }
