@@ -64,7 +64,7 @@ public class Game {
         String symbol = player.GetSymbol();
         try 
         {
-            board.setSymbol(x, y, symbol);
+            board.SetSymbol(x, y, symbol);
         }
         catch (IndexOutOfBoundsException ex)
         {
@@ -78,7 +78,7 @@ public class Game {
     */
     public boolean IsDone() 
     { 
-        return board.hasThreeInRow();
+        return board.HasThreeInRow();
     }
 
 
