@@ -62,7 +62,7 @@ public class GameTest {
         Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
         testGame.MakeMove(1, 1, "Player1");
         Board testBoard = testGame.GetBoard();  
-        assertEquals("X", testBoard.getSymbol(1, 1));
+        assertEquals("X", testBoard.GetSymbol(1, 1));
     }
 
     @Test
