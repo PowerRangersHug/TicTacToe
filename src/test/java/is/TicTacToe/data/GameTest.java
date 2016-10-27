@@ -84,4 +84,48 @@ public class GameTest {
         assertEquals(false, testGame.IsDone());
     }
 
+    @Test
+    public void TestDoneFull()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                testGame.MakeMove(i, j, "Player1");
+            }
+        }
+        assertEquals(true, testGame.IsDone());
+    }
+
+    @Test
+    public void TestGetWinner()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(0, 0, "Player1");
+        testGame.MakeMove(0, 1, "Player1");
+        testGame.MakeMove(0, 2, "Player1");
+        assertEquals("Player1", testGame.GetWinner().GetName());
+    }
+
+    @Test
+    public void TestGetAnotherWinner()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(2, 1, "Player2");
+        testGame.MakeMove(1, 1, "Player2");
+        testGame.MakeMove(0, 1, "Player2");
+        assertEquals("Player2", testGame.GetWinner().GetName());
+    }
+
+    @Test
+    public void TestGetWinnerNoWinner()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(0, 0, "Player1");
+        testGame.MakeMove(0, 1, "Player1");
+        testGame.MakeMove(0, 2, "Player2");
+        assertEquals(null, testGame.GetWinner());
+    }
+
 }
