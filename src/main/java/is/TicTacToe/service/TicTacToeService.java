@@ -1,8 +1,8 @@
 package is.TicTacToe.service;
 
+import is.TicTacToe.data.Board;
 import is.TicTacToe.data.Game;
 import is.TicTacToe.data.Player;
-import is.TicTacToe.data.Board;
 
 public class TicTacToeService {
     private Game game;
