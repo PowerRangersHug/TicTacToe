@@ -23,7 +23,7 @@ public class BoardTest {
     {
         Board testBoard = new Board();
         testBoard.SetSymbol(1,1,"BLA");
-        assertEquals("", testBoard.GetSymbol(1,1));
+        assertEquals(" ", testBoard.GetSymbol(1,1));
     }
 
     @Test

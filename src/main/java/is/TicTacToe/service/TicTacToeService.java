@@ -93,6 +93,48 @@ public class TicTacToeService {
      */
     public String GetBoard()
     {
-        return "";
+        String board = GetTopBottomRow();
+        for(int i = 0; i < 3; i++)
+        {
+            board += GetBoardRow(i);
+            if(i < 2)
+            {
+                board += GetRowSep();
+            }
+        }
+        board += GetTopBottomRow();
+        return board;
+    }
+
+    /**
+     * Get String representation of board row
+     * @param row Row that should be returned
+     * @return String representation of requested row
+     */
+    private String GetBoardRow(int row)
+    {
+        Board b = game.GetBoard();
+        return "| "
+            + b.GetSymbol(0, row) + " | "
+            + b.GetSymbol(1, row) + " | "
+            + b.GetSymbol(2, row) + " |\n";
+    }
+
+    /**
+     * Return a row seperator for board representation
+     * @return String representation of Board row seperator
+     */
+    private String GetRowSep()
+    {
+        return "|---+---+---|\n";
+    }
+
+    /**
+     * Get the top/bottom row for Board representation
+     * @return String representation of the top/bottom row of the Board
+     */
+    private String GetTopBottomRow()
+    {
+        return "-------------\n";
     }
 }

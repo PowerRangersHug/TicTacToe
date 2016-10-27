@@ -39,4 +39,19 @@ public class TicTacToeServiceTest
         assertEquals("John", testService.GetPlayerByName("John").GetName());
         assertEquals("Eve", testService.GetPlayerByName("Eve").GetName());
     }
+
+    @Test
+    public void TestGetBoard()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        String expectedBoard = "-------------\n"
+            + "|   |   |   |\n"
+            + "|---+---+---|\n"
+            + "|   |   |   |\n"
+            + "|---+---+---|\n"
+            + "|   |   |   |\n"
+            + "-------------\n";
+
+        assertEquals(expectedBoard, testService.GetBoard());
+    }
 }

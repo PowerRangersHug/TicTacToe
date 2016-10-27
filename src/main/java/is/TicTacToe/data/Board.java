@@ -7,7 +7,7 @@ public class Board {
     /**
     * The constructor for the board.
     */
-    public Board() 
+    public Board()
     {
         Init();
     }
@@ -18,7 +18,7 @@ public class Board {
     * @param y the y coordinate on the board
     * @return the symbol
     */
-    public String GetSymbol(int x, int y) 
+    public String GetSymbol(int x, int y)
     {
         if ((x < 0 || x > 2) || (y < 0 || y > 2))
             throw new IndexOutOfBoundsException("Index out of bounds!");
@@ -42,7 +42,7 @@ public class Board {
     /**
     * Initialize the board, starting fresh (new game).
     */
-    public void Init() 
+    public void Init()
     {
         // Points to a new 3x3 grid
         grid = new String[SIZE][SIZE];
@@ -50,7 +50,7 @@ public class Board {
         {
             for (int j = 0; j < SIZE; j++)
             {
-                grid[i][j] = "";
+                grid[i][j] = " ";
             }
         }
     }
@@ -71,7 +71,7 @@ public class Board {
             else if (HasThreeInCurrentColumn(i))
                 return true;
         }
-        return false; 
+        return false;
     }
 
     /**
@@ -79,13 +79,13 @@ public class Board {
     * is over.
     * @return true/false whether the board is full or not.
     */
-    public boolean IsFull() 
+    public boolean IsFull()
     {
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
             {
-                if (grid[i][j] == "")
+                if (grid[i][j] == " ")
                     return false;
             }
         }
@@ -99,7 +99,7 @@ public class Board {
     */
     private boolean DiagonalsThreeInRow()
     {
-        if (grid[1][1] == "")
+        if (grid[1][1] ==  " ")
         {
             return false;
         }
@@ -118,7 +118,7 @@ public class Board {
     */
     private boolean HasThreeInCurrentRow(int i)
     {
-        return (grid[i][0] != "") && (grid[i][0] == grid[i][1]) && (grid[i][1] == grid[i][2]);
+        return (grid[i][0] != " ") && (grid[i][0] == grid[i][1]) && (grid[i][1] == grid[i][2]);
     }
 
     /**
@@ -129,7 +129,7 @@ public class Board {
     */
     private boolean HasThreeInCurrentColumn(int i)
     {
-        return (grid[0][i] != "") && (grid[0][i] == grid[1][i]) && (grid[1][i] == grid[2][i]);
+        return (grid[0][i] != " ") && (grid[0][i] == grid[1][i]) && (grid[1][i] == grid[2][i]);
     }
 
      /**
@@ -159,7 +159,7 @@ public class Board {
                 return symbol;
             }
         }
-        return ""; 
+        return "";
     }
 
     /**
