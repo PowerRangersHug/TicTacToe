@@ -3,6 +3,7 @@ package is.TicTacToe.service;
 import is.TicTacToe.data.Board;
 import is.TicTacToe.data.Game;
 import is.TicTacToe.data.Player;
+import java.util.Random;
 
 public class TicTacToeService {
     private Game game;
@@ -10,6 +11,8 @@ public class TicTacToeService {
     private String playerTwo;
     private static final int COMPUTER = 1;
     private static final int HUMAN = 2;
+    private static final int MIN = 0;
+    private static final int MAX = 2;
 
     /**
      * Initialize the service class with default values for Player instances.
@@ -46,6 +49,10 @@ public class TicTacToeService {
      */
     public TicTacToeService(String player)
     {
+        if(player == "Computer")
+        {
+            player = "Player1";
+        }
         playerOne = player;
         playerTwo = "Computer";
         Player p1 = new Player(playerOne, "X", HUMAN);
@@ -113,6 +120,45 @@ public class TicTacToeService {
         else 
         {
             return false;
+        }
+        
+        if (!ContainsSymbol(x,y))
+        {
+            game.MakeMove(x, y, symbol);
+            return true;
+        
+        }
+        return false;
+    }
+
+        /**
+    * Makes a move for the computer.
+    * @return true if one of the players is a computer player and
+    * the board is not full, else false
+    */
+    public boolean MakeMove()
+    {    
+        if (game.GetBoard().IsFull())
+        {
+            return false;
+        }
+
+        Player p;
+        p = GetPlayerByName("Computer");
+        
+        if(p.GetType() != COMPUTER)
+        {
+            return false;
+        }
+        String symbol = p.GetSymbol();
+        Random rand = new Random();
+        int x = rand.nextInt((MAX - MIN) + 1) + MIN;
+        int y = rand.nextInt((MAX - MIN) + 1) + MIN;
+
+        while(ContainsSymbol(x,y))
+        {
+            x = rand.nextInt((MAX - MIN) + 1) + MIN;
+            y = rand.nextInt((MAX - MIN) + 1) + MIN;
         }
         
         if (!ContainsSymbol(x,y))

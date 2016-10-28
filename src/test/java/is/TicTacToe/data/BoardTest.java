@@ -98,4 +98,12 @@ public class BoardTest {
         Board testBoard = new Board();
         assertEquals("", testBoard.GetThreeInRowSymbol());
     }
+
+    @Test
+    public void TestBoardIsEmpty()
+    {
+        Board testBoard = new Board();
+        assertEquals(true, testBoard.IsEmpty());
+    }
+
 }
