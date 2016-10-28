@@ -100,6 +100,81 @@ public class TicTacToeServiceTest
         testService.MakeMove(0, 2, "Player1");
         assertEquals("Player1", testService.GetWinner());
     }
+
+    @Test 
+    public void TestGetScoreForPlayerOne()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        testService.GetGame().IsDone();
+        assertEquals(1, testService.GetScoreForPlayerOne());
+    }
+
+    @Test 
+    public void TestGetScoreForPlayerTwo()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(1, 0, "Player2");
+        testService.MakeMove(1, 1, "Player2");
+        testService.MakeMove(1, 2, "Player2");
+        testService.GetGame().IsDone();
+        assertEquals(1, testService.GetScoreForPlayerTwo());
+    }
+    
+
+    @Test 
+    public void TestResetBoard()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        String expectedBoard = "-------------\n"
+            + "|   |   |   |\n"
+            + "|---+---+---|\n"
+            + "|   |   |   |\n"
+            + "|---+---+---|\n"
+            + "|   |   |   |\n"
+            + "-------------\n";
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        testService.ResetBoard();
+        assertEquals(expectedBoard, testService.GetBoard());
+    }
+
+    @Test
+    public void TestIsDoneTrueWinner()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        assertEquals(true, testService.IsDone());
+    }
+
+    @Test
+    public void TestIsDoneFalse()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        assertEquals(false, testService.IsDone());
+    }
+
+
+    @Test
+    public void TestIsDoneFull()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                testService.MakeMove(i, j, "Player1");
+            }
+        }
+        assertEquals(true, testService.IsDone());
+    }
 }
 
 

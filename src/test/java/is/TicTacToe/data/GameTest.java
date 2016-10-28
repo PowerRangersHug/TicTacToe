@@ -47,15 +47,6 @@ public class GameTest {
         assertEquals("X", testGame.GetPlayer("Player1").GetSymbol());
     }
 
-    /*@Test
-    public void TestMakeMoveNullPlayer()
-    {
-        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
-        thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Invalid Player Name!");
-        testGame.MakeMove(2, 2, "Player8");
-    }*/
-
     @Test
     public void TestMakeMove()
     {
@@ -73,6 +64,7 @@ public class GameTest {
         testGame.MakeMove(0, 1, "X");
         testGame.MakeMove(0, 2, "X");
         assertEquals(true, testGame.IsDone());
+        assertEquals(1, testGame.GetScore("Player1"));
     }
 
     @Test
@@ -135,6 +127,17 @@ public class GameTest {
         Game testGame = new Game(new Board(), player1, new Player("Player2", "O"));
         assertEquals(player1, testGame.GetPlayerBySymbol("X"));
 
+    }
+
+    @Test
+    public void TestAddWinAndGetScore()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.AddWin("Player1");
+        testGame.AddWin("Player2");
+        testGame.AddWin("Player2");
+        assertEquals(1, testGame.GetScore("Player1"));
+        assertEquals(2, testGame.GetScore("Player2"));
     }
 
 }

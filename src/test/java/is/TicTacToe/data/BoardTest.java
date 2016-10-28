@@ -98,4 +98,5 @@ public class BoardTest {
         Board testBoard = new Board();
         assertEquals("", testBoard.GetThreeInRowSymbol());
     }
+
 }

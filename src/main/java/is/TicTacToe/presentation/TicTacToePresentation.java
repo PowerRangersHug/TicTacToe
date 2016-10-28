@@ -72,6 +72,8 @@ public class TicTacToePresentation
     */
     public void PlayGame(int mode) 
     {
+        boolean playAgain = true;
+        
         Scanner sc = new Scanner(System.in);
         String player1Name = "";
         String player2Name = "";
@@ -90,25 +92,32 @@ public class TicTacToePresentation
                 player2Name = sc.next();
                 service.StartGame(mode, player1Name, player2Name);
             }
-        }
+        }   
         // 1 Player mode.
         else
         {
             service.StartGame(mode, player1Name, "Computer");
         }
-
-        while (!service.IsDone())
+        while(playAgain)
         {
-            PrintBoard();
-            MakeMove(1, player1Name);
-            if (service.IsDone())
+            service.ResetBoard();
+            while (!service.IsDone())
             {
-                break;
+                PrintBoard();
+                MakeMove(1, player1Name);
+                if (service.IsDone())
+                {
+                    break;
+                }
+                PrintBoard();
+                MakeMove(2, player2Name);
             }
             PrintBoard();
-            MakeMove(2, player2Name);
+            printFinalMsg();
+            playAgain = PromptForAnotherGame();
         }
-        printFinalMsg();
+        System.out.println(service.GetScoreForPlayerOne() + " - " + service.GetScoreForPlayerTwo());
+        System.out.println("Thanks for playing");   
     }
 
     public void MakeMove(int player, String name)
@@ -157,6 +166,30 @@ public class TicTacToePresentation
             return;
         }
         System.out.println(winner + " has won!");
+    }
+
+    public boolean PromptForAnotherGame()
+    {
+        Scanner sc = new Scanner(System.in);
+        String answer = "";
+        System.out.println("Do you want to play another game?");
+        System.out.println("Y - Yes");
+        System.out.println("N - No");
+
+        while (true)
+        {
+            answer = sc.next();
+            if (answer.equals("Y"))
+            {
+                return true;
+
+            }
+            else if (answer.equals("N"))
+            {
+                return false;
+            }
+            System.out.println("That is not a valid input");
+        }
     }
 
     public static void main(String args[])

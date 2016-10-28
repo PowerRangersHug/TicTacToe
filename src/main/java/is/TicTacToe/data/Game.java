@@ -7,6 +7,8 @@ public class Game {
 
     private Board board;
     private Player p1, p2;
+    private int p1Score = 0;
+    private int p2Score = 0;
 
     /**
     * Initialize new instance of Game class with params.
@@ -47,6 +49,44 @@ public class Game {
         }
     }
 
+     /**
+    * Get the score of a player
+    * @param name, Player name
+    * @return Score of the player
+    */
+    public int GetScore(String name)
+    {
+        if (p1.GetName().equals(name))
+        {
+            return p1Score;
+        }
+        else if (p2.GetName().equals(name))
+        {
+            return p2Score;
+        }
+        else 
+        {
+            return -1;
+        }
+
+    }
+
+    /** 
+    * Adds one to the score of the winner
+    * @param name the name of the winner
+    */
+    public void AddWin(String name)
+    {
+        if (p1.GetName().equals(name))
+        {
+            p1Score++;
+        }
+        else if (p2.GetName().equals(name))
+        {
+            p2Score++;
+        }
+    }
+
     /**
     * Make a move from Player with playerName on cell x,y.
     * @param x the x coordinate on the board 
@@ -59,12 +99,20 @@ public class Game {
     }
 
     /**
-    * Checks if we have a winner (has three in a row).
+    * Checks if we have a winner (has three in a row) or if the 
+    * board is full. If there is a winner update score.
     * @return boolean true if we have a winner, else false
     */
     public boolean IsDone() 
-    { 
-        return board.HasThreeInRow() || board.IsFull();
+    {
+        boolean isDone = board.HasThreeInRow();
+        if (isDone)
+        {
+            Player winner = GetWinner();
+            AddWin(winner.GetName());
+            return true;
+        }
+        return board.IsFull();
     }
 
     /**
@@ -79,6 +127,11 @@ public class Game {
         return GetPlayerBySymbol(symbol);
     }
 
+    /**
+    * Gets the player that has the input symbol
+    * @param symbol the symbol of the player to find
+    * @return returns the player that has the symbol
+    */
     public Player GetPlayerBySymbol(String symbol)
     {
         if (p1.GetSymbol().equals(symbol))
