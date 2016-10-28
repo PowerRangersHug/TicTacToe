@@ -119,6 +119,22 @@ public class GameTest {
     }
 
     @Test
+    public void TestGetWinnerInLastMove()
+    {
+        Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
+        testGame.MakeMove(0, 0, "X");
+        testGame.MakeMove(1, 0, "X");
+        testGame.MakeMove(0, 1, "X");
+        testGame.MakeMove(1, 2, "X");
+        testGame.MakeMove(2, 1, "X");
+        testGame.MakeMove(0, 2, "O");
+        testGame.MakeMove(1, 1, "O");
+        testGame.MakeMove(2, 2, "O");
+        testGame.MakeMove(2, 0, "X");
+        assertEquals("Player1", testGame.GetWinner().GetName());
+    }
+
+    @Test
     public void TestGetWinnerNoWinner()
     {
         Game testGame = new Game(new Board(), new Player("Player1", "X"), new Player("Player2", "O"));
