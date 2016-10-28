@@ -32,6 +32,7 @@ public class TicTacToeService {
      * @param player1 Player 1 name
      * @param player2 Player 2 name
      */
+    // TODO: held að þesis gæti verið óþarfi
     public TicTacToeService(String player1, String player2)
     {
         playerOne = player1;
@@ -47,6 +48,7 @@ public class TicTacToeService {
      * Creates one computer player and one human player
      * @param player Human Player name
      */
+    // TODO: held að þessi gæti veirð óþarfi
     public TicTacToeService(String player)
     {
         if(player == "Computer")
