@@ -150,6 +150,13 @@ public class TicTacToeServiceTest
         assertEquals(true, testService.MakeMove());
     }
 
+    @Test
+    public void TestMakeMoveForComputerWhenNoComputerPlayer()
+    {
+        TicTacToeService testService = new TicTacToeService("John", "Eve");
+        assertEquals(false, testService.MakeMove());
+    }
+
 
 }
 

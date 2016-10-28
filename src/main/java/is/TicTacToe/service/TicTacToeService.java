@@ -145,8 +145,8 @@ public class TicTacToeService {
 
         Player p;
         p = GetPlayerByName("Computer");
-        
-        if(p.GetType() != COMPUTER)
+
+        if(p == null)
         {
             return false;
         }
