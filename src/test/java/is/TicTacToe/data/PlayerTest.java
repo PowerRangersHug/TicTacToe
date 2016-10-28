@@ -63,4 +63,12 @@ public class PlayerTest {
         Player p = new Player("John", "X",2);
         assertEquals(2, p.GetType());
     }
+
+    @Test
+    public void TestSetPlayerType()
+    {
+        Player p = new Player();
+        p.SetType(1);
+        assertEquals(1, p.GetType());
+    }
 }
