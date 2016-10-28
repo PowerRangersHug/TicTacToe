@@ -108,8 +108,8 @@ public class TicTacToePresentation
             PrintBoard();
             if(service.GetPlayerByName(player2Name) == null)
             {
-                System.out.println("Player 2 name: ");
-                System.out.println(player2Name);
+                System.out.println("Computers turn move:");
+                // TODO: makemove skilar true/false, eh að gera með það?
                 service.MakeMove();
             }
             else
