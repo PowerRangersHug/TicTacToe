@@ -129,27 +129,13 @@ public class TicTacToePresentation
     */
     public void TwoPlayer(int mode) 
     {
-        Scanner sc = new Scanner(System.in);
-        String player1Name = "";
-        String player2Name = "";
-
         System.out.println("Name of player 1:");
-        if (sc.hasNextLine())
-        {
-            player1Name = sc.next();
-        }
+        String player1Name = GetPlayerName("Player1");
 
         System.out.println("Name of player 2:");
-        if (sc.hasNextLine())
-        {
-            player2Name = sc.next();
-            service.StartGame(mode, player1Name, player2Name);
-        }
-        // 1 Player mode.
-        else
-        {
-            service.StartGame(mode, player1Name, "Computer");
-        }
+        String player2Name = GetPlayerName("Player2");
+
+        service.StartGame(mode, player1Name, player2Name);
 
         while (!service.IsDone())
         {
@@ -160,16 +146,8 @@ public class TicTacToePresentation
                 break;
             }
             PrintBoard();
-            if(service.GetPlayerByName(player2Name) == null)
-            {
-                System.out.println("Computers turn move:");
-                // TODO: makemove skilar true/false, eh að gera með það?
-                service.MakeMove();
-            }
-            else
-            {
-                MakeMove(2, player2Name);
-            }
+
+            MakeMove(2, player2Name);
             
         }
         printFinalMsg();
@@ -177,10 +155,9 @@ public class TicTacToePresentation
 
     public void OnePlayer(int mode) 
     {
-        String playerName = "";
 
         System.out.println("Name of player:");
-        playerName = GetPlayerName("Player1");
+        String playerName = GetPlayerName("Player1");
 
         service.StartGame(mode, playerName, "Computer");
         
@@ -284,7 +261,7 @@ public class TicTacToePresentation
         }
         else // 2 players on same computer
         {
-            ticTacToe.PlayGame(2);
+            ticTacToe.TwoPlayer(2);
         }
     }
 }
