@@ -120,6 +120,106 @@ public class TicTacToePresentation
         }
         printFinalMsg();
     }
+    /** 
+    * Get usernames from users
+    * Start and play game
+    * Announce winner
+    * Prompt user for new game or quit
+    * @param mode computer vs. player(1) or player vs. player(2)
+    */
+    public void TwoPlayer(int mode) 
+    {
+        Scanner sc = new Scanner(System.in);
+        String player1Name = "";
+        String player2Name = "";
+
+        System.out.println("Name of player 1:");
+        if (sc.hasNextLine())
+        {
+            player1Name = sc.next();
+        }
+
+        System.out.println("Name of player 2:");
+        if (sc.hasNextLine())
+        {
+            player2Name = sc.next();
+            service.StartGame(mode, player1Name, player2Name);
+        }
+        // 1 Player mode.
+        else
+        {
+            service.StartGame(mode, player1Name, "Computer");
+        }
+
+        while (!service.IsDone())
+        {
+            PrintBoard();
+            MakeMove(1, player1Name);
+            if (service.IsDone())
+            {
+                break;
+            }
+            PrintBoard();
+            if(service.GetPlayerByName(player2Name) == null)
+            {
+                System.out.println("Computers turn move:");
+                // TODO: makemove skilar true/false, eh að gera með það?
+                service.MakeMove();
+            }
+            else
+            {
+                MakeMove(2, player2Name);
+            }
+            
+        }
+        printFinalMsg();
+    }
+
+    public void OnePlayer(int mode) 
+    {
+        String playerName = "";
+
+        System.out.println("Name of player:");
+        playerName = GetPlayerName("Player1");
+
+        service.StartGame(mode, playerName, "Computer");
+        
+        while (!service.IsDone())
+        {
+            PrintBoard();
+            MakeMove(1, playerName);
+            if (service.IsDone())
+            {
+                break;
+            }
+            PrintBoard();
+
+            System.out.println("Computers turn move:");
+            // TODO: makemove skilar true/false, eh að gera með það?
+            service.MakeMove();
+            
+        }
+        PrintBoard();
+        printFinalMsg();
+    }
+
+    private String GetPlayerName(String defaultPlayer)
+    {
+        String player = "";
+        Scanner sc = new Scanner(System.in);
+        if (sc.hasNextLine())
+        {
+            player = sc.next();
+        }
+        if(player.isEmpty())
+        {
+            player = defaultPlayer;
+        }
+        return player;
+    }
+
+
+
 
     public void MakeMove(int player, String name)
     {
@@ -180,7 +280,7 @@ public class TicTacToePresentation
         }
         else if (gameMode == 1) // 1 player vs computer
         {
-            ticTacToe.PlayGame(1);
+            ticTacToe.OnePlayer(1);
         }
         else // 2 players on same computer
         {
