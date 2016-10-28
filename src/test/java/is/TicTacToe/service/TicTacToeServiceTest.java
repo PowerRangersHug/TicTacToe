@@ -119,6 +119,22 @@ public class TicTacToeServiceTest
         assertEquals(false, testService.GetGame().GetBoard().IsEmpty());
     }
 
+    @Test
+    public void TestMakeMoveForComputerWhenBoardIsFull()
+    {
+        TicTacToeService testService = new TicTacToeService("Player1");
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        testService.MakeMove(1, 0, "Player1");
+        testService.MakeMove(1, 1, "Player1");
+        testService.MakeMove(1, 2, "Player1");
+        testService.MakeMove(2, 0, "Player1");
+        testService.MakeMove(2, 1, "Player1");
+        testService.MakeMove(2, 2, "Player1");
+        assertEquals(false, testService.MakeMove());
+    }
+
 
 }
 
