@@ -1,16 +1,23 @@
 package is.TicTacToe.data;
 
 public class Player {
+
     private String name;
     private String symbol;
+    private int type;
+
+    private static final int UNDEFINED = 0;
+    private static final int COMPUTER = 1;
+    private static final int HUMAN = 2;
 
     /**
      * Initialize new instance of Player class
      */
     public Player()
     {
-        name = "";
-        symbol = "";
+        name = "COMPUTER";
+        symbol = "X";
+        type = UNDEFINED;
     }
 
     /**
@@ -23,6 +30,7 @@ public class Player {
     {
         name = n;
         symbol = s;
+        type = HUMAN;
     }
 
     /**
@@ -59,5 +67,10 @@ public class Player {
     public void SetSymbol(String s)
     {
         symbol = s;
+    }
+
+    public int GetType()
+    {
+        return type;
     }
 }
