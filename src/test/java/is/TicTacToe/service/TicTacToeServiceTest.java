@@ -3,6 +3,9 @@ package is.TicTacToe;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
 import org.junit.Test;
 
 import is.TicTacToe.service.TicTacToeService;
@@ -60,9 +63,43 @@ public class TicTacToeServiceTest
     {
         TicTacToeService testService = new TicTacToeService();
         testService.MakeMove(1, 1, "Player1");
-       // Board board = testService.GetGame().GetBoard();
         assertEquals("X", testService.GetGame().GetBoard().GetSymbol(1,1));
     }
+
+    /*@Test 
+    public void TestContainsSymbol()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(1, 1, "X");
+        assertEquals(true, testService.ContainsSymbol(1,1));
+    }
+
+    @Test 
+    public void TestNotContainsSymbol()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        assertEquals(false, testService.ContainsSymbol(1,1));
+    }
+
+    /*@Test 
+    public void TestGetWinner()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(0, 0, "X");
+        testService.MakeMove(1, 1, "X");
+        testService.MakeMove(2, 2, "X");
+        assertEquals("Player1", testService.GetWinner());
+    }
+
+    @Test 
+    public void TestGetAnotherWinner()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(0, 0, "X");
+        testService.MakeMove(0, 1, "X");
+        testService.MakeMove(0, 2, "X");
+        assertEquals("Player1", testService.GetWinner());
+    }*/
 }
 
 

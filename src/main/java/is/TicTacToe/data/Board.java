@@ -57,7 +57,9 @@ public class Board {
     public boolean HasThreeInRow()
     {
         if (DiagonalsThreeInRow())
+        {
             return true;
+        }
         for (int i = 0; i < SIZE; i++)
         {
             if (HasThreeInCurrentRow(i))
@@ -80,7 +82,9 @@ public class Board {
             for (int j = 0; j < 3; j++)
             {
                 if (grid[i][j] == " ")
+                {
                     return false;
+                }
             }
         }
         return true;

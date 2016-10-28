@@ -75,20 +75,17 @@ public class Game {
     public Player GetWinner() 
     { 
         String symbol = board.GetThreeInRowSymbol();
-        if (symbol == "")
-        {
-            return null;
-        }
+
         return GetPlayerBySymbol(symbol);
     }
 
-    private Player GetPlayerBySymbol(String symbol)
+    public Player GetPlayerBySymbol(String symbol)
     {
-        if (p1.GetSymbol() == symbol)
+        if (p1.GetSymbol().equals(symbol))
         {
             return p1;
         }
-        else if (p2.GetSymbol() == symbol)
+        else if (p2.GetSymbol().equals(symbol))
         {
             return p2;
         }

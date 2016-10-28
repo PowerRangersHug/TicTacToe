@@ -128,4 +128,13 @@ public class GameTest {
         assertEquals(null, testGame.GetWinner());
     }
 
+    @Test 
+    public void TestGetPlayerBySymbol()
+    {
+        Player player1 = new Player("Player1", "X"); 
+        Game testGame = new Game(new Board(), player1, new Player("Player2", "O"));
+        assertEquals(player1, testGame.GetPlayerBySymbol("X"));
+
+    }
+
 }
