@@ -53,23 +53,9 @@ public class Game {
     * @param y the y coordinate on the board
     * @param playerName name of the player that is making the move
     */
-    public void MakeMove(int x, int y, String playerName)
+    public void MakeMove(int x, int y, String symbol)
     {
-        Player player = GetPlayer(playerName);
-        if (player == null)
-        {
-            throw new IllegalArgumentException("Invalid Player Name!");
-        }
-
-        String symbol = player.GetSymbol();
-        try 
-        {
-            board.SetSymbol(x, y, symbol);
-        }
-        catch (IndexOutOfBoundsException ex)
-        {
-            throw ex;
-        }
+        board.SetSymbol(x, y, symbol); 
     }
 
     /**

@@ -83,18 +83,35 @@ public class TicTacToeService {
         }
     }
 
-    public String MakeMove(int x, int y, String playerName)
+    public boolean MakeMove(int x, int y, String playerName)
     {
-        String symbol = GetPlayerByName(playerName).GetSymbol();
-        try
+        if ((x < 0 || x > 2) || (y < 0 || y > 2))
         {
-            game.GetBoard().SetSymbol(x, y, symbol);
+            return false;
         }
-        catch (IndexOutOfBoundsException ex)
+        
+        String symbol = " ";
+        if (playerName == playerOne || playerName == playerTwo)
         {
-            return ex.getMessage();
+            symbol = GetPlayerByName(playerName).GetSymbol();
         }
-        return "";
+        else 
+        {
+            return false;
+        }
+        
+        if (!ContainsSymbol(x,y))
+        {
+            game.MakeMove(x, y, symbol);
+            return true;
+        
+        }
+        return false;
+    }
+
+    private boolean ContainsSymbol(int x, int y)
+    {
+        return (game.GetBoard().GetSymbol(x,y) != " ");
     }
 
     /**
@@ -162,5 +179,11 @@ public class TicTacToeService {
     public boolean IsDone()
     {
         return game.IsDone();
+    }
+
+    public String GetWinner()
+    {
+        Player winner = game.GetWinner();
+        return winner.GetName();
     }
 }

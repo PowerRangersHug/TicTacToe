@@ -20,8 +20,6 @@ public class Board {
     */
     public String GetSymbol(int x, int y)
     {
-        if ((x < 0 || x > 2) || (y < 0 || y > 2))
-            throw new IndexOutOfBoundsException("Index out of bounds!");
         return grid[x][y];
     }
 
@@ -32,11 +30,7 @@ public class Board {
     */
     public void SetSymbol(int x, int y, String symbol)
     {
-        if ((x < 0 || x > 2) || (y < 0 || y > 2))
-            throw new IndexOutOfBoundsException("Index out of bounds!");
-
-        if (symbol == "X" || symbol == "O")
-            grid[x][y] = symbol;
+        grid[x][y] = symbol;
     }
 
     /**

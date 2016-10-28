@@ -108,7 +108,7 @@ public class TicTacToePresentation
             PrintBoard();
             MakeMove(2, player2Name);
         }
-        //printWinnerMsg();
+        printWinnerMsg();
     }
 
     public void MakeMove(int player, String name)
@@ -117,14 +117,19 @@ public class TicTacToePresentation
         int x = -1;
         int y = -1;
         System.out.println(name + " it's your move:");
-        do
+        
+        System.out.println("Choose x coordinate:");
+        x = sc.nextInt();
+        System.out.println("Choose y coordinate");
+        y = sc.nextInt();
+        while (!service.MakeMove(x, y, name))
         {
+            System.out.println("Coordinates must be between 0-2");
             System.out.println("Choose x coordinate:");
             x = sc.nextInt();
             System.out.println("Choose y coordinate");
             y = sc.nextInt();
         }
-        while (!service.MakeMove(x, y, name).isEmpty());
     }
 
     public void PrintBoard()
@@ -132,11 +137,11 @@ public class TicTacToePresentation
         System.out.println(service.GetBoard());    
     }
 
-    /*public void printWinnerMsg()
+    public void printWinnerMsg()
     {
-        string winner = service.GetWinner();
-       System.out.println("Congratulations " + winner + "!!");
-    }*/
+        String winner = service.GetWinner();
+       System.out.println(winner + " has won!");
+    }
 
     public static void main(String args[])
     {
