@@ -15,7 +15,7 @@ public class Player {
      */
     public Player()
     {
-        name = "COMPUTER";
+        name = "Computer";
         symbol = "X";
         type = UNDEFINED;
     }

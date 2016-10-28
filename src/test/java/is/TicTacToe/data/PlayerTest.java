@@ -10,14 +10,14 @@ public class PlayerTest {
     public void TestEmptyNewPlayerName()
     {
         Player p = new Player();
-        assertEquals("", p.GetName());
+        assertEquals("Computer", p.GetName());
     }
 
     @Test
     public void TestEmptyNewPlayerSymbol()
     {
         Player p = new Player();
-        assertEquals("", p.GetSymbol());
+        assertEquals("X", p.GetSymbol());
     }
 
     @Test
