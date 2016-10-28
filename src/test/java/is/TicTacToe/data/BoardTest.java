@@ -106,4 +106,12 @@ public class BoardTest {
         assertEquals(true, testBoard.IsEmpty());
     }
 
+      @Test
+    public void TestBoardIsEmptyNotEmpty()
+    {
+        Board testBoard = new Board();
+        testBoard.SetSymbol(2,1,"O");
+        assertEquals(false, testBoard.IsEmpty());
+    }
+
 }
