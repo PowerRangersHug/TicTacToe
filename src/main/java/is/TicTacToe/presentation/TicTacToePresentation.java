@@ -150,6 +150,7 @@ public class TicTacToePresentation
             MakeMove(2, player2Name);
             
         }
+        PrintBoard();
         printFinalMsg();
     }
 
