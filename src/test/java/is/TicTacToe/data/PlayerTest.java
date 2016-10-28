@@ -20,6 +20,13 @@ public class PlayerTest {
         assertEquals("", p.GetSymbol());
     }
 
+     @Test
+    public void TestEmptyNewPlayerType()
+    {
+        Player p = new Player();
+        assertEquals(0, p.GetType());
+    }
+
     @Test
     public void TestSetPlayerName()
     {
