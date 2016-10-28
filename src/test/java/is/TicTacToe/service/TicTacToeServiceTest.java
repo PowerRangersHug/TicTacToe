@@ -34,6 +34,16 @@ public class TicTacToeServiceTest
     }
 
     @Test
+    public void TestConstructorWithOnePlayer()
+    {
+        // Test constructor with parameters
+        TicTacToeService testService = new TicTacToeService("John");
+
+        assertEquals("John", testService.GetPlayerByName("John").GetName());
+        assertEquals("Computer", testService.GetPlayerByName("Computer").GetName());
+    }
+
+    @Test
     public void TestSetPlayerNames()
     {
         TicTacToeService testService = new TicTacToeService();
