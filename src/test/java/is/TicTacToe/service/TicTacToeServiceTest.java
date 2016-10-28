@@ -157,7 +157,7 @@ public class TicTacToeServiceTest
         assertEquals(false, testService.MakeMove());
     }
 
-        @Test
+    @Test
     public void TestMakeMoveForComputerContainsSymbol()
     {
         TicTacToeService testService = new TicTacToeService("Player1");
@@ -171,6 +171,22 @@ public class TicTacToeServiceTest
         testService.MakeMove(2, 1, "Player1");
         testService.MakeMove();
         assertEquals(true, testService.ContainsSymbol(2,2));
+    }
+
+    @Test
+    public void TestMakeMoveForComputerCorrectSymbol()
+    {
+        TicTacToeService testService = new TicTacToeService("Player1");
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        testService.MakeMove(1, 0, "Player1");
+        testService.MakeMove(1, 1, "Player1");
+        testService.MakeMove(1, 2, "Player1");
+        testService.MakeMove(2, 0, "Player1");
+        testService.MakeMove(2, 1, "Player1");
+        testService.MakeMove();
+        assertEquals("O", testService.GetGame().GetBoard().GetSymbol(2,2));
     }
 
 
