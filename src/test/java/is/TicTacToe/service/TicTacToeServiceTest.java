@@ -111,6 +111,15 @@ public class TicTacToeServiceTest
         assertEquals("Player1", testService.GetWinner());
     }
 
+    @Test
+    public void TestMakeMoveForComputer()
+    {
+        TicTacToeService testService = new TicTacToeService("Player1");
+        testService.MakeMove();
+        assertEquals(false, testService.GetGame().GetBoard().IsEmpty());
+    }
+
+
 }
 
 
