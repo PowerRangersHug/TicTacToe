@@ -71,4 +71,12 @@ public class PlayerTest {
         p.SetType(1);
         assertEquals(1, p.GetType());
     }
+
+    @Test
+    public void TestSetPlayerTypeIlleagal()
+    {
+        Player p = new Player();
+        p.SetType(-1);
+        assertEquals(0, p.GetType());
+    }
 }
