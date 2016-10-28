@@ -83,6 +83,22 @@ public class Player {
         symbol = s;
     }
 
+    /**
+    * Set the value of this players type
+    * @param t Player type
+    */
+    public void SetType(int t)
+    {
+        if(t == UNDEFINED || t == HUMAN || t == COMPUTER)
+        {
+            type = t;
+        }
+    }
+
+    /**
+     * Get this players type
+     * @return Player type
+     */
     public int GetType()
     {
         return type;
