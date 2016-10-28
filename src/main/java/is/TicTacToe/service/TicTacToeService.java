@@ -8,6 +8,8 @@ public class TicTacToeService {
     private Game game;
     private String playerOne;
     private String playerTwo;
+    private static final int COMPUTER = 1;
+    private static final int HUMAN = 2;
 
     /**
      * Initialize the service class with default values for Player instances.
@@ -31,8 +33,23 @@ public class TicTacToeService {
     {
         playerOne = player1;
         playerTwo = player2;
-        Player p1 = new Player(playerOne, "X");
-        Player p2 = new Player(playerTwo, "O");
+        Player p1 = new Player(playerOne, "X", HUMAN);
+        Player p2 = new Player(playerTwo, "O", HUMAN);
+        Board b = new Board();
+        game = new Game(b, p1, p2);
+    }
+
+        /**
+     * Initialize the service class with customized names for Player instances.
+     * Creates one computer player and one human player
+     * @param player Human Player name
+     */
+    public TicTacToeService(String player)
+    {
+        playerOne = player;
+        playerTwo = "Computer";
+        Player p1 = new Player(playerOne, "X", HUMAN);
+        Player p2 = new Player(playerTwo, "O", COMPUTER);
         Board b = new Board();
         game = new Game(b, p1, p2);
     }
