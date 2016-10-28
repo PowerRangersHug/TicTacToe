@@ -19,32 +19,6 @@ public class BoardTest {
     }
 
     @Test
-    public void TestBoardSetAndGetWrongSymbol()
-    {
-        Board testBoard = new Board();
-        testBoard.SetSymbol(1,1,"BLA");
-        assertEquals("", testBoard.GetSymbol(1,1));
-    }
-
-    @Test
-    public void TestBoardSetWrongField()
-    {
-        Board testBoard = new Board();
-        thrown.expect(IndexOutOfBoundsException.class);
-        thrown.expectMessage("Index out of bounds!");
-        testBoard.SetSymbol(3,3,"X");
-    }
-
-    @Test
-    public void TestBoardGetWrongField()
-    {
-        Board testBoard = new Board();
-        thrown.expect(IndexOutOfBoundsException.class);
-        thrown.expectMessage("Index out of bounds!");
-        testBoard.GetSymbol(3,3);
-    }
-
-    @Test
     public void TestBoardThreeInRow()
     {
         Board testBoard = new Board();

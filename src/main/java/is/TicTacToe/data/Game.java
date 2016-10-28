@@ -53,23 +53,9 @@ public class Game {
     * @param y the y coordinate on the board
     * @param playerName name of the player that is making the move
     */
-    public void MakeMove(int x, int y, String playerName)
+    public void MakeMove(int x, int y, String symbol)
     {
-        Player player = GetPlayer(playerName);
-        if (player == null)
-        {
-            throw new IllegalArgumentException("Invalid Player Name!");
-        }
-
-        String symbol = player.GetSymbol();
-        try 
-        {
-            board.SetSymbol(x, y, symbol);
-        }
-        catch (IndexOutOfBoundsException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
+        board.SetSymbol(x, y, symbol); 
     }
 
     /**
@@ -89,20 +75,17 @@ public class Game {
     public Player GetWinner() 
     { 
         String symbol = board.GetThreeInRowSymbol();
-        if (symbol == "")
-        {
-            return null;
-        }
+
         return GetPlayerBySymbol(symbol);
     }
 
-    private Player GetPlayerBySymbol(String symbol)
+    public Player GetPlayerBySymbol(String symbol)
     {
-        if (p1.GetSymbol() == symbol)
+        if (p1.GetSymbol().equals(symbol))
         {
             return p1;
         }
-        else if (p2.GetSymbol() == symbol)
+        else if (p2.GetSymbol().equals(symbol))
         {
             return p2;
         }
