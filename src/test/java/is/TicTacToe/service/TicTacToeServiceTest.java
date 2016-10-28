@@ -66,11 +66,11 @@ public class TicTacToeServiceTest
         assertEquals("X", testService.GetGame().GetBoard().GetSymbol(1,1));
     }
 
-    /*@Test 
+    @Test 
     public void TestContainsSymbol()
     {
         TicTacToeService testService = new TicTacToeService();
-        testService.MakeMove(1, 1, "X");
+        testService.MakeMove(1, 1, "Player1");
         assertEquals(true, testService.ContainsSymbol(1,1));
     }
 
@@ -81,13 +81,13 @@ public class TicTacToeServiceTest
         assertEquals(false, testService.ContainsSymbol(1,1));
     }
 
-    /*@Test 
+    @Test 
     public void TestGetWinner()
     {
         TicTacToeService testService = new TicTacToeService();
-        testService.MakeMove(0, 0, "X");
-        testService.MakeMove(1, 1, "X");
-        testService.MakeMove(2, 2, "X");
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(1, 1, "Player1");
+        testService.MakeMove(2, 2, "Player1");
         assertEquals("Player1", testService.GetWinner());
     }
 
@@ -95,11 +95,11 @@ public class TicTacToeServiceTest
     public void TestGetAnotherWinner()
     {
         TicTacToeService testService = new TicTacToeService();
-        testService.MakeMove(0, 0, "X");
-        testService.MakeMove(0, 1, "X");
-        testService.MakeMove(0, 2, "X");
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
         assertEquals("Player1", testService.GetWinner());
-    }*/
+    }
 }
 
 
