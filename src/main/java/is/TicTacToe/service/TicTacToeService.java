@@ -278,11 +278,13 @@ public class TicTacToeService {
     */
     public String GetWinner()
     {
-        if (!game.GetBoard().IsFull())
+
+        Player winner = game.GetWinner();
+        if(winner == null)
         {
-            Player winner = game.GetWinner();
-            return winner.GetName();
+            return "";
         }
-        return "";
+        return winner.GetName();
+
     }
 }
