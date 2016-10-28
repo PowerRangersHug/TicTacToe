@@ -32,6 +32,7 @@ public class TicTacToePresentation
     public static int GetGameMode()
     {
         Scanner sc = new Scanner(System.in);
+
         String inputLine = "";
         while (true)
         {
@@ -62,31 +63,80 @@ public class TicTacToePresentation
         }
     }
 
-    // Human vs Human mode
-    public static void PlayGameMode1() 
+    /** 
+    * Get usernames from users
+    * Start and play game
+    * Announce winner
+    * Prompt user for new game or quit
+    * @param mode computer vs. player(1) or player vs. player(2)
+    */
+    public void PlayGame(int mode) 
     {
         Scanner sc = new Scanner(System.in);
-        String player1Name, player2Name;
+        String player1Name = "";
+        String player2Name = "";
 
         System.out.println("Name of player 1:");
-        if(sc.hasNextLine())
+        if (sc.hasNextLine())
         {
             player1Name = sc.next();
         }
-        System.out.println("Name of player 2:");
-        if(sc.hasNextLine())
+        // 2 Player mode.
+        if (mode == 2)
         {
-            player2Name = sc.next();
+            System.out.println("Name of player 2:");
+            if (sc.hasNextLine())
+            {
+                player2Name = sc.next();
+                service.StartGame(mode, player1Name, player2Name);
+            }
         }
-        // TODO: implement the StartGame function in service
-        // service.StartGame(1, player1Name, player2Name);
+        // 1 Player mode.
+        else
+        {
+            service.StartGame(mode, player1Name, "Computer");
+        }
+
+        while (!service.IsDone())
+        {
+            PrintBoard();
+            MakeMove(1, player1Name);
+            if (service.IsDone())
+            {
+                break;
+            }
+            PrintBoard();
+            MakeMove(2, player2Name);
+        }
+        //printWinnerMsg();
     }
 
-    // Human vs Computer mode
-    public static void PlayGameMode2() 
+    public void MakeMove(int player, String name)
     {
-        System.out.println("Not yet implemented.");
+        Scanner sc = new Scanner(System.in);
+        int x = -1;
+        int y = -1;
+        System.out.println(name + " it's your move:");
+        do
+        {
+            System.out.println("Choose x coordinate:");
+            x = sc.nextInt();
+            System.out.println("Choose y coordinate");
+            y = sc.nextInt();
+        }
+        while (!service.MakeMove(x, y, name).isEmpty());
     }
+
+    public void PrintBoard()
+    {
+        System.out.println(service.GetBoard());    
+    }
+
+    /*public void printWinnerMsg()
+    {
+        string winner = service.GetWinner();
+       System.out.println("Congratulations " + winner + "!!");
+    }*/
 
     public static void main(String args[])
     {
@@ -99,12 +149,11 @@ public class TicTacToePresentation
         }
         else if (gameMode == 1) // 1 player vs computer
         {
-            PlayGameMode1();
+            ticTacToe.PlayGame(1);
         }
         else // 2 players on same computer
         {
-            PlayGameMode2();
-            System.out.println("Goodbye");
+            ticTacToe.PlayGame(2);
         }
     }
 }

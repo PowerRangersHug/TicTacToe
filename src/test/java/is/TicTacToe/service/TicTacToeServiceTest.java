@@ -54,4 +54,24 @@ public class TicTacToeServiceTest
 
         assertEquals(expectedBoard, testService.GetBoard());
     }
+
+    @Test
+    public void TestMakeMove()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(1, 1, "Player1");
+       // Board board = testService.GetGame().GetBoard();
+        assertEquals("X", testService.GetGame().GetBoard().GetSymbol(1,1));
+    }
 }
+
+
+
+
+
+
+
+
+
+
+

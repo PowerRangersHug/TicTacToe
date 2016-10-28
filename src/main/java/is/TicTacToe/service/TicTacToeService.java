@@ -37,7 +37,14 @@ public class TicTacToeService {
         game = new Game(b, p1, p2);
     }
 
-    public void MakeMove() {  }
+    /**
+    * Gets the game
+    * @return game the instance of the game.
+    */
+    public Game GetGame()
+    {
+        return game;
+    }
 
     /**
      * Start a game in the specified mode, with the specified player names.
@@ -74,6 +81,20 @@ public class TicTacToeService {
             GetPlayerByName(playerTwo).SetName(p2);
             playerTwo = p2;
         }
+    }
+
+    public String MakeMove(int x, int y, String playerName)
+    {
+        String symbol = GetPlayerByName(playerName).GetSymbol();
+        try
+        {
+            game.GetBoard().SetSymbol(x, y, symbol);
+        }
+        catch (IndexOutOfBoundsException ex)
+        {
+            return ex.getMessage();
+        }
+        return "";
     }
 
     /**
@@ -136,5 +157,10 @@ public class TicTacToeService {
     private String GetTopBottomRow()
     {
         return "-------------\n";
+    }
+
+    public boolean IsDone()
+    {
+        return game.IsDone();
     }
 }

@@ -68,7 +68,7 @@ public class Game {
         }
         catch (IndexOutOfBoundsException ex)
         {
-            System.out.println(ex.getMessage());
+            throw ex;
         }
     }
 
