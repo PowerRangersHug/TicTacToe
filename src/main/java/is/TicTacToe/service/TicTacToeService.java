@@ -59,12 +59,6 @@ public class TicTacToeService {
     }
 
     /**
-     * Get the game result.
-     * @return Game result in String format
-     */
-    public String GetGameResult() { return ""; }
-
-    /**
      * Change the current games' Player names.
      * @param p1 Player 1 name
      * @param p2 Player 2 name
@@ -83,6 +77,15 @@ public class TicTacToeService {
         }
     }
 
+    /**
+    * Puts the symbol belogning to player with name 'playerName'
+    * on cell [x][y] on the board.
+    * @param x the x coordinate on the board
+    * @param y the y coordinate on the board
+    * @param playerName name of the player that is making a move
+    * @return true if playerName is valid and 
+    * board[x][y] does not contain a symbol yet, else false
+    */
     public boolean MakeMove(int x, int y, String playerName)
     {        
         String symbol = " ";
@@ -104,11 +107,23 @@ public class TicTacToeService {
         return false;
     }
 
+    /**
+    * Checks if a certain cell on the board has a symbol.
+    * @param x the x coordinate on the board
+    * @param y the y coordinate on the board
+    * @return true if cell (x,y) on the board does
+    * not have a symbol, else false
+    */
     public boolean ContainsSymbol(int x, int y)
     {
         return (!game.GetBoard().GetSymbol(x,y).equals(" "));
     }
 
+    /**
+    * Checks if input from user is a valid coordinate
+    * @param co input coordinate on the board from user
+    * @return true if coordinate is valid, else false
+    */
     public boolean LegalCoordinate(int co)
     {
         return (co <3) && (co >= 0);
@@ -145,7 +160,7 @@ public class TicTacToeService {
     }
 
     /**
-     * Get String representation of board row
+     * Get String representation of board row.
      * @param row Row that should be returned
      * @return String representation of requested row
      */
@@ -159,7 +174,7 @@ public class TicTacToeService {
     }
 
     /**
-     * Return a row seperator for board representation
+     * Returns a row seperator for board representation.
      * @return String representation of Board row seperator
      */
     private String GetRowSep()
@@ -168,7 +183,7 @@ public class TicTacToeService {
     }
 
     /**
-     * Get the top/bottom row for Board representation
+     * Get the top/bottom row for Board representation.
      * @return String representation of the top/bottom row of the Board
      */
     private String GetTopBottomRow()
@@ -176,11 +191,19 @@ public class TicTacToeService {
         return "-------------\n";
     }
 
+    /**
+    * Checks if the game has finished
+    * @return true if the game is done, else false
+    */
     public boolean IsDone()
     {
         return game.IsDone();
     }
 
+    /**
+    * Returns the name of the player that won the game.
+    * @return the name of the player that won the game
+    */
     public String GetWinner()
     {
         if (!game.GetBoard().IsFull())
