@@ -15,8 +15,8 @@ public class Player {
      */
     public Player()
     {
-        name = "Computer";
-        symbol = "X";
+        name = "";
+        symbol = "";
         type = UNDEFINED;
     }
 
@@ -31,6 +31,20 @@ public class Player {
         name = n;
         symbol = s;
         type = HUMAN;
+    }
+
+    /**
+     * Initialize new instance of Player class using the values passed in
+     * parameters n and s.
+     * @param n Player name
+     * @param s Player symbol
+     * @param t Player type
+     */
+    public Player(String n, String s, int t)
+    {
+        name = n;
+        symbol = s;
+        type = t;
     }
 
     /**

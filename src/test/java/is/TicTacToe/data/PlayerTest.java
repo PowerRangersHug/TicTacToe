@@ -10,14 +10,14 @@ public class PlayerTest {
     public void TestEmptyNewPlayerName()
     {
         Player p = new Player();
-        assertEquals("Computer", p.GetName());
+        assertEquals("", p.GetName());
     }
 
     @Test
     public void TestEmptyNewPlayerSymbol()
     {
         Player p = new Player();
-        assertEquals("X", p.GetSymbol());
+        assertEquals("", p.GetSymbol());
     }
 
     @Test
@@ -48,5 +48,12 @@ public class PlayerTest {
     {
         Player p = new Player("John", "X");
         assertEquals("X", p.GetSymbol());
+    }
+
+    @Test
+    public void TestConstructorWithParamsType()
+    {
+        Player p = new Player("John", "X",2);
+        assertEquals(2, p.GetType());
     }
 }
