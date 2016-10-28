@@ -106,7 +106,17 @@ public class TicTacToePresentation
                 break;
             }
             PrintBoard();
-            MakeMove(2, player2Name);
+            if(service.GetPlayerByName(player2Name) == null)
+            {
+                System.out.println("Player 2 name: ");
+                System.out.println(player2Name);
+                service.MakeMove();
+            }
+            else
+            {
+                MakeMove(2, player2Name);
+            }
+            
         }
         printFinalMsg();
     }

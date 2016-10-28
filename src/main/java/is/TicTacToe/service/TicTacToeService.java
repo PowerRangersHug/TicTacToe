@@ -79,7 +79,7 @@ public class TicTacToeService {
      */
     public void StartGame(int mode, String p1Name, String p2Name)
     {
-        SetPlayerNames(p1Name, p2Name);
+            SetPlayerNames(p1Name, p2Name);
     }
 
     /**
@@ -91,13 +91,22 @@ public class TicTacToeService {
     {
         if(!p1.isEmpty())
         {
-            GetPlayerByName(playerOne).SetName(p1);
-            playerOne = p1;
+            Player p = GetPlayerByName(playerOne);
+            if(p != null)
+            {
+                p.SetName(p1);
+                playerOne = p1;
+            }
+            
         }
         if(!p2.isEmpty())
         {
-            GetPlayerByName(playerTwo).SetName(p2);
-            playerTwo = p2;
+            Player p = GetPlayerByName(playerTwo);
+            if(p != null)
+            {
+                p.SetName(p2);
+                playerTwo = p2;
+            }
         }
     }
 
