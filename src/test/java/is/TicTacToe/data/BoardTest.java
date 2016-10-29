@@ -39,6 +39,16 @@ public class BoardTest {
     }
 
     @Test
+    public void TestBoardThreeInRowRows()
+    {
+        Board testBoard = new Board();
+        testBoard.SetSymbol(0,0,"X");
+        testBoard.SetSymbol(1,0,"X");
+        testBoard.SetSymbol(2,0,"X");
+        assertEquals(true, testBoard.HasThreeInRow());
+    }
+
+    @Test
     public void TestBoardIsFull()
     {
         Board testBoard = new Board();
