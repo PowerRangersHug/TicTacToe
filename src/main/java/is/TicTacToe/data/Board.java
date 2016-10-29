@@ -63,9 +63,13 @@ public class Board {
         for (int i = 0; i < SIZE; i++)
         {
             if (HasThreeInCurrentRow(i))
+            {
                 return true;
+            }
             else if (HasThreeInCurrentColumn(i))
+            {
                 return true;
+            }
         }
         return false;
     }
