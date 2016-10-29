@@ -7,17 +7,26 @@ public class TicTacToePresentation
 {
     private TicTacToeService service;
 
+    /**
+    * Default constructor for TicTacToePresentation
+    */
     public TicTacToePresentation() 
     {
         service = new TicTacToeService();
     }
 
+
+    /**
+    * Constructor for TicTacToePresentation. Initializes service as
+    * service.
+    * @param service
+    */
     public TicTacToePresentation(TicTacToeService service) 
     {
         this.service = service;
     }
 
-    /* 
+    /** 
     * Prints a welcome message to the console.
     */
     public static void WelcomeMessage()
@@ -62,7 +71,7 @@ public class TicTacToePresentation
             }
         }
     }
-
+    
     /** 
     * Get usernames from users
     * Start and play game
@@ -70,39 +79,22 @@ public class TicTacToePresentation
     * Prompt user for new game or quit
     * @param mode computer vs. player(1) or player vs. player(2)
     */
-    public void PlayGame(int mode) 
+    public void TwoPlayer(int mode) 
     {
-        boolean playAgain = true;
-        
-        Scanner sc = new Scanner(System.in);
-        String player1Name = "";
-        String player2Name = "";
-
         System.out.println("Name of player 1:");
-        if (sc.hasNextLine())
-        {
-            player1Name = sc.next();
-        }
-        // 2 Player mode.
-        if (mode == 2)
-        {
-            System.out.println("Name of player 2:");
-            if (sc.hasNextLine())
-            {
-                player2Name = sc.next();
-                service.StartGame(mode, player1Name, player2Name);
-            }
-        }   
-        // 1 Player mode.
-        else
-        {
-            service.StartGame(mode, player1Name, "Computer");
-        }
+        String player1Name = GetPlayerName("Player1");
+
+        System.out.println("Name of player 2:");
+        String player2Name = GetPlayerName("Player2");
+
+        service.StartGame(mode, player1Name, player2Name);
+        boolean playAgain = true;
         while(playAgain)
         {
             service.ResetBoard();
             while (!service.IsDone())
             {
+
                 PrintBoard();
                 MakeMove(1, player1Name);
                 if (service.IsDone())
@@ -110,7 +102,9 @@ public class TicTacToePresentation
                     break;
                 }
                 PrintBoard();
+
                 MakeMove(2, player2Name);
+                
             }
             PrintBoard();
             printFinalMsg();
@@ -119,6 +113,58 @@ public class TicTacToePresentation
         System.out.println(service.GetScoreForPlayerOne() + " - " + service.GetScoreForPlayerTwo());
         System.out.println("Thanks for playing");   
     }
+
+    public void OnePlayer(int mode) 
+    {
+
+        System.out.println("Name of player:");
+        String playerName = GetPlayerName("Player1");
+
+        service.StartGame(mode, playerName, "Computer");
+        boolean playAgain = true;
+        while(playAgain)
+        {
+            service.ResetBoard();
+            while (!service.IsDone())
+            {
+                PrintBoard();
+                MakeMove(1, playerName);
+                if (service.IsDone())
+                {
+                    break;
+                }
+                PrintBoard();
+
+                System.out.println("Computers turn move:");
+                // TODO: makemove skilar true/false, eh að gera með það?
+                service.MakeMove();
+                
+            }
+            PrintBoard();
+            printFinalMsg();
+            playAgain = PromptForAnotherGame();
+        }
+        System.out.println(service.GetScoreForPlayerOne() + " - " + service.GetScoreForPlayerTwo());
+        System.out.println("Thanks for playing");   
+    }
+
+    private String GetPlayerName(String defaultPlayer)
+    {
+        String player = "";
+        Scanner sc = new Scanner(System.in);
+        if (sc.hasNextLine())
+        {
+            player = sc.next();
+        }
+        if(player.isEmpty())
+        {
+            player = defaultPlayer;
+        }
+        return player;
+    }
+
+
+
 
     public void MakeMove(int player, String name)
     {
@@ -203,11 +249,11 @@ public class TicTacToePresentation
         }
         else if (gameMode == 1) // 1 player vs computer
         {
-            ticTacToe.PlayGame(1);
+            ticTacToe.OnePlayer(1);
         }
         else // 2 players on same computer
         {
-            ticTacToe.PlayGame(2);
+            ticTacToe.TwoPlayer(2);
         }
     }
 }

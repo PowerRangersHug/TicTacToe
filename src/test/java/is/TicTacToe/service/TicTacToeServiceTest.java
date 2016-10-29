@@ -34,6 +34,16 @@ public class TicTacToeServiceTest
     }
 
     @Test
+    public void TestConstructorWithOnePlayer()
+    {
+        // Test constructor with parameters
+        TicTacToeService testService = new TicTacToeService("John");
+
+        assertEquals("John", testService.GetPlayerByName("John").GetName());
+        assertEquals("Computer", testService.GetPlayerByName("Computer").GetName());
+    }
+
+    @Test
     public void TestSetPlayerNames()
     {
         TicTacToeService testService = new TicTacToeService();
@@ -99,6 +109,84 @@ public class TicTacToeServiceTest
         testService.MakeMove(0, 1, "Player1");
         testService.MakeMove(0, 2, "Player1");
         assertEquals("Player1", testService.GetWinner());
+    }
+
+    @Test
+    public void TestMakeMoveForComputer()
+    {
+        TicTacToeService testService = new TicTacToeService("Player1");
+        testService.MakeMove();
+        assertEquals(false, testService.GetGame().GetBoard().IsEmpty());
+    }
+
+    @Test
+    public void TestMakeMoveForComputerWhenBoardIsFull()
+    {
+        TicTacToeService testService = new TicTacToeService("Player1");
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        testService.MakeMove(1, 0, "Player1");
+        testService.MakeMove(1, 1, "Player1");
+        testService.MakeMove(1, 2, "Player1");
+        testService.MakeMove(2, 0, "Player1");
+        testService.MakeMove(2, 1, "Player1");
+        testService.MakeMove(2, 2, "Player1");
+        assertEquals(false, testService.MakeMove());
+    }
+
+    @Test
+    public void TestMakeMoveForComputerOneEmptyPos()
+    {
+        TicTacToeService testService = new TicTacToeService("Player1");
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        testService.MakeMove(1, 0, "Player1");
+        testService.MakeMove(1, 1, "Player1");
+        testService.MakeMove(1, 2, "Player1");
+        testService.MakeMove(2, 0, "Player1");
+        testService.MakeMove(2, 1, "Player1");
+        assertEquals(true, testService.MakeMove());
+    }
+
+    @Test
+    public void TestMakeMoveForComputerWhenNoComputerPlayer()
+    {
+        TicTacToeService testService = new TicTacToeService("John", "Eve");
+        assertEquals(false, testService.MakeMove());
+    }
+
+    @Test
+    public void TestMakeMoveForComputerContainsSymbol()
+    {
+        TicTacToeService testService = new TicTacToeService("Player1");
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        testService.MakeMove(1, 0, "Player1");
+        testService.MakeMove(1, 1, "Player1");
+        testService.MakeMove(1, 2, "Player1");
+        testService.MakeMove(2, 0, "Player1");
+        testService.MakeMove(2, 1, "Player1");
+        testService.MakeMove();
+        assertEquals(true, testService.ContainsSymbol(2,2));
+    }
+
+    @Test
+    public void TestMakeMoveForComputerCorrectSymbol()
+    {
+        TicTacToeService testService = new TicTacToeService("Player1");
+        testService.MakeMove(0, 0, "Player1");
+        testService.MakeMove(0, 1, "Player1");
+        testService.MakeMove(0, 2, "Player1");
+        testService.MakeMove(1, 0, "Player1");
+        testService.MakeMove(1, 1, "Player1");
+        testService.MakeMove(1, 2, "Player1");
+        testService.MakeMove(2, 0, "Player1");
+        testService.MakeMove(2, 1, "Player1");
+        testService.MakeMove();
+        assertEquals("O", testService.GetGame().GetBoard().GetSymbol(2,2));
     }
 
     @Test 

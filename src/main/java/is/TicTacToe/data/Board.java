@@ -91,6 +91,26 @@ public class Board {
     }
 
     /**
+    * Checks if the board is empty, i.e. no player
+    * has made a move.
+    * @return true/false whether the board is empty or not.
+    */
+    public boolean IsEmpty()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (grid[i][j] != " ")
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
     * Helper function for hasThreeInRow(), checks if
     * there are three same symbols in row diagonally.
     * @return true/false if diagonally three in row.
