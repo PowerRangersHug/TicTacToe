@@ -284,6 +284,16 @@ public class TicTacToeServiceTest
 
     }
 
+    @Test
+    public void TestStartGameOneInput()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.StartGame(1,"P1","");
+        assertEquals("P1", testService.GetPlayerByName("P1").GetName());
+        assertEquals("Player2", testService.GetPlayerByName("Player2").GetName());
+
+    }
+
 }
 
 
