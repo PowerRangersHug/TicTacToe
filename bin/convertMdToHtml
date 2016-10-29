@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Default sourceDir is src/markdown
+# Copy all documents from docs folder to src/markdown
+cp -f docs/*.md src/markdown
+
+./gradlew markdownToHtml
+
+# Default outputDir is $buildDir/gen-html
+# Copy all html documents from build/gen-html to docs
+cp -f build/gen-html/*.html docs/htmlDocs
