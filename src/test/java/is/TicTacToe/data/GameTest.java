@@ -154,6 +154,7 @@ public class GameTest {
         testGame.AddWin("Player2");
         assertEquals(1, testGame.GetScore("Player1"));
         assertEquals(2, testGame.GetScore("Player2"));
+        assertEquals(-1, testGame.GetScore("NoPlayer"));
     }
 
 }
