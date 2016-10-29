@@ -86,6 +86,20 @@ public class TicTacToeServiceTest
         assertEquals("X", testService.GetGame().GetBoard().GetSymbol(1,1));
     }
 
+    @Test
+    public void TestMakeMoveWrongName()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        assertEquals(false, testService.MakeMove(1, 1, "Player"));
+    }
+
+    @Test
+    public void TestMakeMoveWrongPlace()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        assertEquals(false, testService.MakeMove(3, 3, "Player1"));
+    }
+
     @Test 
     public void TestContainsSymbol()
     {

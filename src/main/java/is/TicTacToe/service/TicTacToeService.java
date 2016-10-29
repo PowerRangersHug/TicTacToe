@@ -143,7 +143,7 @@ public class TicTacToeService {
             return false;
         }
         
-        if (!ContainsSymbol(x,y))
+        if (LegalCoordinate(x) && LegalCoordinate(y) && !ContainsSymbol(x,y))
         {
             game.MakeMove(x, y, symbol);
             return true;
