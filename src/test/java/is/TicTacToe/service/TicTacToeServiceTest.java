@@ -108,6 +108,8 @@ public class TicTacToeServiceTest
     {
         TicTacToeService testService = new TicTacToeService();
         assertEquals(false, testService.MakeMove(3, 3, "Player1"));
+        assertEquals(false, testService.MakeMove(1, 3, "Player1"));
+        assertEquals(false, testService.MakeMove(3, 1, "Player1"));
     }
 
     @Test
