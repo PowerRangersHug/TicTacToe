@@ -64,6 +64,16 @@ public class TicTacToeServiceTest
     }
 
     @Test
+    public void TestSetPlayerNamesEmptyStrings()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.SetPlayerNames("","");
+
+        assertEquals("Player1", testService.GetPlayerByName("Player1").GetName());
+        assertEquals("Player2", testService.GetPlayerByName("Player2").GetName());
+    }
+
+    @Test
     public void TestGetBoard()
     {
         TicTacToeService testService = new TicTacToeService();
