@@ -100,6 +100,14 @@ public class TicTacToeServiceTest
         assertEquals(false, testService.MakeMove(3, 3, "Player1"));
     }
 
+    @Test
+    public void TestMakeMoveTakenPlace()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(0, 0, "Player1");
+        assertEquals(false, testService.MakeMove(0, 0, "Player1"));
+    }
+
     @Test 
     public void TestContainsSymbol()
     {
