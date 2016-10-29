@@ -22,6 +22,7 @@ public class GreetingController {
 
     @PostMapping("/")
     public String Submit(@ModelAttribute ModeInfo modeInfo) {
+    	TicTacToeService service = new TicTacToeService(modeInfo.GetPlayer1(), modeInfo.GetPlayer2());
         return "tictactoe";
     }
 }

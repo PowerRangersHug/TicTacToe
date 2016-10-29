@@ -9,6 +9,13 @@ public class ModeInfo {
     private String player2;
     private int mode;
 
+    public ModeInfo() 
+    {
+        player1 = "";
+        player2 = "";
+        mode = 0;
+    }
+
     public String GetPlayer1()
     {
         return player1;
