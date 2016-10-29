@@ -285,11 +285,21 @@ public class TicTacToeServiceTest
     }
 
     @Test
-    public void TestStartGameOneInput()
+    public void TestStartGameOneEmptyString()
     {
         TicTacToeService testService = new TicTacToeService();
         testService.StartGame(1,"P1","");
         assertEquals("P1", testService.GetPlayerByName("P1").GetName());
+        assertEquals("Player2", testService.GetPlayerByName("Player2").GetName());
+
+    }
+
+    @Test
+    public void TestStartGameWithTwoEmptyString()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.StartGame(1,"","");
+        assertEquals("Player1", testService.GetPlayerByName("Player1").GetName());
         assertEquals("Player2", testService.GetPlayerByName("Player2").GetName());
 
     }
