@@ -1,7 +1,7 @@
-function ButtonClickMode1 () {
-	alert("woohoo 1");
+function OnClickMode1() {
+    document.getElementById('player2name').style.display='none';
 }
 
-function ButtonClickMode2 () {
-	alert("woohoo 2");
+function OnClickMode2() {
+    document.getElementById('player2name').style.display='block';
 }

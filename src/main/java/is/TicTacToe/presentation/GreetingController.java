@@ -9,17 +9,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GreetingController {
-    @RequestMapping("/greeting")
-    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) 
-    {
-        model.addAttribute("name", name);
-        return "greeting";
-    }
 
     @RequestMapping("/")
     public String index() 
     {
-        return "kristofer";
+        return "front";
     }
 
+    @RequestMapping("/tictactoe")
+    public String tictactoe(@RequestParam(value="mode", required=false, defaultValue="1") String mode, Model model) 
+    {
+        if (mode == "1")
+        {
+            model.addAttribute("msg", "Not yet implemented.");
+            return "errorpage";
+        }
+        else // if (mode == "2")
+        {
+            return "tictactoe";
+        }
+    }
+    // @RequestMApping("/", method=POST)
 }

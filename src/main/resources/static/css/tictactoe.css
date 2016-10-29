@@ -27,3 +27,7 @@
 .game-table tr td:last-child {
   border-right: 0;
 }
+
+#player2name {
+	display: none;
+}
