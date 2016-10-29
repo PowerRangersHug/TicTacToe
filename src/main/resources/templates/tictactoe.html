@@ -5,7 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="${msg}"/>
-    <a href="/">Back to Home page</a>
+	<h1> ALRIGHT! LETS START THIS GAME... </h1>
+    <p th:text="'Mode: ' + ${modeInfo.mode}" />
+    <p th:text="'Player 1: ' + ${modeInfo.player1}" />
+    <p th:text="'Player 2: ' + ${modeInfo.player2}" />
 </body>
 </html>

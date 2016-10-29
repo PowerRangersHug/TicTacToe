@@ -6,28 +6,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class GreetingController {
 
-    @RequestMapping("/")
-    public String index() 
-    {
+    @GetMapping("/")
+    public String greetingForm(Model model) {
+        model.addAttribute("modeInfo", new ModeInfo());
         return "front";
     }
 
-    @RequestMapping("/tictactoe")
-    public String tictactoe(@RequestParam(value="mode", required=false, defaultValue="1") String mode, Model model) 
-    {
-        if (mode == "1")
-        {
-            model.addAttribute("msg", "Not yet implemented.");
-            return "errorpage";
-        }
-        else // if (mode == "2")
-        {
-            return "tictactoe";
-        }
+    @PostMapping("/tictactoe")
+    public String greetingSubmit(@ModelAttribute ModeInfo mode) {
+        return "tictactoe";
     }
-    // @RequestMApping("/", method=POST)
 }
