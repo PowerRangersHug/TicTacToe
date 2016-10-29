@@ -3,11 +3,16 @@ package is.TicTacToe.service;
 import is.TicTacToe.data.Board;
 import is.TicTacToe.data.Game;
 import is.TicTacToe.data.Player;
+import java.util.Random;
 
 public class TicTacToeService {
     private Game game;
     private String playerOne;
     private String playerTwo;
+    private static final int COMPUTER = 1;
+    private static final int HUMAN = 2;
+    private static final int MIN = 0;
+    private static final int MAX = 2;
 
     /**
      * Initialize the service class with default values for Player instances.
@@ -27,12 +32,33 @@ public class TicTacToeService {
      * @param player1 Player 1 name
      * @param player2 Player 2 name
      */
+    // TODO: held að þesis gæti verið óþarfi
     public TicTacToeService(String player1, String player2)
     {
         playerOne = player1;
         playerTwo = player2;
-        Player p1 = new Player(playerOne, "X");
-        Player p2 = new Player(playerTwo, "O");
+        Player p1 = new Player(playerOne, "X", HUMAN);
+        Player p2 = new Player(playerTwo, "O", HUMAN);
+        Board b = new Board();
+        game = new Game(b, p1, p2);
+    }
+
+        /**
+     * Initialize the service class with customized names for Player instances.
+     * Creates one computer player and one human player
+     * @param player Human Player name
+     */
+    // TODO: held að þessi gæti veirð óþarfi
+    public TicTacToeService(String player)
+    {
+        if(player == "Computer")
+        {
+            player = "Player1";
+        }
+        playerOne = player;
+        playerTwo = "Computer";
+        Player p1 = new Player(playerOne, "X", HUMAN);
+        Player p2 = new Player(playerTwo, "O", COMPUTER);
         Board b = new Board();
         game = new Game(b, p1, p2);
     }
@@ -55,7 +81,7 @@ public class TicTacToeService {
      */
     public void StartGame(int mode, String p1Name, String p2Name)
     {
-        SetPlayerNames(p1Name, p2Name);
+            SetPlayerNames(p1Name, p2Name);
     }
 
     /**
@@ -67,13 +93,22 @@ public class TicTacToeService {
     {
         if(!p1.isEmpty())
         {
-            GetPlayerByName(playerOne).SetName(p1);
-            playerOne = p1;
+            Player p = GetPlayerByName(playerOne);
+            if(p != null)
+            {
+                p.SetName(p1);
+                playerOne = p1;
+            }
+            
         }
         if(!p2.isEmpty())
         {
-            GetPlayerByName(playerTwo).SetName(p2);
-            playerTwo = p2;
+            Player p = GetPlayerByName(playerTwo);
+            if(p != null)
+            {
+                p.SetName(p2);
+                playerTwo = p2;
+            }
         }
     }
 
@@ -106,6 +141,49 @@ public class TicTacToeService {
         else 
         {
             return false;
+        }
+        
+        if(!LegalCoordinate(x) || !LegalCoordinate(y))
+        {
+            return false;
+        }
+        if (!ContainsSymbol(x,y))
+        {
+            game.MakeMove(x, y, symbol);
+            return true;
+        
+        }
+        return false;
+    }
+
+        /**
+    * Makes a move for the computer.
+    * @return true if one of the players is a computer player and
+    * the board is not full, else false
+    */
+    public boolean MakeMove()
+    {    
+        if (game.GetBoard().IsFull())
+        {
+            return false;
+        }
+
+        Player p;
+        p = GetPlayerByName("Computer");
+
+        if(p == null)
+        {
+            return false;
+        }
+        String symbol = p.GetSymbol();
+        Random rand = new Random();
+        int x = rand.nextInt((MAX - MIN) + 1) + MIN;
+        int y = rand.nextInt((MAX - MIN) + 1) + MIN;
+
+        while(ContainsSymbol(x,y))
+        {
+            x = rand.nextInt((MAX - MIN) + 1) + MIN;
+            y = rand.nextInt((MAX - MIN) + 1) + MIN;
         }
         
         if (!ContainsSymbol(x,y))
@@ -216,12 +294,14 @@ public class TicTacToeService {
     */
     public String GetWinner()
     {
-        if (!game.GetBoard().IsFull())
+
+        Player winner = game.GetWinner();
+        if(winner == null)
         {
-            Player winner = game.GetWinner();
-            return winner.GetName();
+            return "";
         }
-        return "";
+        return winner.GetName();
+
     }
 
     /**

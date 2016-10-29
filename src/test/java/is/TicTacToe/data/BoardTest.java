@@ -19,12 +19,32 @@ public class BoardTest {
     }
 
     @Test
-    public void TestBoardThreeInRow()
+    public void TestBoardThreeInRowDiagonal()
     {
         Board testBoard = new Board();
         testBoard.SetSymbol(0,0,"X");
         testBoard.SetSymbol(1,1,"X");
         testBoard.SetSymbol(2,2,"X");
+        assertEquals(true, testBoard.HasThreeInRow());
+    }
+
+    @Test
+    public void TestBoardThreeInRowColumns()
+    {
+        Board testBoard = new Board();
+        testBoard.SetSymbol(0,0,"X");
+        testBoard.SetSymbol(0,1,"X");
+        testBoard.SetSymbol(0,2,"X");
+        assertEquals(true, testBoard.HasThreeInRow());
+    }
+
+    @Test
+    public void TestBoardThreeInRowRows()
+    {
+        Board testBoard = new Board();
+        testBoard.SetSymbol(0,0,"X");
+        testBoard.SetSymbol(1,0,"X");
+        testBoard.SetSymbol(2,0,"X");
         assertEquals(true, testBoard.HasThreeInRow());
     }
 
@@ -99,4 +119,18 @@ public class BoardTest {
         assertEquals("", testBoard.GetThreeInRowSymbol());
     }
 
+    @Test
+    public void TestBoardIsEmpty()
+    {
+        Board testBoard = new Board();
+        assertEquals(true, testBoard.IsEmpty());
+    }
+
+      @Test
+    public void TestBoardIsEmptyNotEmpty()
+    {
+        Board testBoard = new Board();
+        testBoard.SetSymbol(2,1,"O");
+        assertEquals(false, testBoard.IsEmpty());
+    }
 }

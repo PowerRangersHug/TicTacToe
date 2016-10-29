@@ -23,6 +23,10 @@ public class Game {
         this.p2 = p2;
     }
 
+    /**
+    * Get the games board.
+    * @return board
+    */
     public Board GetBoard() 
     { 
         return board; 
@@ -117,8 +121,7 @@ public class Game {
 
     /**
     * Gets the symbol that occurs three times in a row.
-    * @return the player with the corresponding symbol if the symbol is
-    * not an empty string, null otherwise  
+    * @return the player that won the game if there is a winner, null otherwise
     */
     public Player GetWinner() 
     { 

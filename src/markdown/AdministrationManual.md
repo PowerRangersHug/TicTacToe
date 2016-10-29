@@ -1,0 +1,27 @@
+# Administration Manual
+
+## Getting the program
+Clone the Git repository.
+
+```shell
+git clone https://github.com/PowerRangersHug/TicTacToe.git
+```
+
+## Running the program
+Change to the project root directory and run the runBoot task.
+
+```shell
+cd TicTacToe
+./gradlew runBoot
+```
+
+## Closing the program
+While the program is running, press Ctrl-C to close the program.
+
+## Deploying the program
+Change to the project root directory and run the deploy script.
+
+```shell
+cd TicTacToe
+bash bin/deploy
+```

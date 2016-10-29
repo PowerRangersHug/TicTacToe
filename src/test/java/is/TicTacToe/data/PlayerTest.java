@@ -20,6 +20,13 @@ public class PlayerTest {
         assertEquals("", p.GetSymbol());
     }
 
+     @Test
+    public void TestEmptyNewPlayerType()
+    {
+        Player p = new Player();
+        assertEquals(0, p.GetType());
+    }
+
     @Test
     public void TestSetPlayerName()
     {
@@ -48,5 +55,28 @@ public class PlayerTest {
     {
         Player p = new Player("John", "X");
         assertEquals("X", p.GetSymbol());
+    }
+
+    @Test
+    public void TestConstructorWithParamsType()
+    {
+        Player p = new Player("John", "X",2);
+        assertEquals(2, p.GetType());
+    }
+
+    @Test
+    public void TestSetPlayerType()
+    {
+        Player p = new Player();
+        p.SetType(1);
+        assertEquals(1, p.GetType());
+    }
+
+    @Test
+    public void TestSetPlayerTypeIlleagal()
+    {
+        Player p = new Player();
+        p.SetType(-1);
+        assertEquals(0, p.GetType());
     }
 }
