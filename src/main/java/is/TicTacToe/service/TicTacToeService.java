@@ -43,15 +43,14 @@ public class TicTacToeService {
         game = new Game(b, p1, p2);
     }
 
-        /**
+    /**
      * Initialize the service class with customized names for Player instances.
      * Creates one computer player and one human player
      * @param player Human Player name
      */
-    // TODO: held að þessi gæti veirð óþarfi
     public TicTacToeService(String player)
     {
-        if(player == "Computer")
+        if (player == "Computer")
         {
             player = "Player1";
         }
@@ -156,7 +155,7 @@ public class TicTacToeService {
         return false;
     }
 
-        /**
+    /**
     * Makes a move for the computer.
     * @return true if one of the players is a computer player and
     * the board is not full, else false

@@ -1,33 +1,37 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Tic Tac Toe</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="/css/tictactoe.css" type="text/css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/js/tictactoe.js" type="text/javascript"></script>
 </head>
 <body>
     <h1> ALRIGHT LETS PLAY! </h1>
-    <p th:text="'Mode: ' + ${modeInfo.mode}" />
-    <p th:text="'Player 1: ' + ${modeInfo.player1}" />
-    <p th:text="'Player 2: ' + ${modeInfo.player2}" />
+    <p th:text="'Mode: ' + ${gameInfoViewModel.mode}" />
+    <p th:text="'Player 1: ' + ${gameInfoViewModel.player1}" />
+    <p th:text="'Player 2: ' + ${gameInfoViewModel.player2}" />
+
+    <p><span id="whose-turn-is-it" th:text="${gameInfoViewModel.player1}"></span>, it's your turn!</p>
 
     <table class="game-table">
         <tr>
-            <td id="cell-0"></td>
-            <td id="cell-1"></td>
-            <td id="cell-2"></td>
+            <td id="cell-0" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[0]}"></td>
+            <td id="cell-1" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[1]}"></td>
+            <td id="cell-2" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[2]}"></td>
         </tr>
         <tr>
-            <td id="cell-3"></td>
-            <td id="cell-4"></td>
-            <td id="cell-5"></td>
+            <td id="cell-3" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[3]}"></td>
+            <td id="cell-4" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[4]}"></td>
+            <td id="cell-5" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[5]}"></td>
         </tr>
         <tr>
-            <td id="cell-6"></td>
-            <td id="cell-7"></td>
-            <td id="cell-8"></td>
+            <td id="cell-6" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[6]}"></td>
+            <td id="cell-7" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[7]}"></td>
+            <td id="cell-8" onclick="MakeMove(this)" th:text="${gameInfoViewModel.grid[8]}"></td>
         </tr>
     </table>
+
 </body>
 </html>
