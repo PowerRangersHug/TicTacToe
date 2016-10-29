@@ -1,4 +1,4 @@
-package is.TicTacToe;
+package is.TicTacToe.data;
 
 import is.TicTacToe.data.Board;
 import static org.junit.Assert.assertEquals;

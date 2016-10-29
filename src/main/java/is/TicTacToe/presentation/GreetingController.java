@@ -1,6 +1,7 @@
 package is.TicTacToe.presentation;
 
 import is.TicTacToe.service.TicTacToeService;
+import is.TicTacToe.presentation.viewmodels.ModeInfo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class GreetingController {
 
     @GetMapping("/")
-    public String greetingForm(Model model) {
+    public String Form(Model model) {
         model.addAttribute("modeInfo", new ModeInfo());
         return "front";
     }
 
-    @PostMapping("/tictactoe")
-    public String greetingSubmit(@ModelAttribute ModeInfo mode) {
+    @PostMapping("/")
+    public String Submit(@ModelAttribute ModeInfo modeInfo) {
         return "tictactoe";
     }
 }

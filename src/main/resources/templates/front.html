@@ -12,7 +12,7 @@
     <button onclick="OnClickMode1()">Human vs Computer</button>
     <button onclick="OnClickMode2()">Human vs Human</button>
 
-    <form action="#" th:action="@{/tictactoe}" th:object="${modeInfo}" method="post">
+    <form action="#" th:action="@{/}" th:object="${modeInfo}" method="post">
         <p>Player 1: <input type="text" th:field="*{player1}" /></p>
         <p>Player 2: <input type="text" th:field="*{player2}" /></p>
         <p>Mode: <input type="text" th:field="*{mode}" /></p>
