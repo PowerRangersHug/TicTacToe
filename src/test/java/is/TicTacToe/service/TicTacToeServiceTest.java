@@ -329,6 +329,18 @@ public class TicTacToeServiceTest
 
     }
 
+    @Test
+    public void TestLeagalCoordinate()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        assertEquals(false, testService.LegalCoordinate(-1));
+        assertEquals(false, testService.LegalCoordinate(3));
+        assertEquals(true, testService.LegalCoordinate(0));
+        assertEquals(true, testService.LegalCoordinate(1));
+        assertEquals(true, testService.LegalCoordinate(2));
+
+    }
+
 }
 
 
