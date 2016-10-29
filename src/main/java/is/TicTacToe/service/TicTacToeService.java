@@ -112,6 +112,16 @@ public class TicTacToeService {
         }
     }
 
+    public int GetScoreForPlayerOne()
+    {
+        return game.GetScore(playerOne);
+    }
+
+    public int GetScoreForPlayerTwo()
+    {
+        return game.GetScore(playerTwo);
+    }
+
     /**
     * Puts the symbol belogning to player with name 'playerName'
     * on cell [x][y] on the board.
@@ -288,5 +298,13 @@ public class TicTacToeService {
         }
         return winner.GetName();
 
+    }
+
+    /**
+    * Resets the board before a new game
+    */
+    public void ResetBoard()
+    {
+        game.GetBoard().Init();
     }
 }

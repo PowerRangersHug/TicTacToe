@@ -113,5 +113,4 @@ public class BoardTest {
         testBoard.SetSymbol(2,1,"O");
         assertEquals(false, testBoard.IsEmpty());
     }
-
 }

@@ -71,64 +71,7 @@ public class TicTacToePresentation
             }
         }
     }
-
-    /** 
-    * Get usernames from users
-    * Start and play game
-    * Announce winner
-    * Prompt user for new game or quit
-    * @param mode computer vs. player(1) or player vs. player(2)
-    */
-    public void PlayGame(int mode) 
-    {
-        Scanner sc = new Scanner(System.in);
-        String player1Name = "";
-        String player2Name = "";
-
-        System.out.println("Name of player 1:");
-        if (sc.hasNextLine())
-        {
-            player1Name = sc.next();
-        }
-        // 2 Player mode.
-        if (mode == 2)
-        {
-            System.out.println("Name of player 2:");
-            if (sc.hasNextLine())
-            {
-                player2Name = sc.next();
-                service.StartGame(mode, player1Name, player2Name);
-            }
-        }
-        // 1 Player mode.
-        else
-        {
-            service.StartGame(mode, player1Name, "Computer");
-        }
-
-        while (!service.IsDone())
-        {
-            PrintBoard();
-            MakeMove(1, player1Name);
-            if (service.IsDone())
-            {
-                break;
-            }
-            PrintBoard();
-            if(service.GetPlayerByName(player2Name) == null)
-            {
-                System.out.println("Computers turn move:");
-                // TODO: makemove skilar true/false, eh að gera með það?
-                service.MakeMove();
-            }
-            else
-            {
-                MakeMove(2, player2Name);
-            }
-            
-        }
-        printFinalMsg();
-    }
+    
     /** 
     * Get usernames from users
     * Start and play game
@@ -145,22 +88,30 @@ public class TicTacToePresentation
         String player2Name = GetPlayerName("Player2");
 
         service.StartGame(mode, player1Name, player2Name);
-
-        while (!service.IsDone())
+        boolean playAgain = true;
+        while(playAgain)
         {
-            PrintBoard();
-            MakeMove(1, player1Name);
-            if (service.IsDone())
+            service.ResetBoard();
+            while (!service.IsDone())
             {
-                break;
+
+                PrintBoard();
+                MakeMove(1, player1Name);
+                if (service.IsDone())
+                {
+                    break;
+                }
+                PrintBoard();
+
+                MakeMove(2, player2Name);
+                
             }
             PrintBoard();
-
-            MakeMove(2, player2Name);
-            
+            printFinalMsg();
+            playAgain = PromptForAnotherGame();
         }
-        PrintBoard();
-        printFinalMsg();
+        System.out.println(service.GetScoreForPlayerOne() + " - " + service.GetScoreForPlayerTwo());
+        System.out.println("Thanks for playing");   
     }
 
     public void OnePlayer(int mode) 
@@ -170,24 +121,31 @@ public class TicTacToePresentation
         String playerName = GetPlayerName("Player1");
 
         service.StartGame(mode, playerName, "Computer");
-        
-        while (!service.IsDone())
+        boolean playAgain = true;
+        while(playAgain)
         {
-            PrintBoard();
-            MakeMove(1, playerName);
-            if (service.IsDone())
+            service.ResetBoard();
+            while (!service.IsDone())
             {
-                break;
+                PrintBoard();
+                MakeMove(1, playerName);
+                if (service.IsDone())
+                {
+                    break;
+                }
+                PrintBoard();
+
+                System.out.println("Computers turn move:");
+                // TODO: makemove skilar true/false, eh að gera með það?
+                service.MakeMove();
+                
             }
             PrintBoard();
-
-            System.out.println("Computers turn move:");
-            // TODO: makemove skilar true/false, eh að gera með það?
-            service.MakeMove();
-            
+            printFinalMsg();
+            playAgain = PromptForAnotherGame();
         }
-        PrintBoard();
-        printFinalMsg();
+        System.out.println(service.GetScoreForPlayerOne() + " - " + service.GetScoreForPlayerTwo());
+        System.out.println("Thanks for playing");   
     }
 
     private String GetPlayerName(String defaultPlayer)
@@ -254,6 +212,30 @@ public class TicTacToePresentation
             return;
         }
         System.out.println(winner + " has won!");
+    }
+
+    public boolean PromptForAnotherGame()
+    {
+        Scanner sc = new Scanner(System.in);
+        String answer = "";
+        System.out.println("Do you want to play another game?");
+        System.out.println("Y - Yes");
+        System.out.println("N - No");
+
+        while (true)
+        {
+            answer = sc.next();
+            if (answer.equals("Y"))
+            {
+                return true;
+
+            }
+            else if (answer.equals("N"))
+            {
+                return false;
+            }
+            System.out.println("That is not a valid input");
+        }
     }
 
     public static void main(String args[])
