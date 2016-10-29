@@ -7,17 +7,26 @@ public class TicTacToePresentation
 {
     private TicTacToeService service;
 
+    /**
+    * Default constructor for TicTacToePresentation
+    */
     public TicTacToePresentation() 
     {
         service = new TicTacToeService();
     }
 
+
+    /**
+    * Constructor for TicTacToePresentation. Initializes service as
+    * service.
+    * @param service
+    */
     public TicTacToePresentation(TicTacToeService service) 
     {
         this.service = service;
     }
 
-    /* 
+    /** 
     * Prints a welcome message to the console.
     */
     public static void WelcomeMessage()
