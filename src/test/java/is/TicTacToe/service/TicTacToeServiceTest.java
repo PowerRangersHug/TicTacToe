@@ -44,6 +44,16 @@ public class TicTacToeServiceTest
     }
 
     @Test
+    public void TestConstructorWithOnePlayerNameComputer()
+    {
+        // Test constructor with parameters
+        TicTacToeService testService = new TicTacToeService("Computer");
+
+        assertEquals("Player1", testService.GetPlayerByName("Player1").GetName());
+        assertEquals("Computer", testService.GetPlayerByName("Computer").GetName());
+    }
+
+    @Test
     public void TestSetPlayerNames()
     {
         TicTacToeService testService = new TicTacToeService();
@@ -263,6 +273,17 @@ public class TicTacToeServiceTest
         }
         assertEquals(true, testService.IsDone());
     }
+
+    @Test
+    public void TestStartGame()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.StartGame(1,"P1","P2");
+        assertEquals("P1", testService.GetPlayerByName("P1").GetName());
+        assertEquals("P2", testService.GetPlayerByName("P2").GetName());
+
+    }
+
 }
 
 
