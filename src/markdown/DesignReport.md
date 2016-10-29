@@ -33,8 +33,14 @@
 ### Naming Conventions
 - All names should be descriptive and in English.
 - Class and function names should use Pascal casing.  
+ * Example:
+   * public void SomeFunction() 
 - Variable names should use Camel casing.
+ * Example:
+   * int myInt
 - Constants name should be all upper case.
+ * Example:
+   * final int SIZE
 
 ### Brackets and Spacing
 - tab = 4 spaces.
@@ -48,8 +54,17 @@
 - Comments should be written above the code being commented.
 - If comments are more than one line use multiline comments /* ... */
 
+### Java
+- Every function should be commented according to JavaDoc standards.
+
 ### Javascript
 - Curly brackets open inline and close on a separate line.
+
+### HTML and CSS
+- Classes and IDs should have descriptive names and written in lower case letters with hyphens ("-") between words.
+ * Example:
+    * class="my-class"
+    * id="my-id"
 
 
 
