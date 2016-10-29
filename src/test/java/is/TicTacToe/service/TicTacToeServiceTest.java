@@ -64,6 +64,16 @@ public class TicTacToeServiceTest
     }
 
     @Test
+    public void TestSetPlayerNamesEmptyStrings()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.SetPlayerNames("","");
+
+        assertEquals("Player1", testService.GetPlayerByName("Player1").GetName());
+        assertEquals("Player2", testService.GetPlayerByName("Player2").GetName());
+    }
+
+    @Test
     public void TestGetBoard()
     {
         TicTacToeService testService = new TicTacToeService();
@@ -84,6 +94,28 @@ public class TicTacToeServiceTest
         TicTacToeService testService = new TicTacToeService();
         testService.MakeMove(1, 1, "Player1");
         assertEquals("X", testService.GetGame().GetBoard().GetSymbol(1,1));
+    }
+
+    @Test
+    public void TestMakeMoveWrongName()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        assertEquals(false, testService.MakeMove(1, 1, "Player"));
+    }
+
+    @Test
+    public void TestMakeMoveWrongPlace()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        assertEquals(false, testService.MakeMove(3, 3, "Player1"));
+    }
+
+    @Test
+    public void TestMakeMoveTakenPlace()
+    {
+        TicTacToeService testService = new TicTacToeService();
+        testService.MakeMove(0, 0, "Player1");
+        assertEquals(false, testService.MakeMove(0, 0, "Player1"));
     }
 
     @Test 
