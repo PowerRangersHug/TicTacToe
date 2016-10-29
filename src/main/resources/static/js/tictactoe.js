@@ -13,13 +13,11 @@ function MakeMove(elem) {
     $.ajax({
         type: "POST",
         url: "/tictactoe",
-        data: { player: currPlayer, cell: elem.id },
+        data: { player: currPlayer, cell: elem.id, gameInfoViewModel : $('#the-view-model').val() },
         success: function(result) {
             console.log(result);
-            if (result === "OK") {
-                console.log("YAY");
-                $('#' + elem.id).value = "X";
-            }
+            $("#game-table").replaceWith($(result).find("#game-table"));
+            // TODO: currPlayer is now the other player (those-turn-is-it)
         }
     });
 }

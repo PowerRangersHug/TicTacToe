@@ -22,7 +22,7 @@ public class GameInfoViewModel {
         grid = new String[SIZE];
         for (int i = 0; i < SIZE; i++)
         {
-            grid[i] = "";
+            grid[i] = " ";
         }
     }
 
