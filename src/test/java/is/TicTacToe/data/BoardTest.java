@@ -9,7 +9,6 @@ import org.junit.Rule;
 public class BoardTest {
     @Rule public final ExpectedException thrown = ExpectedException.none();
 
-
     @Test
     public void TestBoardSetAndGet()
     {
@@ -126,7 +125,7 @@ public class BoardTest {
         assertEquals(true, testBoard.IsEmpty());
     }
 
-      @Test
+    @Test
     public void TestBoardIsEmptyNotEmpty()
     {
         Board testBoard = new Board();

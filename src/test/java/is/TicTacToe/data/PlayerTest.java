@@ -20,7 +20,7 @@ public class PlayerTest {
         assertEquals("", p.GetSymbol());
     }
 
-     @Test
+    @Test
     public void TestEmptyNewPlayerType()
     {
         Player p = new Player();

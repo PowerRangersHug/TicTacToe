@@ -1,4 +1,5 @@
 /**** front.html ****/
+
 /* Human vs Computer mode chosen */
 function OnClickMode1() {
     var player2 = document.getElementById('player2name');
@@ -37,12 +38,10 @@ function TogglePlayersTurn() {
         document.getElementById('p1-info').style.color = 'rgb(184, 84, 80)';
         document.getElementById('p2-info').style.color = 'rgb(0, 0, 0)';
     }
-    if($('#whose-turn-is-it').text() == "Computer" )
+    if ($('#whose-turn-is-it').text() == "Computer" )
      {
         $('#0').click();
      }
-
-   
 }
 
 function LetComputerClick()
@@ -94,7 +93,4 @@ function MakeMove(elem) {
             $("#game-table").html("");
         }
     });
-
 }
-
-

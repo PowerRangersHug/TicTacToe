@@ -32,7 +32,6 @@ public class TicTacToeService {
      * @param player1 Player 1 name
      * @param player2 Player 2 name
      */
-    // TODO: held að þesis gæti verið óþarfi
     public TicTacToeService(String player1, String player2)
     {
         if (player1.equals("Computer"))
@@ -98,20 +97,19 @@ public class TicTacToeService {
      */
     public void SetPlayerNames(String p1, String p2)
     {
-        if(!p1.isEmpty())
+        if (!p1.isEmpty())
         {
             Player p = GetPlayerByName(playerOne);
-            if(p != null)
+            if (p != null)
             {
                 p.SetName(p1);
                 playerOne = p1;
             }
-            
         }
-        if(!p2.isEmpty())
+        if (!p2.isEmpty())
         {
             Player p = GetPlayerByName(playerTwo);
-            if(p != null)
+            if (p != null)
             {
                 p.SetName(p2);
                 playerTwo = p2;
@@ -119,11 +117,19 @@ public class TicTacToeService {
         }
     }
 
+    /**
+    * Gets the current score for player 1
+    * @return the score for player 1
+    */
     public int GetScoreForPlayerOne()
     {
         return game.GetScore(playerOne);
     }
 
+    /**
+    * Gets the current score for player 2
+    * @return the score for player 2
+    */
     public int GetScoreForPlayerTwo()
     {
         return game.GetScore(playerTwo);
@@ -151,7 +157,7 @@ public class TicTacToeService {
             return false;
         }
         
-        if(!LegalCoordinate(x) || !LegalCoordinate(y))
+        if (!LegalCoordinate(x) || !LegalCoordinate(y))
         {
             System.out.println("b");
             return false;
@@ -176,13 +182,12 @@ public class TicTacToeService {
         if (game.GetBoard().IsFull())
         {
             return false;
-
         }
 
         Player p;
         p = GetPlayerByName("Computer");
 
-        if(p == null)
+        if (p == null)
         {
             return false;
         }
@@ -191,7 +196,7 @@ public class TicTacToeService {
         int x = rand.nextInt((MAX - MIN) + 1) + MIN;
         int y = rand.nextInt((MAX - MIN) + 1) + MIN;
 
-        while(ContainsSymbol(x,y))
+        while (ContainsSymbol(x,y))
         {
             x = rand.nextInt((MAX - MIN) + 1) + MIN;
             y = rand.nextInt((MAX - MIN) + 1) + MIN;
@@ -201,30 +206,28 @@ public class TicTacToeService {
         {
             game.MakeMove(x, y, symbol);
             cell[0] = new Integer(x*3 + y);
-
             return true;
-        
         }
         return false;
     }
 
     /**
-    * Checks if a certain cell on the board has a symbol.
-    * @param x the x coordinate on the board
-    * @param y the y coordinate on the board
-    * @return true if cell (x,y) on the board does
-    * not have a symbol, else false
-    */
+     * Checks if a certain cell on the board has a symbol.
+     * @param x the x coordinate on the board
+     * @param y the y coordinate on the board
+     * @return true if cell (x,y) on the board does
+     * not have a symbol, else false
+     */
     public boolean ContainsSymbol(int x, int y)
     {
         return (!game.GetBoard().GetSymbol(x,y).equals(" "));
     }
 
     /**
-    * Checks if input from user is a valid coordinate
-    * @param co input coordinate on the board from user
-    * @return true if coordinate is valid, else false
-    */
+     * Checks if input from user is a valid coordinate
+     * @param co input coordinate on the board from user
+     * @return true if coordinate is valid, else false
+     */
     public boolean LegalCoordinate(int co)
     {
         return (co <3) && (co >= 0);
@@ -248,10 +251,10 @@ public class TicTacToeService {
     public String GetBoard()
     {
         String board = GetTopBottomRow();
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             board += GetBoardRow(i);
-            if(i < 2)
+            if (i < 2)
             {
                 board += GetRowSep();
             }
@@ -293,18 +296,18 @@ public class TicTacToeService {
     }
 
     /**
-    * Checks if the game has finished
-    * @return true if the game is done, else false
-    */
+     * Checks if the game has finished
+     * @return true if the game is done, else false
+     */
     public boolean IsDone()
     {
         return game.IsDone();
     }
 
     /**
-    * Returns the name of the player that won the game.
-    * @return the name of the player that won the game
-    */
+     * Returns the name of the player that won the game.
+     * @return the name of the player that won the game
+     */
     public String GetWinner()
     {
         Player winner = game.GetWinner();
@@ -313,12 +316,11 @@ public class TicTacToeService {
             return "";
         }
         return winner.GetName();
-
     }
 
     /**
-    * Resets the board before a new game
-    */
+     * Resets the board before a new game
+     */
     public void ResetBoard()
     {
         game.GetBoard().Init();
