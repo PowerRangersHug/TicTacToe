@@ -27,5 +27,9 @@ script:
   - git push heroku continuousIntegration:master
 after_script:
   - heroku git:remote -a lit-eyrie-57326
-before_install:
-  - wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+addons:
+  apt:
+    sources:
+    - heroku
+    packages:
+    - heroku-toolbelt
