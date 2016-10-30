@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="/css/tictactoe.css" type="text/css"></link>
+    <script src="/js/tictactoe.js" type="text/javascript"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Welcome to Tic Tac Toe!</h1>
+    <h2>Choose game mode</h2>
+    <button onclick="OnClickMode1()">Human vs Computer</button>
+    <button onclick="OnClickMode2()">Human vs Human</button>
+
+    <form action="#" th:action="@{/}" th:object="${gameInfo}" method="post">
+        <p>Player 1: <input type="text" th:field="*{player1}" /></p>
+        <p>Player 2: <input type="text" th:field="*{player2}" /></p>
+        <p>Mode: <input type="text" th:field="*{mode}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+
+</body>
+</html>

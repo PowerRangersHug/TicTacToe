@@ -1,13 +1,24 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
+    }
+}
 
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
 apply plugin: 'jacoco'
 
-mainClassName = "is.TicTacToe.presentation.TicTacToePresentation"
+mainClassName = "is.TicTacToe.presentation.Application"
 
 jar {
     manifest {
-        attributes("Main-Class": "is.TicTacToe.presentation.TicTacToePresentation")
+        attributes("Main-Class": "is.TicTacToe.presentation.Application")
     }
 }
 
@@ -29,6 +40,9 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
 		
 		// Unit test dependencies	
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile ("org.json:json:20160212")		
     testCompile 'junit:junit:4.12'
 
 		// Selenium dependencies
