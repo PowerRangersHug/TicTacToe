@@ -20,7 +20,6 @@ public class GameInfoViewModelTest
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
         assertEquals("", testModeInfo.getPlayer1());
         assertEquals("", testModeInfo.getPlayer2());
-
     }
 
     @Test
@@ -54,7 +53,7 @@ public class GameInfoViewModelTest
         assertEquals("X", testModeInfo.getGrid()[1]);
     }
 
-     @Test
+    @Test
     public void TestResetGrid()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
@@ -72,5 +71,4 @@ public class GameInfoViewModelTest
         testModeInfo.incrementScore("Fanney");
         assertEquals(1, testModeInfo.getScoreP1());
     }
-
 }

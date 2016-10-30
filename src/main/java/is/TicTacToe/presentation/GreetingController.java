@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.MediaType;
 import org.json.*;
+
 @Controller
 public class GreetingController {
 
@@ -70,9 +71,6 @@ public class GreetingController {
             if (service.IsDone())
             {
                 String winner = service.GetWinner();
-                // System.out.println("winner:");
-                // System.out.println(winner);
-
                 if (winner == "")
                 {
                     message = "It's a tie!";
