@@ -18,11 +18,9 @@ public class GameInfoViewModel {
 
     public GameInfoViewModel() 
     {
-        scoreP1 = 0;
-        scoreP2 = 0;
         player1 = "";
         player2 = "";
-        mode = 0;
+        mode = 1;
         grid = new String[SIZE];
         for (int i = 0; i < SIZE; i++)
         {
@@ -38,6 +36,7 @@ public class GameInfoViewModel {
             grid[i] = " ";
         }
     }
+
 
     public String getPlayer1()
     {

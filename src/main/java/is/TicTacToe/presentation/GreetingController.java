@@ -41,7 +41,7 @@ public class GreetingController {
         // At first assuming only Human vs Human is possible
         // TODO: implement Human vs Computer in this layer
         System.out.println(gameInfoViewModel.getMode());
-        if(gameInfoViewModel.getPlayer2().equals("Computer"))
+        if(gameInfoViewModel.getMode() == 1)
         {
             service = new TicTacToeService(gameInfoViewModel.getPlayer1());
             // There cant be two players with the same name
@@ -51,7 +51,7 @@ public class GreetingController {
             }
             gameInfoViewModel.setPlayer2("Computer");
         }
-        else
+        else if(gameInfoViewModel.getMode() == 2)
         {
             if(gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
             {
