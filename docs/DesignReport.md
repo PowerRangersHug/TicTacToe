@@ -2,27 +2,31 @@
 
 ## Requirement List
 
-|  No  |Requirement  | Guarantor  |  Status  |   |
+|  No  |Requirement  | Status  |   
 |---|---|---|---|---|
-|  1  |  Player chooses mode (1 player or 2 player)  |   |   |   |
-|  2  |  Players can register their names |   |   |   |
-|  3  |  Players can make a move |   |   |   |
-|  4  |  Players can view the score  |   |   |   |
-|  5  |  Players can view the game board |   |   |   |
-|  6  |  Players take turns making their moves |   |   |   |
-|  7  |  Players can see who wins/looses/draw  |   |   |   |
-|  8  |  Computer makes a move automatically |   |   |   |
-|  9  |   |   |   |   |
-|  10  |   |   |   |   |
-|  11  |   |   |   |   |
-|  12  |   |   |   |   |
-|  13  |   |   |   |   |
-|  14  |   |   |   |   |
-|  15  |   |   |   |   |
+|  1  |  Player chooses mode (1 player or 2 player)  |  Done | 
+|  2  |  Players can register their names | Done   |  
+|  3  |  Players can make a move |  Done  |  
+|  4  |  Players can view the score  |  Done  |   
+|  5  |  Players can view the game board | Done   |   
+|  6  |  Players take turns making their moves | Done   |  
+|  7  |  Players can see who wins/looses/draw  | Done   |   
+|  8  |  Computer makes a move automatically | Done   |   
+|  9  |  Players can play many games in a row | Done   |   
+
 
 
 ## Class Diagram
-## Work Procedure
+## Web Design
+Welcome Page 
+![alt text][welcomepage]
+
+[welcomepage]: https://github.com/PowerRangersHug/TicTacToe/blob/Documentation/docs/Images/Honnun1.png "Welcome Page"
+
+Game Page 
+![alt text][gamepage]
+
+[gamepage]: https://github.com/PowerRangersHug/TicTacToe/blob/Documentation/docs/Images/honnun2.png "Game Page"
 
 
 ## Coding Rules
