@@ -1,11 +1,19 @@
+/**** front.html ****/
 function OnClickMode1() {
-    document.getElementById('player2name').style.display='none';
+    var player2 = document.getElementById('player2name');
+    player2.style.display = 'none';
+    player2.value = 'Computer';
 }
 
 function OnClickMode2() {
-    document.getElementById('player2name').style.display='block';
+    var player2 = document.getElementById('player2name');
+    player2.style.display = 'block';
+    player2.value = '';
 }
 
+/**** tictactoe.html ****/
+
+/* Toggle whose turn it is next */
 function TogglePlayersTurn() {
     var currPlayer = $('#whose-turn-is-it').text();
     console.log(currPlayer);
@@ -19,10 +27,9 @@ function TogglePlayersTurn() {
         document.getElementById('p1-info').style.color = 'rgb(184, 84, 80)';
         document.getElementById('p2-info').style.color = 'rgb(0, 0, 0)';
     }
-    console.log('player 1: ' + $('#p1').text());
-    console.log('player 2: ' + $('#p2').text());
 }
 
+/* Ajax functionality to deal with the player's input */
 function MakeMove(elem) {
     var currPlayer = $('#whose-turn-is-it').text();
     console.log('players turn: ' + currPlayer);
