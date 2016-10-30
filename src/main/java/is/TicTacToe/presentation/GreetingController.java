@@ -32,12 +32,14 @@ public class GreetingController {
         // TODO: implement Human vs Computer in this layer
         System.out.println(gameInfoViewModel.getMode());
         service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
+        gameInfoViewModel.setGridSymbol(1, "X"/*currPlayer.GetSymbol()*/);
+
         return "tictactoe";
     }
 
-    @PostMapping(value = "/tictactoe", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/tictactoe")
     // public @ResponseBody
-    public String Submit(@RequestParam("player") String player, @RequestParam("cell") String cell, @ModelAttribute GameInfoViewModel gameInfoViewModel)
+    public String Submit(@ModelAttribute GameInfoViewModel gameInfoViewModel, @RequestParam ("player") String player, @RequestParam("cell") String cell)
     {
         // TODO: call MakeMove and check if it was an OK move
         // Then return ok otherwise return NOT OK or something...
@@ -47,16 +49,19 @@ public class GreetingController {
 
         int x = Integer.parseInt(cell) / 3;
         int y = Integer.parseInt(cell) - x*3;
+        System.out.println(x);
+        System.out.println(y);
         if (service.MakeMove(x, y, player))
         {
+            System.out.println("if");
             Player currPlayer = service.GetPlayerByName(player);
-            gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
+            gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), "X"/*currPlayer.GetSymbol()*/);
         }
         //console.log(GetJSONStringArray(gameInfoViewModel.getGrid()));
 
         return "tictactoe";
     }
-/*
+
     private String GetJSONStringArray(String[] arr)
     {
         JSONObject result = new JSONObject();
@@ -66,5 +71,5 @@ public class GreetingController {
 
         }
         return result.toString();
-    }*/
+    }
 }

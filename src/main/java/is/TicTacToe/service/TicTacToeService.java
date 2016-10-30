@@ -133,17 +133,19 @@ public class TicTacToeService {
     public boolean MakeMove(int x, int y, String playerName)
     {        
         String symbol = " ";
-        if (playerName == playerOne || playerName == playerTwo)
+        if ((playerName.equals(playerOne)) || (playerName.equals(playerTwo)))
         {
             symbol = GetPlayerByName(playerName).GetSymbol();
         }
         else 
         {
+            System.out.println("a");
             return false;
         }
         
         if(!LegalCoordinate(x) || !LegalCoordinate(y))
         {
+            System.out.println("b");
             return false;
         }
         if (!ContainsSymbol(x,y))
@@ -152,6 +154,7 @@ public class TicTacToeService {
             return true;
         
         }
+        System.out.println("c");
         return false;
     }
 
@@ -165,6 +168,7 @@ public class TicTacToeService {
         if (game.GetBoard().IsFull())
         {
             return false;
+
         }
 
         Player p;

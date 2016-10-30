@@ -6,19 +6,20 @@ function OnClickMode2() {
     document.getElementById('player2name').style.display='block';
 }
 
-function MakeMove() {
-    console.log('players turn: ');
-    var data = $("#game-table").val();
-    
-
+function MakeMove(elem) {
+    var currPlayer = $('#whose-turn-is-it').text();
+    console.log('players turn: ' + currPlayer);
+    //var data = $("#game-table").v();
     $.ajax({
         type: "POST",
         url: "/tictactoe",
-        dataType: "json",
-        data: JSON.stringify(data),
-        success: function(data) {
-            console.log(data);
-            $("#game-table").html("");
+        dataType: "html",
+        data: {player: currPlayer, cell:elem.id, gameInfoViewModel: $('#the-view-model').val()},
+        success: function(result) {
+            console.log(result);
+            console.log($(result).filter('#game-table'));
+            $("#game-table").replaceWith($(result).filter('#game-table'));
+
             /*var table = "";
             for(var i = 0; i < result.lengt; i++)
             {
@@ -35,6 +36,10 @@ function MakeMove() {
             $("#game-table").html(table);*/
 
             // TODO: currPlayer is now the other player (those-turn-is-it)
+        },
+        error: function(result) {
+            console.log(result)
+            $("#game-table").html("");
         }
     });
 }
