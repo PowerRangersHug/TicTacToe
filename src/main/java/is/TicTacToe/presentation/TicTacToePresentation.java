@@ -1,7 +1,11 @@
 package is.TicTacToe.presentation;
 import java.util.Scanner;
 import is.TicTacToe.service.TicTacToeService;
-
+/*
+* This class is the console presentation.
+* It is unused now since the application is 
+* now a web application.
+*/
 
 public class TicTacToePresentation 
 {
@@ -135,8 +139,10 @@ public class TicTacToePresentation
                 PrintBoard();
 
                 System.out.println("Computers turn move:");
+                Integer[] cell = new Integer[1];
+                cell[0] = new Integer(-1);
                 // TODO: makemove skilar true/false, eh að gera með það?
-                service.MakeMove();
+                service.MakeMove(cell);
                 
             }
             PrintBoard();

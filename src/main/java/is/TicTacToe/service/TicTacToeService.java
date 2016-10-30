@@ -35,6 +35,14 @@ public class TicTacToeService {
     // TODO: held að þesis gæti verið óþarfi
     public TicTacToeService(String player1, String player2)
     {
+        if (player1.equals("Computer"))
+        {
+            player1 = "Player1";
+        }
+        if (player2.equals("Computer"))
+        {
+            player2 = "Player2";
+        }
         playerOne = player1;
         playerTwo = player2;
         Player p1 = new Player(playerOne, "X", HUMAN);
@@ -50,7 +58,7 @@ public class TicTacToeService {
      */
     public TicTacToeService(String player)
     {
-        if (player == "Computer")
+        if (player.equals("Computer"))
         {
             player = "Player1";
         }
@@ -80,7 +88,7 @@ public class TicTacToeService {
      */
     public void StartGame(int mode, String p1Name, String p2Name)
     {
-            SetPlayerNames(p1Name, p2Name);
+        SetPlayerNames(p1Name, p2Name);
     }
 
     /**
@@ -163,8 +171,8 @@ public class TicTacToeService {
     * @return true if one of the players is a computer player and
     * the board is not full, else false
     */
-    public boolean MakeMove()
-    {    
+    public boolean MakeMove(Integer[] cell)
+    {   
         if (game.GetBoard().IsFull())
         {
             return false;
@@ -192,6 +200,8 @@ public class TicTacToeService {
         if (!ContainsSymbol(x,y))
         {
             game.MakeMove(x, y, symbol);
+            cell[0] = new Integer(x*3 + y);
+
             return true;
         
         }

@@ -39,4 +39,3 @@ addons:
     - heroku
     packages:
     - heroku-toolbelt
-  firefox: "44.0"

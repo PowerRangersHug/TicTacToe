@@ -1,3 +1,23 @@
+/**** front.html ****/
+
+.mode-button-group {
+	padding: 10px;
+}
+
+.mode-button {
+	border: 1px solid rgb(184, 84, 80);
+	background-color: white;
+}
+
+.chosen {
+	background-color: rgb(248, 206, 204);
+}
+
+#mode {
+	display:none;
+}
+/**** tictactoe.html ****/
+
 .game-table {
 	border-collapse: collapse;
 	width: 300px;
@@ -28,10 +48,14 @@
   border-right: 0;
 }
 
-#player2name {
+#game-results {
 	display: none;
 }
 
-#game-results {
+#p1-info {
+	color: rgb(184, 84, 80);
+}
+
+#whose-turn-is-it {
 	display: none;
 }
