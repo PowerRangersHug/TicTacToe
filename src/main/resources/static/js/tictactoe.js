@@ -14,10 +14,17 @@ function TogglePlayersTurn() {
     else {
         $('#whose-turn-is-it').html($('#p1').text());
     }
-    if(currPlayer != "Computer")
+
+   
+}
+
+function LetComputerClick()
+{
+     if($('#whose-turn-is-it').html($('#p2').text()) == "Computer")
      {
         $('#0').click();
      }
+
 }
 
 function MakeMove(elem) {
@@ -56,4 +63,30 @@ function MakeMove(elem) {
     });
 
 }
+
+// function PlayAgain() {
+//     $.ajax({
+//         type: "POST",
+//         url: "/tictactoe",
+//         dataType: "html",
+//         data: { player: currPlayer, cell: elem.id },
+//         success: function(result) {
+            
+//         },
+//         error: function(result) {
+//             console.log(result);
+//         }
+//     });
+// }
+
+/* $.ajax({
+        type: "POST",
+        url: "/tictactoe",
+       
+        success: function(result) {
+            console.log(result);
+            $("#game-table").replaceWith($(result).find("#game-table"));
+            // TODO: currPlayer is now the other player (those-turn-is-it)
+        }
+    });*/
 

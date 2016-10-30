@@ -61,7 +61,8 @@ public class GreetingController {
     }
 
     @PostMapping(value = "/tictactoe")
-    public String Submit(Model model, @RequestParam ("player") String player, @RequestParam("cell") String cell)
+    // Submit
+    public String MakeMove(Model model, @RequestParam ("player") String player, @RequestParam("cell") String cell)
     {
         String message = "";
         // TODO: call MakeMove and check if it was an OK move
@@ -78,6 +79,7 @@ public class GreetingController {
             {   
                 Player currPlayer = service.GetPlayerByName(player);
                 gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
+                System.out.println(currPlayer.GetSymbol());
             }
             else
             {
@@ -105,8 +107,8 @@ public class GreetingController {
         if (service.IsDone())
         {
             String winner = service.GetWinner();
-            System.out.println("winner:");
-            System.out.println(winner);
+            // System.out.println("winner:");
+            // System.out.println(winner);
 
             if (winner == "")
             {
@@ -121,6 +123,16 @@ public class GreetingController {
         System.out.println(message);
         model.addAttribute("gameInfoViewModel", gameInfoViewModel);
         model.addAttribute("message", message);
+        return "tictactoe";
+    }
+
+    @GetMapping(value = "/playAgain")
+    public String PlayAgain(Model model)
+    {
+        gameInfoViewModel.resetGrid();
+        service.ResetBoard();
+        model.addAttribute("gameInfoViewModel", gameInfoViewModel);
+        model.addAttribute("message", "");
         return "tictactoe";
     }
 }

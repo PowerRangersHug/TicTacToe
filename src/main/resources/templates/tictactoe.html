@@ -15,7 +15,7 @@
     <p id="p1" th:text="${gameInfoViewModel.player1}" />
     <p id="p2" th:text="${gameInfoViewModel.player2}" />
 
-    <p><span id="whose-turn-is-it" th:text="${gameInfoViewModel.player1}"></span>, it's your turn!</p>
+    <p><span id="whose-turn-is-it" onchange="LetComputerClick()" th:text="${gameInfoViewModel.player1}"></span>, it's your turn!</p>
 
     <table id="game-table" class="game-table">
         <tr>
@@ -36,6 +36,7 @@
     </table>
     <div id="game-results">
         <p id="game-result-message"></p>
+        <a id="play-again-button" th:href="@{/playAgain}">Play Again</a>
         <a id="go-home-button" th:href="@{/}">Go home</a>
     </div>
 
