@@ -35,7 +35,16 @@ public class GameInfoViewModelTest
     public void TestGetMode()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
+        assertEquals(0, testModeInfo.GetMode());
+    }
+
+    @Test
+    public void TestSetMode()
+    {
+        GameInfoViewModel testModeInfo = new GameInfoViewModel();
         testModeInfo.SetMode(1);
         assertEquals(1, testModeInfo.GetMode());
     }
+
+
 }
