@@ -32,7 +32,7 @@ deploy:
 before_script:
   - if [ "$TRAVIS_BRANCH" = "master" ]; then  heroku --version; fi;   # Test heroku CLI
   - if [ "$TRAVIS_BRANCH" = "master" ]; then heroku git:remote -a powerrangers-tictactoe-staging; fi; # Switch to staging
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then git push heroku master; fi; # Push to staging
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then git push -f heroku master; fi; # Push to staging
   - if [ "$TRAVIS_BRANCH" = "master" ]; then ./gradlew test; fi;         # Run unit tests
   - if [ "$TRAVIS_BRANCH" = "master" ]; then ./gradlew selenium; fi;     # Run selenium tests against staging
 addons:
