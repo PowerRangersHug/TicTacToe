@@ -49,15 +49,20 @@ public class GreetingController {
         int x = Integer.parseInt(cell) / 3;
         int y = Integer.parseInt(cell) - x*3;
 
+        System.out.println("------");
+        System.out.println(player);
+        System.out.println(cell);
+        System.out.println("------");
         // True if the move was ok
         if (service.MakeMove(x, y, player))
         {
+            // System.out.println("Move OK.");
             Player currPlayer = service.GetPlayerByName(player);
             gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
         }
         else
         {
-            System.out.println("Illegal move...");
+            // System.out.println("Illegal move...");
             message = "Illegal move";
         }
 
@@ -75,6 +80,7 @@ public class GreetingController {
             else
             {
                 message = winner;
+                gameInfoViewModel.incrementScore(winner);
             }
         }
         System.out.println(message);

@@ -8,12 +8,19 @@ function OnClickMode2() {
 
 function TogglePlayersTurn() {
     var currPlayer = $('#whose-turn-is-it').text();
+    console.log(currPlayer);
     if (currPlayer == $('#p1').text()) {
         $('#whose-turn-is-it').html($('#p2').text());
+        document.getElementById('p1-info').style.color = 'rgb(0, 0, 0)';
+        document.getElementById('p2-info').style.color = 'rgb(184, 84, 80)';
     }
     else {
         $('#whose-turn-is-it').html($('#p1').text());
+        document.getElementById('p1-info').style.color = 'rgb(184, 84, 80)';
+        document.getElementById('p2-info').style.color = 'rgb(0, 0, 0)';
     }
+    console.log('player 1: ' + $('#p1').text());
+    console.log('player 2: ' + $('#p2').text());
 }
 
 function MakeMove(elem) {
