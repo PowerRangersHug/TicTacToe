@@ -4,3 +4,4 @@
 ./bin/compile
 ./bin/run-tests
 ./bin/deploy
+./bin/convertMdToHtml
