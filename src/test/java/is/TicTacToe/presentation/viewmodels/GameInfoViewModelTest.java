@@ -63,12 +63,22 @@ public class GameInfoViewModelTest
     }
 
     @Test
-    public void TestIncrementScore()
+    public void TestIncrementScorePlayer1()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
         testModeInfo.setPlayer1("Fanney");
         testModeInfo.setPlayer2("Herdís");
         testModeInfo.incrementScore("Fanney");
         assertEquals(1, testModeInfo.getScoreP1());
+    }
+
+    @Test
+    public void TestIncrementScorePlayer2()
+    {
+        GameInfoViewModel testModeInfo = new GameInfoViewModel();
+        testModeInfo.setPlayer1("Fanney");
+        testModeInfo.setPlayer2("Herdís");
+        testModeInfo.incrementScore("Herdís");
+        assertEquals(1, testModeInfo.getScoreP2());
     }
 }
