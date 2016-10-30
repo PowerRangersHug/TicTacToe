@@ -15,6 +15,7 @@ public abstract class SeleniumTestWrapper {
     public static void openBrowser()
     {
         driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         port = System.getenv("PORT");
@@ -22,7 +23,7 @@ public abstract class SeleniumTestWrapper {
             port = "8080";
         }
         //baseUrl = "http://localhost:" + port;
-        baseUrl = "https://powerrangers-tictactoe-staging.herokuapp.com/";
+        baseUrl = "http://powerrangers-tictactoe-staging.herokuapp.com";
     }
 
     @AfterClass
