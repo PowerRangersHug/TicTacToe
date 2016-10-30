@@ -39,11 +39,14 @@ function MakeMove(elem) {
 
             if (message == currPlayer) {
                 console.log("PLAYER WON");
-                $('#game-results').show();
-                $('#game-result-message').html(message);
+                $('#game-results').replaceWith($(result).filter('#game-results'));
+                document.getElementById('game-results').style.display='block';
+                $('#game-result-message').html(message + ' is the winner!');
             }
             else if (message == "It's a tie!") {
                 console.log("TIE");
+                document.getElementById('game-results').style.display='block';
+                $('#game-result-message').html(message);
             }
             else if (message == "Illegal move") {
                 console.log("ILLEGAL");
@@ -53,7 +56,8 @@ function MakeMove(elem) {
             }
         },
         error: function(result) {
-            console.log(result)
+            console.log("error:");
+            console.log(result);
             $("#game-table").html("");
         }
     });

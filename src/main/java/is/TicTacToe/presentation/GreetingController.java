@@ -44,46 +44,46 @@ public class GreetingController {
     public String MakeMove(Model model, @RequestParam ("player") String player, @RequestParam("cell") String cell)
     {
         String message = "";
-        // TODO: call MakeMove and check if it was an OK move
-        // Then return ok otherwise return NOT OK or something...
-        int x = Integer.parseInt(cell) / 3;
-        int y = Integer.parseInt(cell) - x*3;
-
-        System.out.println("------");
-        System.out.println(player);
-        System.out.println(cell);
-        System.out.println("------");
-        // True if the move was ok
-        if (service.MakeMove(x, y, player))
+        // If the game was done before this move attempt
+        if (service.IsDone())
         {
-            // System.out.println("Move OK.");
-            Player currPlayer = service.GetPlayerByName(player);
-            gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
+            message = "Illegal move";
         }
         else
         {
-            // System.out.println("Illegal move...");
-            message = "Illegal move";
-        }
+            // TODO: call MakeMove and check if it was an OK move
+            // Then return ok otherwise return NOT OK or something...
+            int x = Integer.parseInt(cell) / 3;
+            int y = Integer.parseInt(cell) - x*3;
 
-        // The game is done (tie or a winner)
-        if (service.IsDone())
-        {
-            String winner = service.GetWinner();
-            // System.out.println("winner:");
-            // System.out.println(winner);
-
-            if (winner == "")
+            // True if the move was ok
+            if (service.MakeMove(x, y, player))
             {
-                message = "It's a tie!";
+                Player currPlayer = service.GetPlayerByName(player);
+                gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
             }
             else
             {
-                message = winner;
-                gameInfoViewModel.incrementScore(winner);
+                message = "Illegal move";
+            }
+            // The game is done after this move (tie or a winner)
+            if (service.IsDone())
+            {
+                String winner = service.GetWinner();
+                // System.out.println("winner:");
+                // System.out.println(winner);
+
+                if (winner == "")
+                {
+                    message = "It's a tie!";
+                }
+                else
+                {
+                    message = winner;
+                    gameInfoViewModel.incrementScore(winner);
+                }
             }
         }
-        System.out.println(message);
         model.addAttribute("gameInfoViewModel", gameInfoViewModel);
         model.addAttribute("message", message);
         return "tictactoe";

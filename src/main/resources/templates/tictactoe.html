@@ -15,7 +15,7 @@
     <h2 class="whose-turn" id="p1-info"> <span id="p1" th:text="${gameInfoViewModel.player1}" /> : X </h2>
     <h2 class="whose-turn" id="p2-info"> <span id="p2" th:text="${gameInfoViewModel.player2}" /> : O </h2>
 
-    <p display="none"><span id="whose-turn-is-it" th:text="${gameInfoViewModel.player1}"></span>, it's your turn!</p>
+    <span id="whose-turn-is-it" th:text="${gameInfoViewModel.player1}"></span>
 
     <table id="game-table" class="game-table">
         <tr>

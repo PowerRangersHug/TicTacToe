@@ -39,3 +39,7 @@
 #p1-info {
 	color: rgb(184, 84, 80);
 }
+
+#whose-turn-is-it {
+	display: none;
+}
