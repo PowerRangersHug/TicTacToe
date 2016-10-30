@@ -8,7 +8,8 @@ package is.TicTacToe.presentation.viewmodels;
 * sprint framework to work!
 */
 public class GameInfoViewModel {
-    //TODO: keep track of score
+    private int scoreP1;
+    private int scoreP2;
     private String player1;
     private String player2;
     private int mode;
@@ -17,6 +18,8 @@ public class GameInfoViewModel {
 
     public GameInfoViewModel() 
     {
+        scoreP1 = 0;
+        scoreP2 = 0;
         player1 = "";
         player2 = "";
         mode = 0;
@@ -79,5 +82,37 @@ public class GameInfoViewModel {
     public void setGrid(String[] grid)
     {
         this.grid = grid;
+    }
+
+    public int getScoreP1() 
+    { 
+        return scoreP1;
+    }
+
+    public void setScoreP1(int scoreP1) 
+    { 
+        this.scoreP1 = scoreP1;
+    }
+
+    public int getScoreP2() 
+    { 
+        return scoreP2;
+    }
+
+    public void setScoreP2(int scoreP2) 
+    { 
+        this.scoreP2 = scoreP2;
+    }
+
+    public void incrementScore(String player)
+    {
+        if (player == player1)
+        {
+            scoreP1++;
+        }
+        else if (player == player2)
+        {
+            scoreP2++;
+        }
     }
 }
