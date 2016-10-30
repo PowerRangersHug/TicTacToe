@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.MediaType;
 import org.json.*;
+
 @Controller
 public class GreetingController {
 
     private TicTacToeService service;
     private GameInfoViewModel gameInfoViewModel;
 
+    /*
+    * The front page, a form to fill before starting a game.
+    */
     @GetMapping("/")
     public String Form(Model model) 
     {
@@ -27,6 +31,10 @@ public class GreetingController {
         return "front";
     }
 
+    /*
+    * Submitting the form on the front page, resulting
+    * in a new page /tictactoe presented where the game can begin.
+    */
     @PostMapping("/")
     public String Submit(Model model, @ModelAttribute GameInfoViewModel gameInfoViewModel) 
     {
@@ -39,6 +47,10 @@ public class GreetingController {
         return "tictactoe";
     }
 
+    /*
+    * Ajax call from tictactoe.js, dealing with
+    * the move that the user made in the game.
+    */
     @PostMapping(value = "/tictactoe")
     // Submit
     public String MakeMove(Model model, @RequestParam ("player") String player, @RequestParam("cell") String cell)
@@ -70,9 +82,6 @@ public class GreetingController {
             if (service.IsDone())
             {
                 String winner = service.GetWinner();
-                // System.out.println("winner:");
-                // System.out.println(winner);
-
                 if (winner == "")
                 {
                     message = "It's a tie!";
@@ -89,6 +98,11 @@ public class GreetingController {
         return "tictactoe";
     }
 
+    /*
+    * If the user presses "play again" after finishing a game,
+    * another game can start with the same players, keeping
+    * track of the scores for those two players.
+    */
     @GetMapping(value = "/playAgain")
     public String PlayAgain(Model model)
     {

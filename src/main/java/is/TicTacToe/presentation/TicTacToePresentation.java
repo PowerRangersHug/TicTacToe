@@ -1,7 +1,11 @@
 package is.TicTacToe.presentation;
 import java.util.Scanner;
 import is.TicTacToe.service.TicTacToeService;
-
+/*
+* This class is the console presentation.
+* It is unused now since the application is 
+* now a web application.
+*/
 
 public class TicTacToePresentation 
 {
