@@ -39,11 +39,11 @@ public class Game {
     */
     public Player GetPlayer(String name) 
     {
-        if (p1.GetName() == name)
+        if (p1.GetName().equals(name))
         {
             return p1;
         }
-        else if (p2.GetName() == name)
+        else if (p2.GetName().equals(name))
         {
             return p2;
         }

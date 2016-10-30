@@ -43,15 +43,14 @@ public class TicTacToeService {
         game = new Game(b, p1, p2);
     }
 
-        /**
+    /**
      * Initialize the service class with customized names for Player instances.
      * Creates one computer player and one human player
      * @param player Human Player name
      */
-    // TODO: held að þessi gæti veirð óþarfi
     public TicTacToeService(String player)
     {
-        if(player == "Computer")
+        if (player == "Computer")
         {
             player = "Player1";
         }
@@ -134,17 +133,19 @@ public class TicTacToeService {
     public boolean MakeMove(int x, int y, String playerName)
     {        
         String symbol = " ";
-        if (playerName == playerOne || playerName == playerTwo)
+        if ((playerName.equals(playerOne)) || (playerName.equals(playerTwo)))
         {
             symbol = GetPlayerByName(playerName).GetSymbol();
         }
         else 
         {
+            System.out.println("a");
             return false;
         }
         
         if(!LegalCoordinate(x) || !LegalCoordinate(y))
         {
+            System.out.println("b");
             return false;
         }
         if (!ContainsSymbol(x,y))
@@ -153,10 +154,11 @@ public class TicTacToeService {
             return true;
         
         }
+        System.out.println("c");
         return false;
     }
 
-        /**
+    /**
     * Makes a move for the computer.
     * @return true if one of the players is a computer player and
     * the board is not full, else false
@@ -166,6 +168,7 @@ public class TicTacToeService {
         if (game.GetBoard().IsFull())
         {
             return false;
+
         }
 
         Player p;
@@ -294,9 +297,8 @@ public class TicTacToeService {
     */
     public String GetWinner()
     {
-
         Player winner = game.GetWinner();
-        if(winner == null)
+        if (winner == null)
         {
             return "";
         }

@@ -15,7 +15,6 @@ public class TicTacToePresentation
         service = new TicTacToeService();
     }
 
-
     /**
     * Constructor for TicTacToePresentation. Initializes service as
     * service.
@@ -162,9 +161,6 @@ public class TicTacToePresentation
         }
         return player;
     }
-
-
-
 
     public void MakeMove(int player, String name)
     {
