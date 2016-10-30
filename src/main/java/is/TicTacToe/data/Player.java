@@ -84,12 +84,12 @@ public class Player {
     }
 
     /**
-    * Set the value of this players type
-    * @param t Player type
-    */
+     * Set the value of this players type
+     * @param t Player type
+     */
     public void SetType(int t)
     {
-        if(t == UNDEFINED || t == HUMAN || t == COMPUTER)
+        if (t == UNDEFINED || t == HUMAN || t == COMPUTER)
         {
             type = t;
         }

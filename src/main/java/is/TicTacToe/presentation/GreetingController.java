@@ -21,8 +21,8 @@ public class GreetingController {
     private GameInfoViewModel gameInfoViewModel;
 
     /*
-    * The front page, a form to fill before starting a game.
-    */
+     * The front page, a form to fill before starting a game.
+     */
     @GetMapping("/")
     public String Form(Model model) 
     {
@@ -32,60 +32,54 @@ public class GreetingController {
     }
 
     /*
-    * Submitting the form on the front page, resulting
-    * in a new page /tictactoe presented where the game can begin.
-    */
+     * Submitting the form on the front page, resulting
+     * in a new page /tictactoe presented where the game can begin.
+     */
     @PostMapping("/")
     public String Submit(Model model, @ModelAttribute GameInfoViewModel gameInfoViewModel) 
     {
-        // At first assuming only Human vs Human is possible
-        // TODO: implement Human vs Computer in this layer
-        if(gameInfoViewModel.getMode() == 1)
+        if (gameInfoViewModel.getMode() == 1)
         {
             service = new TicTacToeService(gameInfoViewModel.getPlayer1());
-            // There cant be two players with the same name
-            if(gameInfoViewModel.getPlayer1().equals("Computer"))
+            // There can't be two players with the same name
+            if (gameInfoViewModel.getPlayer1().equals("Computer"))
             {
                 gameInfoViewModel.setPlayer1("Player1");
             }
             gameInfoViewModel.setPlayer2("Computer");
         }
-        else if(gameInfoViewModel.getMode() == 2)
+        else if (gameInfoViewModel.getMode() == 2)
         {
-            if(gameInfoViewModel.getPlayer1().equals("Computer"))
+            if (gameInfoViewModel.getPlayer1().equals("Computer"))
             {
                 gameInfoViewModel.setPlayer1("Player1");
             }
-            if(gameInfoViewModel.getPlayer2().equals("Computer"))
+            if (gameInfoViewModel.getPlayer2().equals("Computer"))
             {
                 gameInfoViewModel.setPlayer2("Player2");
             }
-            if(gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
+            if (gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
             {
                 gameInfoViewModel.setPlayer1("Player1");
                 gameInfoViewModel.setPlayer2("Player2");
             }
             service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
         }
-
         this.gameInfoViewModel = gameInfoViewModel;
         model.addAttribute("message", "");
         return "tictactoe";
     }
 
     /*
-    * Ajax call from tictactoe.js, dealing with
-    * the move that the user made in the game.
-    */
+     * Ajax call from tictactoe.js, dealing with
+     * the move that the user made in the game.
+     */
     @PostMapping(value = "/tictactoe")
     // Submit
     public String MakeMove(Model model, @RequestParam ("player") String player, @RequestParam("cell") String cell)
     {
         String message = "";
 
-        // TODO: call MakeMove and check if it was an OK move
-        // Then return ok otherwise return NOT OK or something...
-                // If the game was done before this move attempt
         if (service.IsDone())
         {
             message = "Illegal move";
@@ -95,7 +89,7 @@ public class GreetingController {
         }
         
         // True if the move was ok
-        if(!player.equals("Computer"))
+        if (!player.equals("Computer"))
         {
             int x = Integer.parseInt(cell) / 3;
             int y = Integer.parseInt(cell) - x*3;
@@ -109,15 +103,14 @@ public class GreetingController {
                 message = "Illegal move";
             }
         }
-         else
+        else
         {
             Integer[] compCell = new Integer[1];
             compCell[0] = new Integer(-1);
-            if(service.MakeMove(compCell))
+            if (service.MakeMove(compCell))
             {
-
                 Player currPlayer = service.GetPlayerByName("Computer");
-                if(compCell[0] != -1)
+                if (compCell[0] != -1)
                 {
                     gameInfoViewModel.setGridSymbol(compCell[0], "O");
                 }
@@ -135,18 +128,17 @@ public class GreetingController {
                 message = winner;
                 gameInfoViewModel.incrementScore(winner);
             }
-        }
-     
+        } 
         model.addAttribute("gameInfoViewModel", gameInfoViewModel);
         model.addAttribute("message", message);
         return "tictactoe";
     }
 
     /*
-    * If the user presses "play again" after finishing a game,
-    * another game can start with the same players, keeping
-    * track of the scores for those two players.
-    */
+     * If the user presses "play again" after finishing a game,
+     * another game can start with the same players, keeping
+     * track of the scores for those two players.
+     */
     @GetMapping(value = "/playAgain")
     public String PlayAgain(Model model)
     {
