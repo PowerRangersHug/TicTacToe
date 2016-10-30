@@ -6,6 +6,8 @@ function OnClickMode1() {
     document.getElementById('player2name').readOnly = true;
     $('#button-mode1').addClass('chosen');
     $('#button-mode2').removeClass('chosen');
+    var mode = document.getElementById('mode');
+    mode.value = 1;
 }
 
 /* Human vs Human mode chosen */
@@ -15,6 +17,8 @@ function OnClickMode2() {
     document.getElementById('player2name').readOnly = false;
     $('#button-mode2').addClass('chosen');
     $('#button-mode1').removeClass('chosen');
+    var mode = document.getElementById('mode');
+    mode.value = 2;
 }
 
 /**** tictactoe.html ****/
@@ -33,6 +37,21 @@ function TogglePlayersTurn() {
         document.getElementById('p1-info').style.color = 'rgb(184, 84, 80)';
         document.getElementById('p2-info').style.color = 'rgb(0, 0, 0)';
     }
+    if($('#whose-turn-is-it').text() == "Computer" )
+     {
+        $('#0').click();
+     }
+
+   
+}
+
+function LetComputerClick()
+{
+     if($('#whose-turn-is-it').html($('#p2').text()) == "Computer")
+     {
+        $('#0').click();
+     }
+
 }
 
 /* Ajax functionality to deal with the player's input */
@@ -75,4 +94,7 @@ function MakeMove(elem) {
             $("#game-table").html("");
         }
     });
+
 }
+
+
