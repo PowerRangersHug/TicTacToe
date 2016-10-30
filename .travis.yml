@@ -18,6 +18,9 @@ deploy:
     master: lit-eyrie-57326
     continuousIntegration: frozen-brushlands-27313
 before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/inti.d/xvfb start"
+  - sleep 3
   - echo -e "machine api.heroku.com\n  login kristoferrt@gmail.com\n  password 8be33f5a-3f59-4612-90e9-b84eff7f7e69\nmachine git.heroku.com\n  login kristoferrt@gmail.com password 8be33f5a-3f59-4612-90e9-b84eff7f7e69" > ~/.netrc
   - chmod 0600 ~/.netrc
   - heroku --version
