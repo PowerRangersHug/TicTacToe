@@ -14,9 +14,34 @@
 |  8  |  Computer makes a move automatically | Done   |   
 |  9  |  Players can play many games in a row | Done   |   
 
+## Classes
+### Model classes
+#### Player
+The player class stores information about the players. The players can either be Human or a Computer and have their own symbol.
+#### Board
+The board class stores information about the TicTacToe board and keeps track of it's state. It handles checking if the board is full, if someone has won and restores the board between games. 
+#### Game
+The game class handles the game instance. The game stores the players, the TicTacToe board and the score of the players. The Board class updates it's table and the scor board.
 
+#### GameInfoViewModel
+The GameInfoViewModel stores information about the game instance for the web application.
 
-## Class Diagram
+### Domain Layer
+
+#### TicTacToeService
+The Service class handles the communication between the presentation layer and the underlying model classes. It sends information from the user down to the model classes who update their information and fetches information to present to the users. 
+
+#### GreetingController
+The Controller class handles the communication between the web user interface and service layer. It mappes the user inteface events to the TicTacToeService.
+
+#### Application
+Starts up the web application.
+
+### Presentation Layer
+
+#### TicTacToePresentation
+The presentation class handles asking for input from user and sending it down to the service. It also handles displaying the game. This class is onæy used in the console application.
+
 ## Web Design
 Welcome Page 
 ![alt text][welcomepage]
