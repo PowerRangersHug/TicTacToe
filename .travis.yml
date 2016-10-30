@@ -18,6 +18,7 @@ deploy:
     master: lit-eyrie-57326
     continuousIntegration: frozen-brushlands-27313
 before_script:
+  - heroku --version
   - heroku git:remote -a powerrangers-tictactoe-staging
   - git push heroku continuousIntegration:master
 script:
