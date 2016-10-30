@@ -34,7 +34,7 @@ public class GameInfoViewModelTest
     public void TestGetMode()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
-        assertEquals(0, testModeInfo.getMode());
+        assertEquals(2, testModeInfo.getMode());
     }
 
     @Test
