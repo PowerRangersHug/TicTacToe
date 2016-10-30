@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.MediaType;
-
+import org.json.*;
 @Controller
 public class GreetingController {
 
@@ -24,7 +24,7 @@ public class GreetingController {
         model.addAttribute("gameInfo", new GameInfoViewModel());
         return "front";
     }
-
+/*
     @PostMapping("/")
     public String Submit(@ModelAttribute GameInfoViewModel gameInfoViewModel) 
     {
@@ -52,6 +52,19 @@ public class GreetingController {
             Player currPlayer = service.GetPlayerByName(player);
             gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
         }
-        return "tictactoe";
+        //console.log(GetJSONStringArray(gameInfoViewModel.getGrid()));
+
+        return "{}";
     }
+
+    private String GetJSONStringArray(String[] arr)
+    {
+        JSONObject result = new JSONObject();
+        for(String s : arr)
+        {
+            result.put("symbol",s);
+
+        }
+        return result.toString();
+    }*/
 }

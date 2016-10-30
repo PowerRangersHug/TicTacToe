@@ -50,7 +50,7 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
-		
+    compile ("org.json:json:20160212")			
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
