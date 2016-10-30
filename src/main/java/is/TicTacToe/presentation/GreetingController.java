@@ -43,7 +43,7 @@ public class GreetingController {
         System.out.println(gameInfoViewModel.getMode());
         if(gameInfoViewModel.getMode() == 1)
         {
-            
+
             service = new TicTacToeService(gameInfoViewModel.getPlayer1());
             // There cant be two players with the same name
             if(gameInfoViewModel.getPlayer1().equals("Computer"))
@@ -73,7 +73,7 @@ public class GreetingController {
             }
             if(gameInfoViewModel.getPlayer2().equals(""))
             {
-                gameInfoViewModel.setPlayer2("Player1");
+                gameInfoViewModel.setPlayer2("Player2");
             }
             service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
         }
