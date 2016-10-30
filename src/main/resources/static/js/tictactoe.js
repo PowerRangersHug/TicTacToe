@@ -52,6 +52,21 @@ function MakeMove(elem) {
     });
 }
 
+// function PlayAgain() {
+//     $.ajax({
+//         type: "POST",
+//         url: "/tictactoe",
+//         dataType: "html",
+//         data: { player: currPlayer, cell: elem.id },
+//         success: function(result) {
+            
+//         },
+//         error: function(result) {
+//             console.log(result);
+//         }
+//     });
+// }
+
 /* $.ajax({
         type: "POST",
         url: "/tictactoe",
