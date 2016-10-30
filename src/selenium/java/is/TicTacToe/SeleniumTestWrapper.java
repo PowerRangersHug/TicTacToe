@@ -24,7 +24,8 @@ public abstract class SeleniumTestWrapper {
         if (port == null) {
             port = "8080";
         }
-        baseUrl = "http://localhost:" + port;
+        //baseUrl = "http://localhost:" + port;
+        baseUrl = "https://powerrangers-tictactoe-staging.herokuapp.com/";
     }
 
     @AfterClass
