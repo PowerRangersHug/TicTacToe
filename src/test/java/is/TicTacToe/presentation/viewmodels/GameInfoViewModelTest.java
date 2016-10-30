@@ -15,6 +15,15 @@ public class GameInfoViewModelTest
     }
 
     @Test
+    public void TestGetPlayersEmptyString()
+    {
+        GameInfoViewModel testModeInfo = new GameInfoViewModel();
+        assertEquals("", testModeInfo.GetPlayer1());
+        assertEquals("", testModeInfo.GetPlayer2());
+
+    }
+
+    @Test
     public void TestGetPlayer2()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
