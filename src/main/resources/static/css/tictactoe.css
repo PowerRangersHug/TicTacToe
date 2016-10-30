@@ -31,3 +31,7 @@
 #player2name {
 	display: none;
 }
+
+#game-results {
+	display: none;
+}

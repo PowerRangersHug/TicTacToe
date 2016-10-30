@@ -17,55 +17,68 @@ import org.json.*;
 public class GreetingController {
 
     private TicTacToeService service;
-    private GameInfoViewModel gameInfoViewModel = new GameInfoViewModel();
+    private GameInfoViewModel gameInfoViewModel;
 
     @GetMapping("/")
     public String Form(Model model) 
     {
+        gameInfoViewModel = new GameInfoViewModel();
         model.addAttribute("gameInfo", gameInfoViewModel);
         return "front";
     }
 
     @PostMapping("/")
-    public String Submit(@ModelAttribute GameInfoViewModel gameInfoViewModel) 
+    public String Submit(Model model, @ModelAttribute GameInfoViewModel gameInfoViewModel) 
     {
         // At first assuming only Human vs Human is possible
         // TODO: implement Human vs Computer in this layer
-        System.out.println(gameInfoViewModel.getMode());
+
         service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
-        // gameInfoViewModel.setGridSymbol(1, "X"/*currPlayer.GetSymbol()*/);
         this.gameInfoViewModel = gameInfoViewModel;
+        model.addAttribute("message", "");
         return "tictactoe";
     }
 
     @PostMapping(value = "/tictactoe")
-    // public @ResponseBody
     public String Submit(Model model, @RequestParam ("player") String player, @RequestParam("cell") String cell)
     {
+        String message = "";
         // TODO: call MakeMove and check if it was an OK move
         // Then return ok otherwise return NOT OK or something...
         int x = Integer.parseInt(cell) / 3;
         int y = Integer.parseInt(cell) - x*3;
-        System.out.println(x);
-        System.out.println(y);
+
+        // True if the move was ok
         if (service.MakeMove(x, y, player))
         {
-            System.out.println("if");
             Player currPlayer = service.GetPlayerByName(player);
             gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
         }
-        model.addAttribute("gameInfoViewModel", gameInfoViewModel);
-        return "tictactoe";
-    }
-
-    private String GetJSONStringArray(String[] arr)
-    {
-        JSONObject result = new JSONObject();
-        for(String s : arr)
+        else
         {
-            result.put("symbol",s);
-
+            System.out.println("Illegal move...");
+            message = "Illegal move";
         }
-        return result.toString();
+
+        // The game is done (tie or a winner)
+        if (service.IsDone())
+        {
+            String winner = service.GetWinner();
+            System.out.println("winner:");
+            System.out.println(winner);
+
+            if (winner == "")
+            {
+                message = "It's a tie!";
+            }
+            else
+            {
+                message = winner;
+            }
+        }
+        System.out.println(message);
+        model.addAttribute("gameInfoViewModel", gameInfoViewModel);
+        model.addAttribute("message", message);
+        return "tictactoe";
     }
 }

@@ -297,9 +297,8 @@ public class TicTacToeService {
     */
     public String GetWinner()
     {
-
         Player winner = game.GetWinner();
-        if(winner == null)
+        if (winner == null)
         {
             return "";
         }
