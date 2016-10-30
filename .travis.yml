@@ -20,7 +20,9 @@ deploy:
 after_deploy:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/deploy_key.pem
-  - ssh-add .travis/deploy_key.pem
+  - spawn ssh-add .travis/deploy_key.pem
+  - expect "Enter passphrase for .travis/deploy_key.pem:"
+  - send "\n";
   - ./gradlew selenium
   - git remote add deploy https://git.heroku.com/powerrangers-tictactoe-staging.git
   - git push deploy
