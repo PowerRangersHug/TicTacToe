@@ -14,6 +14,10 @@ function TogglePlayersTurn() {
     else {
         $('#whose-turn-is-it').html($('#p1').text());
     }
+    if(currPlayer != "Computer")
+     {
+        $('#0').click();
+     }
 }
 
 function MakeMove(elem) {
@@ -29,7 +33,6 @@ function MakeMove(elem) {
             $("#game-table").replaceWith($(result).filter('#game-table'));
             // TODO: currPlayer is now the other player (those-turn-is-it)
             var message = $(result).filter('#hidden-message').text();
-            var player = $(result).filter('#p2').text();
 
             if (message == currPlayer) {
                 console.log("PLAYER WON");

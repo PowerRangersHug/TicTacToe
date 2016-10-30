@@ -66,13 +66,14 @@ public class GreetingController {
         String message = "";
         // TODO: call MakeMove and check if it was an OK move
         // Then return ok otherwise return NOT OK or something...
-        int x = Integer.parseInt(cell) / 3;
-        int y = Integer.parseInt(cell) - x*3;
+     
         
 
         // True if the move was ok
         if(!player.equals("Computer"))
         {
+            int x = Integer.parseInt(cell) / 3;
+            int y = Integer.parseInt(cell) - x*3;
             if (service.MakeMove(x, y, player))
             {   
                 Player currPlayer = service.GetPlayerByName(player);
