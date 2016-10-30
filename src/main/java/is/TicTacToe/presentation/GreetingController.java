@@ -39,11 +39,12 @@ public class GreetingController {
     public String Submit(Model model, @ModelAttribute GameInfoViewModel gameInfoViewModel) 
     {
         // At first assuming only Human vs Human is possible
-        // TODO: implement Human vs Computer in this layer
-        System.out.println(gameInfoViewModel.getMode());
         if(gameInfoViewModel.getMode() == 1)
         {
-
+            if(gameInfoViewModel.getPlayer1().equals(""))
+            {
+                gameInfoViewModel.setPlayer1("Player1");
+            }
             service = new TicTacToeService(gameInfoViewModel.getPlayer1());
             // There cant be two players with the same name
             if(gameInfoViewModel.getPlayer1().equals("Computer"))
@@ -62,17 +63,17 @@ public class GreetingController {
             {
                 gameInfoViewModel.setPlayer2("Player2");
             }
-            if(gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
-            {
-                gameInfoViewModel.setPlayer1("Player1");
-                gameInfoViewModel.setPlayer2("Player2");
-            }
-            if(gameInfoViewModel.getPlayer1().equals(""))
+             if(gameInfoViewModel.getPlayer1().equals(""))
             {
                 gameInfoViewModel.setPlayer1("Player1");
             }
             if(gameInfoViewModel.getPlayer2().equals(""))
             {
+                gameInfoViewModel.setPlayer2("Player2");
+            }
+            if(gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
+            {
+                gameInfoViewModel.setPlayer1("Player1");
                 gameInfoViewModel.setPlayer2("Player2");
             }
             service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
@@ -93,9 +94,7 @@ public class GreetingController {
     {
         String message = "";
 
-        // TODO: call MakeMove and check if it was an OK move
-        // Then return ok otherwise return NOT OK or something...
-                // If the game was done before this move attempt
+        // If the game was done before this move attempt
         if (service.IsDone())
         {
             message = "Illegal move";
