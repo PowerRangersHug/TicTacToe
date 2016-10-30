@@ -23,7 +23,7 @@ after_deploy:
   - spawn ssh-add .travis/deploy_key.pem
   - expect "Enter passphrase for .travis/deploy_key.pem:"
   - send "\n";
-  - ./gradlew selenium || exit(1)
-  - heroku git:remote -a powerrangers-tictactoe || exit(1)
-  - git push heroku continuousIntegration:master || exit(1)
-  - heroku git:remote -a lit-eyrie-57326 || exit(1)
+  - ./gradlew selenium || echo "failed" && exit(1)
+  - heroku git:remote -a powerrangers-tictactoe || echo "failed new remote" && exit(1)
+  - git push heroku continuousIntegration:master || echo "failed push" && exit(1)
+  - heroku git:remote -a lit-eyrie-57326 || echo "failed old remote" && exit(1)
