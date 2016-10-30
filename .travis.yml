@@ -21,13 +21,14 @@ before_script:
   - echo -e "machine api.heroku.com\n  login kristoferrt@gmail.com\n  password 8be33f5a-3f59-4612-90e9-b84eff7f7e69\nmachine git.heroku.com\n  login kristoferrt@gmail.com password 8be33f5a-3f59-4612-90e9-b84eff7f7e69" > ~/.netrc
   - chmod 0600 ~/.netrc
   - heroku --version
-  - heroku git:remote -a powerrangers-tictactoe-staging
-  - git push heroku continuousIntegration:master
-  - ./gradlew selenium
-  - heroku git:remote -a powerrangers-tictactoe
-  - git push heroku continuousIntegration:master
+  - heroku git:remote -a powerrangers-tictactoe-staging # switch to staging app
+  - git push heroku continuousIntegration:master        # push new site to heroku
+  - ./gradlew selenium                                  # Run selenium tests
+script:
+  - heroku git:remote -a powerrangers-tictactoe   # Switch to production
+  - git push heroku continuousIntegration:master  # Push to production
 after_script:
-  - heroku git:remote -a lit-eyrie-57326
+  - heroku git:remote -a lit-eyrie-57326  # Switch back to staging
 addons:
   apt:
     sources:
