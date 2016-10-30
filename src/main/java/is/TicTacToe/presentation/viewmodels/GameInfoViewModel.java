@@ -26,47 +26,47 @@ public class GameInfoViewModel {
         }
     }
 
-    public String GetPlayer1()
+    public String getPlayer1()
     {
         return player1;
     }
 
-    public void SetPlayer1(String player1)
+    public void setPlayer1(String player1)
     {
         this.player1 = player1;
     }
 
-    public String GetPlayer2()
+    public String getPlayer2()
     {
         return player2;
     }
 
-    public void SetPlayer2(String player2)
+    public void setPlayer2(String player2)
     {
         this.player2 = player2;
     }
 
-    public int GetMode()
+    public int getMode()
     {
         return mode;
     }
 
-    public void SetMode(int mode)
+    public void setMode(int mode)
     {
         this.mode = mode;
     }
 
-    public String[] GetGrid()
+    public String[] getGrid()
     {
         return grid;
     }
 
-    public void SetGridSymbol(int index, String symbol)
+    public void setGridSymbol(int index, String symbol)
     {
         grid[index] = symbol;
     }
 
-    public void SetGrid(String[] grid)
+    public void setGrid(String[] grid)
     {
         this.grid = grid;
     }

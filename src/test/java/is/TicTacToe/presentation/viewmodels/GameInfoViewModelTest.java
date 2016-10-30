@@ -10,16 +10,16 @@ public class GameInfoViewModelTest
     public void TestGetPlayer1()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
-        testModeInfo.SetPlayer1("Fanney");
-        assertEquals("Fanney", testModeInfo.GetPlayer1());
+        testModeInfo.setPlayer1("Fanney");
+        assertEquals("Fanney", testModeInfo.getPlayer1());
     }
 
     @Test
     public void TestGetPlayersEmptyString()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
-        assertEquals("", testModeInfo.GetPlayer1());
-        assertEquals("", testModeInfo.GetPlayer2());
+        assertEquals("", testModeInfo.getPlayer1());
+        assertEquals("", testModeInfo.getPlayer2());
 
     }
 
@@ -27,23 +27,31 @@ public class GameInfoViewModelTest
     public void TestGetPlayer2()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
-        testModeInfo.SetPlayer2("Herdís");
-        assertEquals("Herdís", testModeInfo.GetPlayer2());
+        testModeInfo.setPlayer2("Herdís");
+        assertEquals("Herdís", testModeInfo.getPlayer2());
     }
 
     @Test
     public void TestGetMode()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
-        assertEquals(0, testModeInfo.GetMode());
+        assertEquals(0, testModeInfo.getMode());
     }
 
     @Test
     public void TestSetMode()
     {
         GameInfoViewModel testModeInfo = new GameInfoViewModel();
-        testModeInfo.SetMode(1);
-        assertEquals(1, testModeInfo.GetMode());
+        testModeInfo.setMode(1);
+        assertEquals(1, testModeInfo.getMode());
+    }
+
+    @Test
+    public void TestSetGridSymbol()
+    {
+        GameInfoViewModel testModeInfo = new GameInfoViewModel();
+        testModeInfo.setGridSymbol(1,"X");
+        assertEquals("X", testModeInfo.getGrid()[1]);
     }
 
 

@@ -24,7 +24,7 @@ public class GreetingController {
         model.addAttribute("gameInfo", new GameInfoViewModel());
         return "front";
     }
-/*
+
     @PostMapping("/")
     public String Submit(@ModelAttribute GameInfoViewModel gameInfoViewModel) 
     {
@@ -54,9 +54,9 @@ public class GreetingController {
         }
         //console.log(GetJSONStringArray(gameInfoViewModel.getGrid()));
 
-        return "{}";
+        return "tictactoe";
     }
-
+/*
     private String GetJSONStringArray(String[] arr)
     {
         JSONObject result = new JSONObject();
