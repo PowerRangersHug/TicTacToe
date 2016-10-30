@@ -1,7 +1,7 @@
 #!/bin/bash
 ./gradlew jar
 
-[ -d ~/tictactoe/deployed ] || mkdir ~/tictactoe/deployed
+[ -d ~/tictactoe/deployed ] || mkdir ~/tictactoe && mkdir ~/tictactoe/deployed
 
 cp -R build/libs ~/tictactoe/deployed
 cp -R build/classes ~/tictactoe/deployed
