@@ -184,7 +184,9 @@ public class TicTacToeServiceTest
     public void TestMakeMoveForComputer()
     {
         TicTacToeService testService = new TicTacToeService("Player1");
-        testService.MakeMove();
+        Integer[] cell = new Integer[1];
+        cell[0] = new Integer(-1);
+        testService.MakeMove(cell);
         assertEquals(false, testService.GetGame().GetBoard().IsEmpty());
     }
 
@@ -201,7 +203,9 @@ public class TicTacToeServiceTest
         testService.MakeMove(2, 0, "Player1");
         testService.MakeMove(2, 1, "Player1");
         testService.MakeMove(2, 2, "Player1");
-        assertEquals(false, testService.MakeMove());
+        Integer[] cell = new Integer[1];
+        cell[0] = new Integer(-1);
+        assertEquals(false, testService.MakeMove(cell));
     }
 
     @Test
@@ -216,14 +220,18 @@ public class TicTacToeServiceTest
         testService.MakeMove(1, 2, "Player1");
         testService.MakeMove(2, 0, "Player1");
         testService.MakeMove(2, 1, "Player1");
-        assertEquals(true, testService.MakeMove());
+        Integer[] cell = new Integer[1];
+        cell[0] = new Integer(-1);
+        assertEquals(true, testService.MakeMove(cell));
     }
 
     @Test
     public void TestMakeMoveForComputerWhenNoComputerPlayer()
     {
         TicTacToeService testService = new TicTacToeService("John", "Eve");
-        assertEquals(false, testService.MakeMove());
+        Integer[] cell = new Integer[1];
+        cell[0] = new Integer(-1);
+        assertEquals(false, testService.MakeMove(cell));
     }
 
     @Test
@@ -238,8 +246,11 @@ public class TicTacToeServiceTest
         testService.MakeMove(1, 2, "Player1");
         testService.MakeMove(2, 0, "Player1");
         testService.MakeMove(2, 1, "Player1");
-        testService.MakeMove();
+        Integer[] cell = new Integer[1];
+        cell[0] = new Integer(-1);
+        testService.MakeMove(cell);
         assertEquals(true, testService.ContainsSymbol(2,2));
+        //assertEquals(8, cell[0]);
     }
 
     @Test
@@ -254,7 +265,9 @@ public class TicTacToeServiceTest
         testService.MakeMove(1, 2, "Player1");
         testService.MakeMove(2, 0, "Player1");
         testService.MakeMove(2, 1, "Player1");
-        testService.MakeMove();
+        Integer[] cell = new Integer[1];
+        cell[0] = new Integer(-1);
+        testService.MakeMove(cell);
         assertEquals("O", testService.GetGame().GetBoard().GetSymbol(2,2));
     }
 

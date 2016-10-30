@@ -40,8 +40,35 @@ public class GreetingController {
     {
         // At first assuming only Human vs Human is possible
         // TODO: implement Human vs Computer in this layer
+        System.out.println(gameInfoViewModel.getMode());
+        if(gameInfoViewModel.getMode() == 1)
+        {
+            service = new TicTacToeService(gameInfoViewModel.getPlayer1());
+            // There cant be two players with the same name
+            if(gameInfoViewModel.getPlayer1().equals("Computer"))
+            {
+                gameInfoViewModel.setPlayer1("Player1");
+            }
+            gameInfoViewModel.setPlayer2("Computer");
+        }
+        else if(gameInfoViewModel.getMode() == 2)
+        {
+            if(gameInfoViewModel.getPlayer1().equals("Computer"))
+            {
+                gameInfoViewModel.setPlayer1("Player1");
+            }
+            if(gameInfoViewModel.getPlayer2().equals("Computer"))
+            {
+                gameInfoViewModel.setPlayer2("Player2");
+            }
+            if(gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
+            {
+                gameInfoViewModel.setPlayer1("Player1");
+                gameInfoViewModel.setPlayer2("Player2");
+            }
+            service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
+        }
 
-        service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
         this.gameInfoViewModel = gameInfoViewModel;
         model.addAttribute("message", "");
         return "tictactoe";
@@ -56,43 +83,64 @@ public class GreetingController {
     public String MakeMove(Model model, @RequestParam ("player") String player, @RequestParam("cell") String cell)
     {
         String message = "";
-        // If the game was done before this move attempt
+
+        // TODO: call MakeMove and check if it was an OK move
+        // Then return ok otherwise return NOT OK or something...
+                // If the game was done before this move attempt
         if (service.IsDone())
         {
             message = "Illegal move";
+            model.addAttribute("gameInfoViewModel", gameInfoViewModel);
+            model.addAttribute("message", message);
+            return "tictactoe";
         }
-        else
+        
+        // True if the move was ok
+        if(!player.equals("Computer"))
         {
-            // TODO: call MakeMove and check if it was an OK move
-            // Then return ok otherwise return NOT OK or something...
             int x = Integer.parseInt(cell) / 3;
             int y = Integer.parseInt(cell) - x*3;
-
-            // True if the move was ok
             if (service.MakeMove(x, y, player))
-            {
+            {   
                 Player currPlayer = service.GetPlayerByName(player);
                 gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
+                System.out.println(currPlayer.GetSymbol());
             }
             else
             {
+                System.out.println("Illegal move...");
                 message = "Illegal move";
             }
-            // The game is done after this move (tie or a winner)
-            if (service.IsDone())
+        }
+         else
+        {
+            Integer[] compCell = new Integer[1];
+            compCell[0] = new Integer(-1);
+            if(service.MakeMove(compCell))
             {
-                String winner = service.GetWinner();
-                if (winner == "")
+
+                Player currPlayer = service.GetPlayerByName("Computer");
+                if(compCell[0] != -1)
                 {
-                    message = "It's a tie!";
+                    gameInfoViewModel.setGridSymbol(compCell[0], "O");
                 }
-                else
-                {
-                    message = winner;
-                    gameInfoViewModel.incrementScore(winner);
-                }
+                System.out.println(compCell[0]);
             }
         }
+        if (service.IsDone())
+        {
+            String winner = service.GetWinner();
+            if (winner == "")
+            {
+                message = "It's a tie!";
+            }
+            else
+            {
+                message = winner;
+                gameInfoViewModel.incrementScore(winner);
+            }
+        }
+     
         model.addAttribute("gameInfoViewModel", gameInfoViewModel);
         model.addAttribute("message", message);
         return "tictactoe";
