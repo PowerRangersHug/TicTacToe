@@ -32,6 +32,7 @@ function MakeMove(elem) {
 
             if (message == currPlayer) {
                 console.log("PLAYER WON");
+                $('#game-results').addClass("showing");
                 $('#game-results').show();
                 $('#game-result-message').html(message);
             }
