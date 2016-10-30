@@ -14,27 +14,11 @@ function MakeMove(elem) {
         type: "POST",
         url: "/tictactoe",
         dataType: "html",
-        data: {player: currPlayer, cell:elem.id, gameInfoViewModel: $('#the-view-model').val()},
+        data: { player: currPlayer, cell: elem.id },
         success: function(result) {
             console.log(result);
             console.log($(result).filter('#game-table'));
             $("#game-table").replaceWith($(result).filter('#game-table'));
-
-            /*var table = "";
-            for(var i = 0; i < result.lengt; i++)
-            {
-                if(i == 0 || i == 3 || i == 6)
-                {
-                    table += "<tr>";
-                }
-                table += "<td id=\"" + i + "\" onclick=\"MakeMove(this)\" th:text=\"${" + result[i].symbol + "]}\"></td>";
-                if(i == 2 || i == 5 || i == 8)
-                {
-                    table += "<\tr>";
-                }
-            }
-            $("#game-table").html(table);*/
-
             // TODO: currPlayer is now the other player (those-turn-is-it)
         },
         error: function(result) {

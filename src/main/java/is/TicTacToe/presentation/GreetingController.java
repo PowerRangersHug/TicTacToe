@@ -17,11 +17,12 @@ import org.json.*;
 public class GreetingController {
 
     private TicTacToeService service;
+    private GameInfoViewModel gameInfoViewModel = new GameInfoViewModel();
 
     @GetMapping("/")
     public String Form(Model model) 
     {
-        model.addAttribute("gameInfo", new GameInfoViewModel());
+        model.addAttribute("gameInfo", gameInfoViewModel);
         return "front";
     }
 
@@ -32,21 +33,17 @@ public class GreetingController {
         // TODO: implement Human vs Computer in this layer
         System.out.println(gameInfoViewModel.getMode());
         service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
-        gameInfoViewModel.setGridSymbol(1, "X"/*currPlayer.GetSymbol()*/);
-
+        // gameInfoViewModel.setGridSymbol(1, "X"/*currPlayer.GetSymbol()*/);
+        this.gameInfoViewModel = gameInfoViewModel;
         return "tictactoe";
     }
 
     @PostMapping(value = "/tictactoe")
     // public @ResponseBody
-    public String Submit(@ModelAttribute GameInfoViewModel gameInfoViewModel, @RequestParam ("player") String player, @RequestParam("cell") String cell)
+    public String Submit(Model model, @RequestParam ("player") String player, @RequestParam("cell") String cell)
     {
         // TODO: call MakeMove and check if it was an OK move
         // Then return ok otherwise return NOT OK or something...
-        System.out.println("------");
-        System.out.println(gameInfoViewModel.getPlayer1());
-        System.out.println("------");
-
         int x = Integer.parseInt(cell) / 3;
         int y = Integer.parseInt(cell) - x*3;
         System.out.println(x);
@@ -55,10 +52,9 @@ public class GreetingController {
         {
             System.out.println("if");
             Player currPlayer = service.GetPlayerByName(player);
-            gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), "X"/*currPlayer.GetSymbol()*/);
+            gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
         }
-        //console.log(GetJSONStringArray(gameInfoViewModel.getGrid()));
-
+        model.addAttribute("gameInfoViewModel", gameInfoViewModel);
         return "tictactoe";
     }
 
