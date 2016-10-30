@@ -23,7 +23,7 @@ before_script:
   - heroku --version
   - heroku git:remote -a powerrangers-tictactoe-staging # switch to staging app
   - git push heroku continuousIntegration:master        # push new site to heroku
-  - ./gradlew selenium                                  # Run selenium tests
+  - ./gradlew selenium --stacktrace --info              # Run selenium tests
 script:
   - heroku git:remote -a powerrangers-tictactoe   # Switch to production
   - git push heroku continuousIntegration:master  # Push to production
