@@ -13,19 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-// for thread.sleep (only for debugging!)
-// import java.lang.*;
-
-//         try 
-//         {
-//             // thread to sleep for 1000 milliseconds
-//             Thread.sleep(1000);
-//         } 
-//         catch (Exception e) 
-//         {
-//             System.out.println(e);
-//         }
-        
 public class TestTicTacToeWeb extends SeleniumTestWrapper {
     
     @Test
@@ -79,124 +66,133 @@ public class TestTicTacToeWeb extends SeleniumTestWrapper {
 
         player2Name.submit();
 
-        WebElement gameTable = (new WebDriverWait(driver, 15))
+        WebElement gameTable = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells = gameTable.findElements(By.tagName("td"));
 
         allCells.get(1).click();
 
-        WebElement gameTable1 = (new WebDriverWait(driver, 15))
+        WebElement gameTable1 = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells1 = gameTable1.findElements(By.tagName("td"));
 
         allCells1.get(2).click();
 
-        WebElement gameTable2 = (new WebDriverWait(driver, 15))
+        WebElement gameTable2 = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells2 = gameTable2.findElements(By.tagName("td"));
 
         allCells2.get(4).click();
-        
-        WebElement gameTable3 = (new WebDriverWait(driver, 15))
+
+        WebElement gameTable3 = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells3 = gameTable3.findElements(By.tagName("td"));
 
         allCells3.get(5).click();
 
-        WebElement gameTable4 = (new WebDriverWait(driver, 15))
+        WebElement gameTable4 = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells4 = gameTable4.findElements(By.tagName("td"));
         
+
         allCells4.get(7).click();
 
-        WebElement results = (new WebDriverWait(driver, 15))
+        WebElement results = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.className("showing")));
 
        	WebElement resultMessage = results.findElement(By.id("game-result-message"));
         assertEquals("Áslaug is the winner!", resultMessage.getText());
-        
     }
 
-    // @Test
-    // public void FullBoard()
-    // {
-    //     driver.get(baseUrl);
-    //     WebElement player1Name = driver.findElement(By.id("player1"));
-    //     player1Name.sendKeys("Hattifatti");
-    //     WebElement player2Name = driver.findElement(By.id("player2"));
-    //     player2Name.sendKeys("Mia");
-    //     // Change when mode becomes dropdown list
-    //     WebElement mode = driver.findElement(By.id("mode"));
-    //     mode.sendKeys("1");
-    //     player2Name.submit();
+    @Test
+    public void FullBoard()
+    {
+        driver.get(baseUrl);
+        // Clicks on mode 1 (Human vs Human)
+        WebElement buttonMode1 = driver.findElement(By.id("button-mode2"));
+        buttonMode1.click();
 
-        /*WebElement gameTable = (new WebDriverWait(driver, 15))
+        // Sets the player names
+        WebElement player1Name = driver.findElement(By.id("player1name"));
+        WebElement player2Name = driver.findElement(By.id("player2name"));
+        player1Name.sendKeys("Hannes");
+        player2Name.sendKeys("Skúli");
+
+        player2Name.submit();
+
+        WebElement gameTable = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells = gameTable.findElements(By.tagName("td"));
 
         allCells.get(1).click();
 
-        WebElement gameTable1 = (new WebDriverWait(driver, 15))
+        WebElement gameTable1 = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells1 = gameTable1.findElements(By.tagName("td"));
 
         allCells1.get(4).click();
 
-        WebElement gameTable2 = (new WebDriverWait(driver, 15))
+        WebElement gameTable2 = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells2 = gameTable2.findElements(By.tagName("td"));
 
         allCells2.get(8).click();
 
-        WebElement gameTable3 = (new WebDriverWait(driver, 15))
+        WebElement gameTable3 = (new WebDriverWait(driver, 15, 100))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells3 = gameTable3.findElements(By.tagName("td"));
 
-        allCells3.get(1).click();
+        allCells3.get(7).click();
 
-        WebElement gameTable4 = (new WebDriverWait(driver, 15))
+        WebElement gameTable4 = (new WebDriverWait(driver, 15, 500))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells4 = gameTable4.findElements(By.tagName("td"));
         
-        allCells4.get(7).click();
+        allCells4.get(6).click();
 
-        WebElement gameTable5 = (new WebDriverWait(driver, 15))
+        WebElement gameTable5 = (new WebDriverWait(driver, 15, 500))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells5 = gameTable5.findElements(By.tagName("td"));
         
-        allCells5.get(5).click();
+        allCells5.get(2).click();
 
-        WebElement gameTable6 = (new WebDriverWait(driver, 15))
+        WebElement gameTable6 = (new WebDriverWait(driver, 15, 500))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells6 = gameTable6.findElements(By.tagName("td"));
         
-        allCells6.get(3).click();
+        allCells6.get(5).click();
 
-        WebElement gameTable7 = (new WebDriverWait(driver, 15))
+        WebElement gameTable7 = (new WebDriverWait(driver, 15, 500))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells7 = gameTable7.findElements(By.tagName("td"));
         
-        allCells4.get(6).click();
+        allCells7.get(0).click();
 
-        WebElement results = (new WebDriverWait(driver, 15))
+        WebElement gameTable8 = (new WebDriverWait(driver, 15, 500))
+            .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
+
+        List<WebElement> allCells8 = gameTable8.findElements(By.tagName("td"));
+
+        allCells8.get(3).click();
+
+        WebElement results = (new WebDriverWait(driver, 15, 500))
             .until(ExpectedConditions.presenceOfElementLocated(By.className("showing")));
 
         WebElement resultMessage = results.findElement(By.id("game-result-message"));
-         assertEquals("It's a tie!", resultMessage.getText());*/
-        
-    // }
+         assertEquals("It's a tie!", resultMessage.getText());
+     }
 }
 
