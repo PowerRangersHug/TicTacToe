@@ -20,7 +20,7 @@ public class GameInfoViewModel {
     {
         player1 = "";
         player2 = "";
-        mode = 1;
+        mode = 2;
         grid = new String[SIZE];
         for (int i = 0; i < SIZE; i++)
         {
