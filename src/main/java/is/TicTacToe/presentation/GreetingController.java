@@ -53,6 +53,14 @@ public class GreetingController {
         }
         else if(gameInfoViewModel.getMode() == 2)
         {
+            if(gameInfoViewModel.getPlayer1().equals("Computer"))
+            {
+                gameInfoViewModel.setPlayer1("Player1");
+            }
+            if(gameInfoViewModel.getPlayer2().equals("Computer"))
+            {
+                gameInfoViewModel.setPlayer2("Player2");
+            }
             if(gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
             {
                 gameInfoViewModel.setPlayer1("Player1");

@@ -35,14 +35,14 @@ public class TicTacToeService {
     // TODO: held að þesis gæti verið óþarfi
     public TicTacToeService(String player1, String player2)
     {
-        /*if (player1.equals("Computer"))
+        if (player1.equals("Computer"))
         {
             player1 = "Player1";
         }
         if (player2.equals("Computer"))
         {
             player2 = "Player2";
-        }*/
+        }
         playerOne = player1;
         playerTwo = player2;
         Player p1 = new Player(playerOne, "X", HUMAN);
