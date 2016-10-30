@@ -32,7 +32,7 @@ deploy:
 before_script:
   - heroku --version                                     # Test heroku CLI
   - heroku git:remote -a powerrangers-tictactoe-staging  # Switch to staging
-  - git push heroku master:master                        # Push to staging
+  - git push heroku master                               # Push to staging
   - ./gradlew test                                       # Run unit tests
   - ./gradlew selenium                                   # Run selenium tests against staging
 addons:
