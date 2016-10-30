@@ -29,6 +29,7 @@ function MakeMove(elem) {
             $("#game-table").replaceWith($(result).filter('#game-table'));
             // TODO: currPlayer is now the other player (those-turn-is-it)
             var message = $(result).filter('#hidden-message').text();
+            var player = $(result).filter('#p2').text();
 
             if (message == currPlayer) {
                 console.log("PLAYER WON");
@@ -50,6 +51,38 @@ function MakeMove(elem) {
             $("#game-table").html("");
         }
     });
+    /*
+     $.ajax({
+        type: "POST",
+        url: "/tictactoe",
+        dataType: "html",
+        data: { player: currPlayer, cell: elem.id },
+        success: function(result) {
+            $("#game-table").replaceWith($(result).filter('#game-table'));
+            // TODO: currPlayer is now the other player (those-turn-is-it)
+            var message = $(result).filter('#hidden-message').text();
+            var player = $(result).filter('#p2').text();
+
+            if (message == currPlayer) {
+                console.log("PLAYER WON");
+                $('#game-results').show();
+                $('#game-result-message').html(message);
+            }
+            else if (message == "It's a tie!") {
+                console.log("TIE");
+            }
+            else if (message == "Illegal move") {
+                console.log("ILLEGAL");
+            }
+            else {
+                TogglePlayersTurn();
+            }
+        },
+        error: function(result) {
+            console.log(result)
+            $("#game-table").html("");
+        }
+    });*/
 }
 
 /* $.ajax({

@@ -32,8 +32,29 @@ public class GreetingController {
     {
         // At first assuming only Human vs Human is possible
         // TODO: implement Human vs Computer in this layer
+        System.out.println(gameInfoViewModel.getMode());
+        if(gameInfoViewModel.getMode() == 1)
+        {
+            System.out.println("1");
+            service = new TicTacToeService(gameInfoViewModel.getPlayer1());
+            // There cant be two players with the same name
+            if(gameInfoViewModel.getPlayer1().equals("Computer"))
+            {
+                gameInfoViewModel.setPlayer1("Player1");
+            }
+            gameInfoViewModel.setPlayer2("Computer");
+        }
+        if(gameInfoViewModel.getMode() == 2)
+        {
+            System.out.println("2");
+            if(gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
+            {
+                gameInfoViewModel.setPlayer1("Player1");
+                gameInfoViewModel.setPlayer1("Player2");
+            }
+            service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
+        }
 
-        service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
         this.gameInfoViewModel = gameInfoViewModel;
         model.addAttribute("message", "");
         return "tictactoe";
@@ -47,17 +68,36 @@ public class GreetingController {
         // Then return ok otherwise return NOT OK or something...
         int x = Integer.parseInt(cell) / 3;
         int y = Integer.parseInt(cell) - x*3;
+        
 
         // True if the move was ok
-        if (service.MakeMove(x, y, player))
+        if(!player.equals("Computer"))
         {
-            Player currPlayer = service.GetPlayerByName(player);
-            gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
+            if (service.MakeMove(x, y, player))
+            {   
+                Player currPlayer = service.GetPlayerByName(player);
+                gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
+            }
+            else
+            {
+                System.out.println("Illegal move...");
+                message = "Illegal move";
+            }
         }
-        else
+         else
         {
-            System.out.println("Illegal move...");
-            message = "Illegal move";
+            Integer[] compCell = new Integer[1];
+            compCell[0] = new Integer(-1);
+            if(service.MakeMove(compCell))
+            {
+
+                Player currPlayer = service.GetPlayerByName("Computer");
+                if(compCell[0] != -1)
+                {
+                    gameInfoViewModel.setGridSymbol(compCell[0], "O");
+                }
+                System.out.println(compCell[0]);
+            }
         }
 
         // The game is done (tie or a winner)
@@ -76,6 +116,7 @@ public class GreetingController {
                 message = winner;
             }
         }
+       
         System.out.println(message);
         model.addAttribute("gameInfoViewModel", gameInfoViewModel);
         model.addAttribute("message", message);

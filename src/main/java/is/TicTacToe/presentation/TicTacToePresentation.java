@@ -135,8 +135,10 @@ public class TicTacToePresentation
                 PrintBoard();
 
                 System.out.println("Computers turn move:");
+                Integer[] cell = new Integer[1];
+                cell[0] = new Integer(-1);
                 // TODO: makemove skilar true/false, eh að gera með það?
-                service.MakeMove();
+                service.MakeMove(cell);
                 
             }
             PrintBoard();

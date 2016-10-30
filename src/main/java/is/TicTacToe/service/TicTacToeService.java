@@ -50,7 +50,7 @@ public class TicTacToeService {
      */
     public TicTacToeService(String player)
     {
-        if (player == "Computer")
+        if (player.equals("Computer"))
         {
             player = "Player1";
         }
@@ -163,8 +163,8 @@ public class TicTacToeService {
     * @return true if one of the players is a computer player and
     * the board is not full, else false
     */
-    public boolean MakeMove()
-    {    
+    public boolean MakeMove(Integer[] cell)
+    {   
         if (game.GetBoard().IsFull())
         {
             return false;
@@ -192,6 +192,8 @@ public class TicTacToeService {
         if (!ContainsSymbol(x,y))
         {
             game.MakeMove(x, y, symbol);
+            cell[0] = new Integer(x*3 + y);
+
             return true;
         
         }
