@@ -80,7 +80,7 @@ public class TicTacToeService {
      */
     public void StartGame(int mode, String p1Name, String p2Name)
     {
-            SetPlayerNames(p1Name, p2Name);
+        SetPlayerNames(p1Name, p2Name);
     }
 
     /**
