@@ -4,16 +4,19 @@ import java.util.concurrent.TimeUnit;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public abstract class SeleniumTestWrapper {
-    static ChromeDriver driver;
+    //static ChromeDriver driver;
+    static FirefoxDriver driver;
     static String baseUrl;
     static String port;
 
     @BeforeClass
     public static void openBrowser(){
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         //port = System.getenv("PORT");
