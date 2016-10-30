@@ -1,11 +1,25 @@
+/**** front.html ****/
+/* Human vs Computer mode chosen */
 function OnClickMode1() {
-    document.getElementById('player2name').style.display='none';
+    var player2 = document.getElementById('player2name');
+    player2.value = 'Computer';
+    document.getElementById('player2name').readOnly = true;
+    $('#button-mode1').addClass('chosen');
+    $('#button-mode2').removeClass('chosen');
 }
 
+/* Human vs Human mode chosen */
 function OnClickMode2() {
-    document.getElementById('player2name').style.display='block';
+    var player2 = document.getElementById('player2name');
+    player2.value = '';
+    document.getElementById('player2name').readOnly = false;
+    $('#button-mode2').addClass('chosen');
+    $('#button-mode1').removeClass('chosen');
 }
 
+/**** tictactoe.html ****/
+
+/* Toggle whose turn it is next */
 function TogglePlayersTurn() {
     var currPlayer = $('#whose-turn-is-it').text();
     console.log(currPlayer);
@@ -19,10 +33,9 @@ function TogglePlayersTurn() {
         document.getElementById('p1-info').style.color = 'rgb(184, 84, 80)';
         document.getElementById('p2-info').style.color = 'rgb(0, 0, 0)';
     }
-    console.log('player 1: ' + $('#p1').text());
-    console.log('player 2: ' + $('#p2').text());
 }
 
+/* Ajax functionality to deal with the player's input */
 function MakeMove(elem) {
     var currPlayer = $('#whose-turn-is-it').text();
     console.log('players turn: ' + currPlayer);
