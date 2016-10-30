@@ -18,9 +18,8 @@ deploy:
     master: lit-eyrie-57326
     continuousIntegration: frozen-brushlands-27313
 before_script:
-  - chromium-browser --version
-  - ./chromedriver --version
-  - chromedriver --version
+  - echo $(chromium-browser --version)
+  - echo $(./chromedriver --version)
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
