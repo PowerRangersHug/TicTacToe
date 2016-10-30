@@ -56,7 +56,7 @@ public class GreetingController {
             if(gameInfoViewModel.getPlayer1().equals(gameInfoViewModel.getPlayer2()))
             {
                 gameInfoViewModel.setPlayer1("Player1");
-                gameInfoViewModel.setPlayer1("Player2");
+                gameInfoViewModel.setPlayer2("Player2");
             }
             service = new TicTacToeService(gameInfoViewModel.getPlayer1(), gameInfoViewModel.getPlayer2());
         }
