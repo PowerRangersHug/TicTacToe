@@ -39,8 +39,8 @@ function MakeMove(elem) {
 
             if (message == currPlayer) {
                 console.log("PLAYER WON");
-                $('#game-results').addClass("showing");
                 $('#game-results').replaceWith($(result).filter('#game-results'));
+                $('#game-results').addClass("showing");
                 document.getElementById('game-results').style.display='block';
                 $('#game-result-message').html(message + ' is the winner!');
             }
