@@ -1,14 +1,20 @@
 /**** front.html ****/
+/* Human vs Computer mode chosen */
 function OnClickMode1() {
     var player2 = document.getElementById('player2name');
-    player2.style.display = 'none';
     player2.value = 'Computer';
+    document.getElementById('player2name').readOnly = true;
+    $('#button-mode1').addClass('chosen');
+    $('#button-mode2').removeClass('chosen');
 }
 
+/* Human vs Human mode chosen */
 function OnClickMode2() {
     var player2 = document.getElementById('player2name');
-    player2.style.display = 'block';
     player2.value = '';
+    document.getElementById('player2name').readOnly = false;
+    $('#button-mode2').addClass('chosen');
+    $('#button-mode1').removeClass('chosen');
 }
 
 /**** tictactoe.html ****/

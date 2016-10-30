@@ -1,11 +1,17 @@
 /**** front.html ****/
 
-.chosen {
-	background-color: rgb(184, 84, 80);
+.mode-button-group {
+	padding: 10px;
 }
 
-/* nothing here yet... */
+.mode-button {
+	border: 1px solid rgb(184, 84, 80);
+	background-color: white;
+}
 
+.chosen {
+	background-color: rgb(248, 206, 204);
+}
 /**** tictactoe.html ****/
 
 .game-table {
@@ -36,10 +42,6 @@
 
 .game-table tr td:last-child {
   border-right: 0;
-}
-
-#player2name {
-	display: none;
 }
 
 #game-results {
