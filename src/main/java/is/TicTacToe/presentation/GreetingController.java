@@ -40,7 +40,6 @@ public class GreetingController {
     {
         // At first assuming only Human vs Human is possible
         // TODO: implement Human vs Computer in this layer
-        System.out.println(gameInfoViewModel.getMode());
         if(gameInfoViewModel.getMode() == 1)
         {
             service = new TicTacToeService(gameInfoViewModel.getPlayer1());
@@ -104,11 +103,9 @@ public class GreetingController {
             {   
                 Player currPlayer = service.GetPlayerByName(player);
                 gameInfoViewModel.setGridSymbol(Integer.parseInt(cell), currPlayer.GetSymbol());
-                System.out.println(currPlayer.GetSymbol());
             }
             else
             {
-                System.out.println("Illegal move...");
                 message = "Illegal move";
             }
         }
@@ -124,7 +121,6 @@ public class GreetingController {
                 {
                     gameInfoViewModel.setGridSymbol(compCell[0], "O");
                 }
-                System.out.println(compCell[0]);
             }
         }
         if (service.IsDone())
