@@ -14,6 +14,10 @@ function TogglePlayersTurn() {
     else {
         $('#whose-turn-is-it').html($('#p1').text());
     }
+    if($('#whose-turn-is-it').text() == "Computer" )
+     {
+        $('#0').click();
+     }
 
    
 }
