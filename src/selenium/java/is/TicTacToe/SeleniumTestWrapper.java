@@ -16,8 +16,8 @@ public abstract class SeleniumTestWrapper {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        //port = System.getenv("PORT");
-				port = "8080";
+        port = System.getenv("PORT");
+        //port = "8080";
         if (port == null) {
             port = "8080";
         }

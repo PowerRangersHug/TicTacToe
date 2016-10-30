@@ -13,64 +13,85 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
+// for thread.sleep (only for debugging!)
+// import java.lang.*;
 
+//         try 
+//         {
+//             // thread to sleep for 1000 milliseconds
+//             Thread.sleep(1000);
+//         } 
+//         catch (Exception e) 
+//         {
+//             System.out.println(e);
+//         }
+        
 public class TestTicTacToeWeb extends SeleniumTestWrapper {
+    
     @Test
     public void TitleMatches() 
-	{
+    {
         driver.get(baseUrl);
         assertEquals("Tic Tac Toe", driver.getTitle());
     }
-		
-	@Test
-	public void NameMatch()
-	{
-		driver.get(baseUrl);
-		WebElement player1Name = driver.findElement(By.id("player1"));
-		player1Name.sendKeys("Hattifatti");
-		WebElement player2Name = driver.findElement(By.id("player2"));
-		player2Name.sendKeys("Mia");
-		// Change when mode becomed dropdown list
-		WebElement mode = driver.findElement(By.id("mode"));
-		mode.sendKeys("1");
-		player2Name.submit();
 
-		WebElement resultp1 = (new WebDriverWait(driver, 15))
+    @Test
+    public void NameMatch()
+    {
+        driver.get(baseUrl);
+
+        // Clicks on mode 1 (Human vs Human)
+        WebElement buttonMode1 = driver.findElement(By.id("button-mode2"));
+        buttonMode1.click();
+
+        // Sets the player names
+        WebElement player1Name = driver.findElement(By.id("player1name"));
+        WebElement player2Name = driver.findElement(By.id("player2name"));
+        player1Name.sendKeys("Áslaug");
+        player2Name.sendKeys("Karl");
+
+        player2Name.submit();
+
+        WebElement resultp1 = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("p1")));
 
         WebElement resultp2 = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("p2")));
 
-        assertEquals("Hattifatti", resultp1.getText());
-        assertEquals("Mia", resultp2.getText());
-	}
+        assertEquals("Áslaug", resultp1.getText());
+        assertEquals("Karl", resultp2.getText());
+    }
 
-	@Test
-	public void PlayGame()
-	{
-		driver.get(baseUrl);
-		WebElement player1Name = driver.findElement(By.id("player1"));
-		player1Name.sendKeys("Hattifatti");
-		WebElement player2Name = driver.findElement(By.id("player2"));
-		player2Name.sendKeys("Mia");
-		// Change when mode becomes dropdown list
-		WebElement mode = driver.findElement(By.id("mode"));
-		mode.sendKeys("1");
-		player2Name.submit();
+    @Test
+    public void PlayGame()
+    {
+        driver.get(baseUrl);
 
-		/*WebElement gameTable = (new WebDriverWait(driver, 15))
+        // Clicks on mode 1 (Human vs Human)
+        WebElement buttonMode1 = driver.findElement(By.id("button-mode2"));
+        buttonMode1.click();
+
+        // Sets the player names
+        WebElement player1Name = driver.findElement(By.id("player1name"));
+        WebElement player2Name = driver.findElement(By.id("player2name"));
+        player1Name.sendKeys("Áslaug");
+        player2Name.sendKeys("Karl");
+
+        player2Name.submit();
+
+        WebElement gameTable = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells = gameTable.findElements(By.tagName("td"));
 
-        allCells.get(2).click();
+        allCells.get(1).click();
 
         WebElement gameTable1 = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells1 = gameTable1.findElements(By.tagName("td"));
 
-        allCells1.get(1).click();
+        allCells1.get(2).click();
 
         WebElement gameTable2 = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
@@ -78,13 +99,13 @@ public class TestTicTacToeWeb extends SeleniumTestWrapper {
         List<WebElement> allCells2 = gameTable2.findElements(By.tagName("td"));
 
         allCells2.get(4).click();
-
+        
         WebElement gameTable3 = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells3 = gameTable3.findElements(By.tagName("td"));
 
-        allCells3.get(2).click();
+        allCells3.get(5).click();
 
         WebElement gameTable4 = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
@@ -97,24 +118,24 @@ public class TestTicTacToeWeb extends SeleniumTestWrapper {
             .until(ExpectedConditions.presenceOfElementLocated(By.className("showing")));
 
        	WebElement resultMessage = results.findElement(By.id("game-result-message"));
-        assertEquals("Hattifatti is the winner!", resultMessage.getText());*/
+        assertEquals("Áslaug is the winner!", resultMessage.getText());
         
-	}
+    }
 
-	@Test
-	public void FullBoard()
-	{
-		driver.get(baseUrl);
-		WebElement player1Name = driver.findElement(By.id("player1"));
-		player1Name.sendKeys("Hattifatti");
-		WebElement player2Name = driver.findElement(By.id("player2"));
-		player2Name.sendKeys("Mia");
-		// Change when mode becomes dropdown list
-		WebElement mode = driver.findElement(By.id("mode"));
-		mode.sendKeys("1");
-		player2Name.submit();
+    // @Test
+    // public void FullBoard()
+    // {
+    //     driver.get(baseUrl);
+    //     WebElement player1Name = driver.findElement(By.id("player1"));
+    //     player1Name.sendKeys("Hattifatti");
+    //     WebElement player2Name = driver.findElement(By.id("player2"));
+    //     player2Name.sendKeys("Mia");
+    //     // Change when mode becomes dropdown list
+    //     WebElement mode = driver.findElement(By.id("mode"));
+    //     mode.sendKeys("1");
+    //     player2Name.submit();
 
-		/*WebElement gameTable = (new WebDriverWait(driver, 15))
+        /*WebElement gameTable = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.id("game-table")));
 
         List<WebElement> allCells = gameTable.findElements(By.tagName("td"));
@@ -173,9 +194,9 @@ public class TestTicTacToeWeb extends SeleniumTestWrapper {
         WebElement results = (new WebDriverWait(driver, 15))
             .until(ExpectedConditions.presenceOfElementLocated(By.className("showing")));
 
-       	WebElement resultMessage = results.findElement(By.id("game-result-message"));
+        WebElement resultMessage = results.findElement(By.id("game-result-message"));
          assertEquals("It's a tie!", resultMessage.getText());*/
         
-	}
+    // }
 }
 
