@@ -1,12 +1,12 @@
 package is.TicTacToe.presentation.viewmodels;
 
 /*
-* View Model for the input from user
-* before starting game.
-* NOTE: the getters and setters
-* need to be in Camel casing for the
-* sprint framework to work!
-*/
+ * View Model for the input from user
+ * before starting game.
+ * NOTE: the getters and setters
+ * need to be in Camel casing for the
+ * sprint framework to work!
+ */
 public class GameInfoViewModel {
     private int scoreP1;
     private int scoreP2;
@@ -36,7 +36,6 @@ public class GameInfoViewModel {
             grid[i] = " ";
         }
     }
-
 
     public String getPlayer1()
     {

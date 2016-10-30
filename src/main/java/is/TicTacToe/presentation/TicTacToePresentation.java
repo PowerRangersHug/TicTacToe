@@ -1,46 +1,46 @@
 package is.TicTacToe.presentation;
 import java.util.Scanner;
 import is.TicTacToe.service.TicTacToeService;
+
 /*
 * This class is the console presentation.
 * It is unused now since the application is 
 * now a web application.
 */
-
 public class TicTacToePresentation 
 {
     private TicTacToeService service;
 
     /**
-    * Default constructor for TicTacToePresentation
-    */
+     * Default constructor for TicTacToePresentation
+     */
     public TicTacToePresentation() 
     {
         service = new TicTacToeService();
     }
 
     /**
-    * Constructor for TicTacToePresentation. Initializes service as
-    * service.
-    * @param service
-    */
+     * Constructor for TicTacToePresentation. Initializes service as
+     * service.
+     * @param service
+     */
     public TicTacToePresentation(TicTacToeService service) 
     {
         this.service = service;
     }
 
     /** 
-    * Prints a welcome message to the console.
-    */
+     * Prints a welcome message to the console.
+     */
     public static void WelcomeMessage()
     {
         System.out.println("Welcome to TicTacToe!");
     }
 
     /**
-    * Get the game mode from standard input.
-    * @return the game mode (0:quit, 1:human vs human, 2: human vs computer)
-    */
+     * Get the game mode from standard input.
+     * @return the game mode (0:quit, 1:human vs human, 2: human vs computer)
+     */
     public static int GetGameMode()
     {
         Scanner sc = new Scanner(System.in);
@@ -52,7 +52,7 @@ public class TicTacToePresentation
             System.out.println("1 - 1 Player");
             System.out.println("2 - 2 Player");
             System.out.println("Q - Quit");
-            if(sc.hasNextLine())
+            if (sc.hasNextLine())
             {
                 inputLine = sc.next();
             }
@@ -76,12 +76,12 @@ public class TicTacToePresentation
     }
     
     /** 
-    * Get usernames from users
-    * Start and play game
-    * Announce winner
-    * Prompt user for new game or quit
-    * @param mode computer vs. player(1) or player vs. player(2)
-    */
+     * Get usernames from users
+     * Start and play game
+     * Announce winner
+     * Prompt user for new game or quit
+     * @param mode computer vs. player(1) or player vs. player(2)
+     */
     public void TwoPlayer(int mode) 
     {
         System.out.println("Name of player 1:");
@@ -97,7 +97,6 @@ public class TicTacToePresentation
             service.ResetBoard();
             while (!service.IsDone())
             {
-
                 PrintBoard();
                 MakeMove(1, player1Name);
                 if (service.IsDone())
@@ -105,9 +104,7 @@ public class TicTacToePresentation
                     break;
                 }
                 PrintBoard();
-
-                MakeMove(2, player2Name);
-                
+                MakeMove(2, player2Name);               
             }
             PrintBoard();
             printFinalMsg();
@@ -119,7 +116,6 @@ public class TicTacToePresentation
 
     public void OnePlayer(int mode) 
     {
-
         System.out.println("Name of player:");
         String playerName = GetPlayerName("Player1");
 

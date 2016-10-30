@@ -1,6 +1,11 @@
 # Administration Manual
 
 ## Getting the program
+The code is stored on GitHub in a public repository and is available [here]  
+(https://github.com/PowerRangersHug/TicTacToe)  
+
+
+Fork the repository to your account.  
 Clone the Git repository.
 
 ```shell

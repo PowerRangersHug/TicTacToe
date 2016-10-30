@@ -353,7 +353,6 @@ public class TicTacToeServiceTest
         testService.StartGame(1,"P1","P2");
         assertEquals("P1", testService.GetPlayerByName("P1").GetName());
         assertEquals("P2", testService.GetPlayerByName("P2").GetName());
-
     }
 
     @Test
@@ -363,7 +362,6 @@ public class TicTacToeServiceTest
         testService.StartGame(1,"P1","");
         assertEquals("P1", testService.GetPlayerByName("P1").GetName());
         assertEquals("Player2", testService.GetPlayerByName("Player2").GetName());
-
     }
 
     @Test
@@ -373,7 +371,6 @@ public class TicTacToeServiceTest
         testService.StartGame(1,"","");
         assertEquals("Player1", testService.GetPlayerByName("Player1").GetName());
         assertEquals("Player2", testService.GetPlayerByName("Player2").GetName());
-
     }
 
     @Test
@@ -385,9 +382,7 @@ public class TicTacToeServiceTest
         assertEquals(true, testService.LegalCoordinate(0));
         assertEquals(true, testService.LegalCoordinate(1));
         assertEquals(true, testService.LegalCoordinate(2));
-
     }
-
 }
 
 
