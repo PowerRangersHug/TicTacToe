@@ -79,6 +79,7 @@ function MakeMove(elem) {
                 console.log("TIE");
                 document.getElementById('game-results').style.display='block';
                 $('#game-result-message').html(message);
+                $('#game-results').addClass("showing");
             }
             else if (message == "Illegal move") {
                 console.log("ILLEGAL");

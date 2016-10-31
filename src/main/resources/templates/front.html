@@ -21,8 +21,7 @@
     </div>
 
     <form action="#" th:action="@{/}" th:object="${gameInfo}" method="post">
-
-        <p>Player 1: <input type="text" th:field="*{player1}" /></p>
+        <p>Player 1: <input id="player1name" type="text" th:field="*{player1}" /></p>
         <p>Player 2: <input id="player2name" type="text" th:field="*{player2}" /></p>
         <input id="mode" type="number" th:field="*{mode}"/>
         <p><input type="submit" value="Submit" /></p>

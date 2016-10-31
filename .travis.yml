@@ -1,3 +1,5 @@
+sudo: required
+dist: trusty
 language: java
 jdk:
 - oraclejdk8
@@ -10,9 +12,33 @@ cache:
   directories:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
+before_install:
+  - sudo apt update
+  - sudo apt install -y libappindicator1 fonts-liberation
+  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - sudo dpkg -i google-chrome*.deb
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
+  - echo -e "machine api.heroku.com\n  login kristoferrt@gmail.com\n  password 8be33f5a-3f59-4612-90e9-b84eff7f7e69\nmachine git.heroku.com\n  login kristoferrt@gmail.com password 8be33f5a-3f59-4612-90e9-b84eff7f7e69" > ~/.netrc
+  - chmod 0600 ~/.netrc
 deploy:
-  provider: heroku
+- provider: heroku
   api_key:
     secure: RqRzCps3iYwLwpVgxOp95dInggT8k7zMw5+d53QO+s+zfmSkwWH4wSvwTe6gy30jNPU6MJFmR6RmXjJsQgR5stMP0CeAHWvM8EoeZJABbKALUbWx+Ajc9xWIoFP/BlYWY8zrY61udwoyCq32OWcFHc4QZeCjXZUUXie7fqYPaaisUZVzWZFqTiVoeQUPoNbPm5/U+udZ3Xyjv0ecwHze8YYYFJjcH1e8SkK5quAimV/P2Ws51jq+bLi/UoE6Nx09B4FjAdHtS9nntWR/VaM437kRR/0ebjtOazm9RYCubR398fZGkE85Qwfe/KqDUPTGdJVNsyv7j4nWR3exuHgY2yyWYrePorCk1T3TrGdDOfS9qIUl9Fw4SDLXFausnwqa/zRGKWVSN7u1OcrlgyJlZOOEiWU6ZIoEkUO0tWtTOinbpL3awsQ1/tjp2wE+PMnwPHBsOmatSZROYaetHVAR8PIqcdpOBqEvNj9oSNHmAihhr1uwLJ8fiPrw8WEPcXxZpE9mCqZXdilgUKbQKhkaL5YDZzlvxF60XiIz+76CeRYYE06vyhwkfi0aLIw5+SOUXHsqPVLI8vLdcjmaV203E2X46RSgDdwpT14W/vfjA8ZZ7tPtAFS86d1GkLjLSjFLnzcmxiOc/YrJBs+Ua/SsI8ST8S/dSoMhE4pLYqKats0=
   app:
-    master: lit-eyrie-57326
+    master: powerrangers-tictactoe
+before_script:
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then ./gradlew test; fi;      # Run unit tests
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then  heroku --version; fi;   # Test heroku CLI
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then heroku git:remote -a powerrangers-tictactoe-staging; fi; # Switch to staging
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then git fetch origin $TRAVIS_PULL_REQUEST_BRANCH; fi;      # Update branches
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then git push -f heroku origin/$TRAVIS_PULL_REQUEST_BRANCH:master; fi; # Push to staging
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then ./gradlew selenium; fi;     # Run selenium tests against staging
+addons:
+  apt:
+    sources:
+    - heroku
+    packages:
+    - heroku-toolbelt
