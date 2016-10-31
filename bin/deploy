@@ -1,10 +1,10 @@
 #!/bin/bash
-./gradlew jar
+./gradlew build
 
-[ -d deployed ] || mkdir deployed
+[ -d ~/tictactoe/deployed ] || mkdir ~/tictactoe && mkdir ~/tictactoe/deployed
 
-cp -R build/libs deployed
-cp -R build/classes deployed
+cp -R build/libs ~/tictactoe/deployed
+cp -R build/classes ~/tictactoe/deployed
 
-[ -e deployed/tictactoe.jar ] || rm deployed/tictactoe.jar
-ln -s libs/TicTacToe-0.0.1.jar deployed/tictactoe.jar
+[ -e ~/tictactoe/deployed/tictactoe.jar ] || rm ~/tictactoe/deployed/tictactoe.jar
+ln -s ~/tictactoe/deployed/libs/TicTacToe-0.0.1.jar ~/tictactoe/deployed/tictactoe.jar
