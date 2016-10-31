@@ -33,11 +33,11 @@ before_script:
   - if [ "$TRAVIS_BRANCH" = "master" ]; then ./gradlew test; fi;      # Run unit tests
   - if [ "$TRAVIS_BRANCH" = "master" ]; then  heroku --version; fi;   # Test heroku CLI
   - if [ "$TRAVIS_BRANCH" = "master" ]; then heroku git:remote -a powerrangers-tictactoe-staging; fi; # Switch to staging
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then if [ "$TRAVIS_PULL_REQUEST_BRANCH" = "" ]; then git push -f heroku master; else git remote update; git checkout -b tmp; git pull origin $TRAVIS_PULL_REQUEST_BRANCH; git checkout master; git branch -D tmp; git push -f heroku tmp:master; fi; fi; # Push to staging
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then if [ "$TRAVIS_PULL_REQUEST_BRANCH" = "" ]; then git push -f heroku master; else git remote update; git checkout -b tmp; git pull origin $TRAVIS_PULL_REQUEST_BRANCH; git checkout master; git push -f heroku tmp:master; git branch -D tmp; fi; fi; # Push to staging
   - if [ "$TRAVIS_BRANCH" = "master" ]; then ./gradlew selenium; fi;     # Run selenium tests against staging
 script:
     - if [ "$TRAVIS_BRANCH" = "master" ]; then heroku git:remote -a powerrangers-tictactoe; fi;
-    - if [ "$TRAVIS_BRANCH" = "master" ]; then if ["$TRAVIS_PULL_REQUEST_BRANCH" = ""]; then git push -f heroku master; else git remote update; git checkout -b tmp; git pull origin $TRAVIS_PULL_REQUEST_BRANCH; git checkout master; git branch -D tmp; git push -f heroku tmp:master; fi; fi;
+    - if [ "$TRAVIS_BRANCH" = "master" ]; then if ["$TRAVIS_PULL_REQUEST_BRANCH" = ""]; then git push -f heroku master; else git remote update; git checkout -b tmp; git pull origin $TRAVIS_PULL_REQUEST_BRANCH; git checkout master; git push -f heroku tmp:master; git branch -D tmp; fi; fi;
 addons:
   apt:
     sources:
