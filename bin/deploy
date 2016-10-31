@@ -1,5 +1,5 @@
 #!/bin/bash
-./gradlew jar
+./gradlew build
 
 [ -d ~/tictactoe/deployed ] || mkdir ~/tictactoe && mkdir ~/tictactoe/deployed
 
